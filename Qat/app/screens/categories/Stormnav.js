@@ -23,7 +23,7 @@ export default function App() {
 				borderTopColor: "#000000",
 			}}
 			activeColor="#ffffff"
-			inactiveColor="#aaaaaa"
+			inactiveColor="#665555"
 			initialRouteName="Storm"
     >
 			<Tab.Screen
@@ -32,7 +32,7 @@ export default function App() {
 				options={{
 					tabBarLabel: "Information",
 					tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons name="information-outline" color={'#aaaaaa'} size={25} />
+						<MaterialCommunityIcons name="information-outline" color={'#555555'} size={25} />
 					),
 				}}
 			/>
@@ -42,7 +42,7 @@ export default function App() {
 				options={{
 					tabBarLabel: "Hotlines",
 					tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons name="phone" color={'#aaaaaa'} size={25} />
+						<MaterialCommunityIcons name="phone" color={'#555555'} size={25} />
 					),
 				}}
 			/>
@@ -53,7 +53,7 @@ export default function App() {
 					tabBarLabel: "Tips",
 					tabBarBadge: 3,
 					tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons name="lightbulb-on-outline" color={'#aaaaaa'} size={25} />
+						<MaterialCommunityIcons name="lightbulb-on-outline" color={'#555555'} size={25} />
 					),
 				}}
 			/>

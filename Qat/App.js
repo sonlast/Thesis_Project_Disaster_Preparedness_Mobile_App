@@ -4,11 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  useFonts,
-  Anybody_700Bold,
-  Anybody_700Bold_Italic,
-} from "@expo-google-fonts/anybody";
+import { useFont, Anybody_700Bold, Anybody_700Bold_Italic } from "@expo-google-fonts/anybody";
 
 import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
@@ -96,15 +92,6 @@ function ScreenStack() {
 }
 
 function App() {
-  let [fontsLoaded, fontError] = useFonts({
-    Anybody_700Bold_Italic,
-    Anybody_700Bold,
-  });
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
     <NavigationContainer>
       <Drawer.Navigator
