@@ -21,7 +21,7 @@ const MyApp = () => {
 			// Signed in 
 			const user = userCredential.user;
 			Alert.alert('Quick Aid Taguig', 'Login successful.');
-			navigation.navigate('Categories');
+			navigation.navigate('SemiApp');
 			// ...
 		})
 		.catch((error) => {
