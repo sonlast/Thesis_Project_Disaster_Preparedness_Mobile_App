@@ -104,7 +104,6 @@ const MyApp = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView />
       <View style={styles.content}>
         <View style={styles.inputContainer}>
           <View style={styles.inputWrapper}>
@@ -131,14 +130,13 @@ const MyApp = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#660000",
   },
   content: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 30,
-    height: 820,
+    marginTop: 20,
+    height: 775,
   },
   categoryButton: {
     justifyContent: "center",
@@ -150,7 +148,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 60,
     marginTop: 30,
-    marginBottom: 10,
+    marginBottom: 20,
     paddingRight: 10,
     paddingLeft: 10,
   },
@@ -173,7 +171,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: 350,
     height: 40,
-    marginTop: 5,
   },
   inputWrapper: {
     flexDirection: "row",

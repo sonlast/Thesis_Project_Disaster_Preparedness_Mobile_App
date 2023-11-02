@@ -2,7 +2,6 @@ import React, { useState, } from "react";
 import { Alert, Image, Text, View, StyleSheet, Pressable, TextInput, ActivityIndicator, KeyboardAvoidingView } from "react-native";
 import { useFonts, Anybody_700Bold_Italic, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from '@react-navigation/native';
-import Snackbar from 'react-native-snackbar';
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
 import { getAuth, signInWithEmailAndPassword, } from "firebase/auth"; // Import Firebase Auth related functions
 
@@ -21,12 +20,7 @@ const MyApp = () => {
 		.then((userCredential) => {
 			// Signed in 
 			const user = userCredential.user;
-			Snackbar.show({
-				text: 'Successfully logged in!',
-				duration: Snackbar.LENGTH_LONG,
-				backgroundColor: '#00ff00',
-				textColor: '#000000',
-			});
+			Alert.alert('Quick Aid Taguig', 'Login successful.');
 			navigation.navigate('Categories');
 			// ...
 		})
