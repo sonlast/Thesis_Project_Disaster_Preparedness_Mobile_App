@@ -3,12 +3,12 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
-  useFont,
+  useFonts,
   Anybody_700Bold,
   Anybody_700Bold_Italic,
 } from "@expo-google-fonts/anybody";
 
-import Categories from "./Categories";
+import Categoriez from "./Categories";
 import Stormnav from "./categories/Stormnav";
 import Typhoon from "./categories/Typhoon";
 import Earthquake from "./categories/Earthquake";
@@ -26,16 +26,28 @@ const Drawer = createDrawerNavigator();
 
 function CategoryStack() {
   return (
-    <Stack.Navigator initialRouteName="Categories">
+    <Stack.Navigator
+      initialRouteName="Categories"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#660000",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        gestureEnabled: true,
+      }}
+    >
       <Stack.Screen
+        // initialRouteName="Categories"
         name="Categories"
-        component={Categories}
+        component={Categoriez}
         options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Storm"
         component={Stormnav}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Typhoon"
@@ -82,7 +94,7 @@ function CategoryStack() {
 }
 
 function App() {
-	const [fontsLoaded, fontError] = useFont({
+	let [fontsLoaded, fontError] = useFonts({
 		Anybody_700Bold_Italic,
 		Anybody_700Bold,
 	});
@@ -93,7 +105,7 @@ function App() {
 
   return (
     <Drawer.Navigator
-      initialRouteName="Categories"
+      initialRouteName="Quick Aid Taguig"
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#660000",
@@ -117,12 +129,10 @@ function App() {
       <Drawer.Screen
         name="Profile"
         component={Profile}
-        options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="Settings"
         component={Settings}
-        options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );

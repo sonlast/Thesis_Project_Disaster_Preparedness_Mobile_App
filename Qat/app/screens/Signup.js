@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
   Alert,
-	Image,
-	KeyboardAvoidingView,
+  Image,
+  KeyboardAvoidingView,
   Text,
   View,
   StyleSheet,
@@ -133,24 +133,27 @@ const MyApp = () => {
         // Signed in
         const user = userCredential.user;
         Alert.alert("Quick Aid Taguig", "Account created successfully!");
-        navigation.navigate("Categories");
+        navigation.navigate("SemiApp");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
 
-        // switch (errorCode) {
-        //   case 'auth/invalid-email':
-        //     Alert.alert('Quick Aid Taguig', 'Fill in the required fields.');
-        //     break;
-        // 	case 'auth/missing-password':
-        // 		Alert.alert('Quick Aid Taguig', 'Fill in your password.');
-        // 		break;
-        //   default:
-        //     Alert.alert('Quick Aid Taguig', `Account creation error: ${errorMessage} (Error Code: ${errorCode})`);
-        //     break;
-        // }
+        switch (errorCode) {
+          case "auth/invalid-email":
+            Alert.alert("Quick Aid Taguig", "Fill in the required fields.");
+            break;
+          case "auth/missing-password":
+            Alert.alert("Quick Aid Taguig", "Fill in your password.");
+            break;
+          default:
+            Alert.alert(
+              "Quick Aid Taguig",
+              `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
+            );
+            break;
+        }
       })
       .finally(() => {
         setLoading(false);
