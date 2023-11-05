@@ -2,6 +2,7 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   useFonts,
   Anybody_700Bold,
@@ -10,14 +11,14 @@ import {
 
 import Categoriez from "./Categories";
 import Stormnav from "./categories/Stormnav";
-import Typhoon from "./categories/Typhoon";
-import Earthquake from "./categories/Earthquake";
-import Flood from "./categories/Flood";
-import Drought from "./categories/Drought";
-import VolcanicEruption from "./categories/Volcanic Eruption";
-import Landslide from "./categories/Landslide";
-import Tsunami from "./categories/Tsunami";
-import Wildfires from "./categories/Wildfires";
+import Typhoonnav from "./categories/Typhoonnav";
+import Earthquakenav from "./categories/Earthquakenav";
+import Floodnav from "./categories/Floodnav";
+import Droughtnav from "./categories/Droughtnav";
+import VolcanicEruptionnav from "./categories/Volcanic Eruptionnav";
+import Landslidenav from "./categories/Landslidenav";
+import Tsunaminav from "./categories/Tsunaminav";
+import Wildfiresnav from "./categories/Wildfiresnav";
 import Profile from "./Profile";
 import Settings from "./Settings";
 
@@ -32,7 +33,7 @@ function CategoryStack() {
         headerStyle: {
           backgroundColor: "#660000",
         },
-        headerTintColor: "#fff",
+        headerTintColor: "#ffffff",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -51,43 +52,35 @@ function CategoryStack() {
       />
       <Stack.Screen
         name="Typhoon"
-        component={Typhoon}
-        options={{ headerShown: false }}
+        component={Typhoonnav}
       />
       <Stack.Screen
         name="Earthquake"
-        component={Earthquake}
-        options={{ headerShown: false }}
+        component={Earthquakenav}
       />
       <Stack.Screen
         name="Flood"
-        component={Flood}
-        options={{ headerShown: false }}
+        component={Floodnav}
       />
       <Stack.Screen
         name="Drought"
-        component={Drought}
-        options={{ headerShown: false }}
+        component={Droughtnav}
       />
       <Stack.Screen
-        name="VolcanicEruption"
-        component={VolcanicEruption}
-        options={{ headerShown: false }}
+        name="Volcanic Eruption"
+        component={VolcanicEruptionnav}
       />
       <Stack.Screen
         name="Landslide"
-        component={Landslide}
-        options={{ headerShown: false }}
+        component={Landslidenav}
       />
       <Stack.Screen
         name="Tsunami"
-        component={Tsunami}
-        options={{ headerShown: false }}
+        component={Tsunaminav}
       />
       <Stack.Screen
         name="Wildfires"
-        component={Wildfires}
-        options={{ headerShown: false }}
+        component={Wildfiresnav}
       />
     </Stack.Navigator>
   );
@@ -112,12 +105,11 @@ function App() {
           width: 230,
         },
         drawerLabelStyle: {
-          color: "#000000",
-          fontSize: 14,
+          fontSize: 13,
           fontFamily: "Anybody_700Bold",
         },
         drawerActiveBackgroundColor: "#ffffff",
-        drawerActiveTintColor: "#660000",
+        drawerActiveTintColor: "#000000",
         drawerInactiveTintColor: "#ffffff",
         headerTintColor: "#ffffff",
         headerStyle: {
@@ -125,14 +117,36 @@ function App() {
         },
       }}
     >
-      <Drawer.Screen name="Quick Aid Taguig" component={CategoryStack} />
       <Drawer.Screen
         name="Profile"
         component={Profile}
+        options={{
+          drawerIcon: () => (
+            <MaterialCommunityIcons
+              name="account"
+              size={24}
+              color="#000000"
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Quick Aid Taguig"
+        component={CategoryStack}
+        options={{
+          drawerIcon: () => (
+            <MaterialCommunityIcons name="home" size={24} color="#000000" />
+          ),
+        }}
       />
       <Drawer.Screen
         name="Settings"
         component={Settings}
+        options={{
+          drawerIcon: () => (
+            <MaterialCommunityIcons name="cog" size={24} color="#000000" />
+          ),
+        }}
       />
     </Drawer.Navigator>
   );

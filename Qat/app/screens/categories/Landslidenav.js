@@ -7,9 +7,9 @@ import {
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
-import Storm from "./storm/Storm";
-import StormHotlines from "./storm/StormHotlines";
-import StormTips from "./storm/StormTips";
+import Landslide from "./landslide/Landslide";
+import LandslideHotlines from "./landslide/LandslideHotlines";
+import LandslideTips from "./landslide/LandslideTips";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -19,41 +19,38 @@ export default function App() {
       barStyle={{
         backgroundColor: "#660000",
         height: 70,
-			}}
-			activeColor="#ffffff"
-			inactiveColor="#aaaaaa"
-      initialRouteName="Storm"
+      }}
+      activeColor="#ffffff"
+      inactiveColor="#aaaaaa"
+      initialRouteName="Landslide"
     >
       <Tab.Screen
         name="Information"
-        component={Storm}
+        component={Landslide}
         options={{
           tabBarLabel: "Information",
           tabBarIcon: ({}) => (
             <MaterialCommunityIcons
               name="information-outline"
               color={"#ff0000"}
-							size={27}
-						/>
+              size={27}
+            />
           ),
         }}
       />
       <Tab.Screen
         name="Hotlines"
-        component={StormHotlines}
+        component={LandslideHotlines}
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons
-							name="phone"
-							color={"#ff0000"}
-							size={27} />
+            <MaterialCommunityIcons name="phone" color={"#ff0000"} size={27} />
           ),
         }}
       />
       <Tab.Screen
         name="Tips"
-        component={StormTips}
+        component={LandslideTips}
         options={{
           tabBarLabel: "Tips",
           tabBarBadge: 3,
