@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { useFonts, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome5 } from "react-native-vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -19,38 +21,47 @@ const MyApp = () => {
     {
       id: 1,
       name: "Storm",
+      icon: "cloud-showers-heavy",
     },
     {
       id: 2,
       name: "Typhoon",
+      icon: "wind",
     },
     {
       id: 3,
       name: "Earthquake",
+      icon: "globe-americas",
     },
     {
       id: 4,
       name: "Flood",
+      icon: "water",
     },
     {
       id: 5,
       name: "Drought",
+      icon: "tint-slash",
     },
     {
       id: 6,
       name: "Volcanic Eruption",
+      icon: "fire-alt",
     },
     {
       id: 7,
       name: "Landslide",
+      icon: "mountain",
     },
     {
       id: 8,
       name: "Tsunami",
+      icon: "wave-square",
     },
     {
       id: 9,
       name: "Wildfires",
+      icon: "fire",
     },
   ];
 
@@ -64,7 +75,10 @@ const MyApp = () => {
           style={styles.categoryButton}
           onPress={() => navigation.navigate(item.name)}
         >
-          <Text style={styles.txtBtn}>{item.name}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+            <FontAwesome5 name={item.icon} size={24} color="#ff0000" />
+            <Text style={styles.txtBtn}>{item.name}</Text>
+          </View>
         </Pressable>
       );
     }

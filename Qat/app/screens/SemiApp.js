@@ -2,7 +2,7 @@ import * as React from "react";
 import { Image, StyleSheet, Text, View, } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "react-native-vector-icons";
 import { DrawerItemList } from "@react-navigation/drawer";
 import * as ImagePicker from "expo-image-picker";
 import {
@@ -112,6 +112,19 @@ function App() {
     })
     .catch(error => console.log(error));
 
+    if (!result.canceled && result.assets) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  const takePhoto = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    }).catch((error) => console.log(error));
+
     if (!result.cancelled && result.assets) {
       setImage(result.assets[0].uri);
     }
@@ -136,8 +149,14 @@ function App() {
               >
                 <TouchableOpacity onPress={pickImage}>
                   {!image && (
-                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                      <MaterialCommunityIcons name="upload" size={24} color="#ffffff" />
+                    <View
+                      style={{ flexDirection: "column", alignItems: "center" }}
+                    >
+                      <MaterialCommunityIcons
+                        name="upload"
+                        size={24}
+                        color="#ffffff"
+                      />
                       <Text
                         style={{
                           marginTop: 10,
@@ -157,10 +176,19 @@ function App() {
                     />
                   )}
                 </TouchableOpacity>
-                <Text style={{ color: "#ffffff", fontSize: 12, fontFamily: "Anybody_700Bold", marginTop: 20, }}>
+
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontSize: 12,
+                    fontFamily: "Anybody_700Bold",
+                    marginTop: 20,
+                  }}
+                >
                   {userName}
                 </Text>
               </View>
+
               <DrawerItemList {...props} />
             </SafeAreaView>
           );
