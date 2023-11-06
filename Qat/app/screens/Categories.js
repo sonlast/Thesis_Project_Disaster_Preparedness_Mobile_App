@@ -76,7 +76,7 @@ const MyApp = () => {
           onPress={() => navigation.navigate(item.name)}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-            <FontAwesome5 name={item.icon} size={24} color="#ff0000" />
+            <FontAwesome5 name={item.icon} size={24} color="#660000" />
             <Text style={styles.txtBtn}>{item.name}</Text>
           </View>
         </Pressable>
