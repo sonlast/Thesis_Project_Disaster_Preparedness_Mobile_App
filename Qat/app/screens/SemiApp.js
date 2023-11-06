@@ -92,6 +92,7 @@ function CategoryStack() {
 
 function App() {
   const [image, setImage] = React.useState(null);
+  const [userName, setUserName] = React.useState("@username" + Math.floor(1000 + Math.random() * 9000));
 
 	let [fontsLoaded, fontError] = useFonts({
 		Anybody_700Bold_Italic,
@@ -104,14 +105,14 @@ function App() {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images, // only images are allowed
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, 
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     })
     .catch(error => console.log(error));
 
-    if (!result.cancelled && result.asssets) {
+    if (!result.cancelled && result.assets) {
       setImage(result.assets[0].uri);
     }
   };
@@ -156,6 +157,9 @@ function App() {
                     />
                   )}
                 </TouchableOpacity>
+                <Text style={{ color: "#ffffff", fontSize: 12, fontFamily: "Anybody_700Bold", marginTop: 20, }}>
+                  {userName}
+                </Text>
               </View>
               <DrawerItemList {...props} />
             </SafeAreaView>
