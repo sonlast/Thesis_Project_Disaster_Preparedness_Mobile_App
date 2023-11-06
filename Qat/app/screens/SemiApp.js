@@ -1,8 +1,10 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet, Text, View, } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { DrawerItemList } from "@react-navigation/drawer";
+import * as ImagePicker from "expo-image-picker";
 import {
   useFonts,
   Anybody_700Bold,
@@ -21,6 +23,8 @@ import Tsunaminav from "./categories/Tsunaminav";
 import Wildfiresnav from "./categories/Wildfiresnav";
 import Profile from "./Profile";
 import Settings from "./Settings";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -28,7 +32,7 @@ const Drawer = createDrawerNavigator();
 function CategoryStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Categories"
+      initialRouteName="Categoriez"
       screenOptions={{
         headerStyle: {
           backgroundColor: "#660000",
@@ -42,7 +46,7 @@ function CategoryStack() {
     >
       <Stack.Screen
         // initialRouteName="Categories"
-        name="Categories"
+        name="Categoriez"
         component={Categoriez}
         options={{ headerShown: false }}
       />
@@ -87,6 +91,8 @@ function CategoryStack() {
 }
 
 function App() {
+  const [image, setImage] = React.useState(null);
+
 	let [fontsLoaded, fontError] = useFonts({
 		Anybody_700Bold_Italic,
 		Anybody_700Bold,
@@ -94,11 +100,68 @@ function App() {
 
 	if (!fontsLoaded && !fontError) {
 		return null;
-	}
+  };
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, // only images are allowed
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    })
+    .catch(error => console.log(error));
+
+    if (!result.cancelled && result.asssets) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   return (
     <Drawer.Navigator
       initialRouteName="Categories"
+      drawerContent={
+        (props) => {
+          return (
+            <SafeAreaView>
+              <View
+                style={{
+                  height: 200,
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderBottomColor: "#ffffff",
+                  borderBottomwWidth: 1,
+                }}
+              >
+                <TouchableOpacity onPress={pickImage}>
+                  {!image && (
+                    <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+                      <MaterialCommunityIcons name="upload" size={24} color="#ffffff" />
+                      <Text
+                        style={{
+                          marginTop: 10,
+                          color: "#ffffff",
+                          fontFamily: "Anybody_700Bold",
+                        }}
+                      >
+                        Upload Profile Picture
+                      </Text>
+                    </View>
+                  )}
+                  {image && (
+                    <Image
+                      source={{ uri: image }}
+                      style={{ width: 100, height: 100 }}
+                      borderRadius={50}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+              <DrawerItemList {...props} />
+            </SafeAreaView>
+          );
+        }
+      }
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#660000",
