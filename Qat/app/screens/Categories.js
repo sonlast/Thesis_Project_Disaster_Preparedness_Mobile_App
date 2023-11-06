@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useFonts, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -115,13 +114,14 @@ const MyApp = () => {
             />
           </View>
         </View>
-        <View style={styles.content2}>
-          <Text style={styles.txt}>Categories</Text>
-        </View>
         <FlatList
           data={categories}
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => filterData(item)}
+          contentContainerStyle={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         />
       </View>
     </View>
@@ -198,5 +198,3 @@ const styles = StyleSheet.create({
 });
 
 export default MyApp;
-
-// DO THE SEARCH BAR AND A FILTER FOR THE CATEGORIES

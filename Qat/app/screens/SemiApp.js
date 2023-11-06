@@ -98,11 +98,11 @@ function App() {
 
   return (
     <Drawer.Navigator
-      initialRouteName="Quick Aid Taguig"
+      initialRouteName="Categories"
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#660000",
-          width: 230,
+          width: 250,
         },
         drawerLabelStyle: {
           fontSize: 13,
@@ -112,30 +112,30 @@ function App() {
         drawerActiveTintColor: "#000000",
         drawerInactiveTintColor: "#ffffff",
         headerTintColor: "#ffffff",
+        headerTitleStyle: {
+          fontFamily: "Anybody_700Bold",
+        },
         headerStyle: {
           backgroundColor: "#660000",
         },
       }}
     >
       <Drawer.Screen
-        name="Profile"
-        component={Profile}
+        name="Categories"
+        component={CategoryStack}
         options={{
-          drawerIcon: () => (
-            <MaterialCommunityIcons
-              name="account"
-              size={24}
-              color="#000000"
-            />
+          drawerLabel: "Categories",
+          drawerIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name="home" size={24} color={focused ? '#000000' : '#ffffff'} />
           ),
         }}
       />
       <Drawer.Screen
-        name="Quick Aid Taguig"
-        component={CategoryStack}
+        name="Profile"
+        component={Profile}
         options={{
-          drawerIcon: () => (
-            <MaterialCommunityIcons name="home" size={24} color="#000000" />
+          drawerIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name="account" size={24} color={focused ? "#000000" : "#ffffff"} />
           ),
         }}
       />
@@ -143,8 +143,8 @@ function App() {
         name="Settings"
         component={Settings}
         options={{
-          drawerIcon: () => (
-            <MaterialCommunityIcons name="cog" size={24} color="#000000" />
+          drawerIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name="cog" size={24} color={focused ? "#000000" : "#ffffff"} />
           ),
         }}
       />
