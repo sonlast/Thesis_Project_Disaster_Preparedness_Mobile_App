@@ -53,38 +53,92 @@ function CategoryStack() {
       <Stack.Screen
         name="Storm"
         component={Stormnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Typhoon"
         component={Typhoonnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Earthquake"
         component={Earthquakenav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Flood"
         component={Floodnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Drought"
         component={Droughtnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Volcanic Eruption"
         component={VolcanicEruptionnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Landslide"
         component={Landslidenav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Tsunami"
         component={Tsunaminav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
       <Stack.Screen
         name="Wildfires"
         component={Wildfiresnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
       />
     </Stack.Navigator>
   );
