@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/app-icons-xplatform/adaptive-icon.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package": "com.i_son.lastimosa.Qat"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "183b9b74-b620-45cb-aba3-262d1940aa0d"
+      }
     }
   }
 }

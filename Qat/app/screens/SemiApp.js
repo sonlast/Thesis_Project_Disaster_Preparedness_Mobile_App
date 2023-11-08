@@ -263,6 +263,7 @@ function App() {
         headerTintColor: "#ffffff",
         headerTitleStyle: {
           fontFamily: "Anybody_700Bold",
+          fontSize: 17,
         },
         headerStyle: {
           backgroundColor: "#660000",
@@ -275,7 +276,7 @@ function App() {
         options={{
           drawerLabel: "Categories",
           drawerIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name="home" size={24} color={focused ? '#000000' : '#ffffff'} />
+            <MaterialCommunityIcons name="card-multiple" size={24} color={focused ? '#000000' : '#ffffff'} />
           ),
         }}
       />

@@ -10,7 +10,6 @@ import {
 import { useFonts, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "react-native-vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const MyApp = () => {
   const navigation = useNavigation();
