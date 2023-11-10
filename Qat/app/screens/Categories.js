@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useFonts, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome5 } from "react-native-vector-icons";
+import { FontAwesome5, MaterialCommunityIcons } from "react-native-vector-icons";
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -38,29 +38,14 @@ const MyApp = () => {
       icon: "water",
     },
     {
-      id: 5,
-      name: "Drought",
-      icon: "tint-slash",
-    },
-    {
-      id: 6,
-      name: "Volcanic Eruption",
-      icon: "fire-alt",
-    },
-    {
       id: 7,
       name: "Landslide",
       icon: "mountain",
     },
     {
-      id: 8,
-      name: "Tsunami",
-      icon: "wave-square",
-    },
-    {
       id: 9,
-      name: "Wildfires",
-      icon: "fire",
+      name: "Fires",
+      icon: "dumpster-fire",
     },
   ];
 
@@ -74,9 +59,10 @@ const MyApp = () => {
           style={styles.categoryButton}
           onPress={() => navigation.navigate(item.name)}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', }}>
-            <FontAwesome5 name={item.icon} size={24} color="#660000" />
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <FontAwesome5 name={item.icon} paddingLeft={35} size={24} color="#660000" />
             <Text style={styles.txtBtn}>{item.name}</Text>
+            <MaterialCommunityIcons name="chevron-right" size={24} color="#660000" />
           </View>
         </Pressable>
       );
@@ -134,6 +120,7 @@ const MyApp = () => {
           contentContainerStyle={{
             justifyContent: "center",
             alignItems: "center",
+            marginTop: 25,
           }}
         />
       </View>
@@ -173,9 +160,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   txtBtn: {
+    flex: 1,
     color: "#000000",
     fontFamily: "Anybody_700Bold",
-    margin: 11,
+    margin: 20,
   },
   inputContainer: {
     color: "#fff",

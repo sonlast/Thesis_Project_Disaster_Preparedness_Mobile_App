@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, View, } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import { DrawerItemList } from "@react-navigation/drawer";
@@ -16,11 +16,8 @@ import Stormnav from "./categories/Stormnav";
 import Typhoonnav from "./categories/Typhoonnav";
 import Earthquakenav from "./categories/Earthquakenav";
 import Floodnav from "./categories/Floodnav";
-import Droughtnav from "./categories/Droughtnav";
-import VolcanicEruptionnav from "./categories/Volcanic Eruptionnav";
 import Landslidenav from "./categories/Landslidenav";
-import Tsunaminav from "./categories/Tsunaminav";
-import Wildfiresnav from "./categories/Wildfiresnav";
+import Firesnav from "./categories/Firesnav";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -42,13 +39,16 @@ function CategoryStack() {
           fontWeight: "bold",
         },
         gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
       <Stack.Screen
         // initialRouteName="Categories"
         name="Categoriez"
         component={Categoriez}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false
+        }}
       />
       <Stack.Screen
         name="Storm"
@@ -91,26 +91,6 @@ function CategoryStack() {
         }}
       />
       <Stack.Screen
-        name="Drought"
-        component={Droughtnav}
-        options={{
-          headerTitleStyle: {
-            fontFamily: "Anybody_700Bold",
-            fontSize: 17.5,
-          },
-        }}
-      />
-      <Stack.Screen
-        name="Volcanic Eruption"
-        component={VolcanicEruptionnav}
-        options={{
-          headerTitleStyle: {
-            fontFamily: "Anybody_700Bold",
-            fontSize: 17.5,
-          },
-        }}
-      />
-      <Stack.Screen
         name="Landslide"
         component={Landslidenav}
         options={{
@@ -121,18 +101,8 @@ function CategoryStack() {
         }}
       />
       <Stack.Screen
-        name="Tsunami"
-        component={Tsunaminav}
-        options={{
-          headerTitleStyle: {
-            fontFamily: "Anybody_700Bold",
-            fontSize: 17.5,
-          },
-        }}
-      />
-      <Stack.Screen
         name="Wildfires"
-        component={Wildfiresnav}
+        component={Firesnav}
         options={{
           headerTitleStyle: {
             fontFamily: "Anybody_700Bold",

@@ -7,9 +7,9 @@ import {
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
-import VolcanicEruption from "./volcaniceruption/Volcanic Eruption";
-import VolcanicEruptionHotlines from "./volcaniceruption/Volcanic EruptionHotlines";
-import VolcanicEruptionTips from "./volcaniceruption/Volcanic EruptionTips";
+import Fires from "./fires/Fires";
+import FiresHotlines from "./fires/FiresHotlines";
+import FiresTips from "./fires/FiresTips";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -22,11 +22,11 @@ export default function App() {
       }}
       activeColor="#ffffff"
       inactiveColor="#aaaaaa"
-      initialRouteName="Volcanic Eruption"
+			initialRouteName="Fires"
     >
       <Tab.Screen
         name="Information"
-        component={VolcanicEruption}
+        component={Fires}
         options={{
           tabBarLabel: "Information",
           tabBarIcon: ({}) => (
@@ -40,7 +40,7 @@ export default function App() {
       />
       <Tab.Screen
         name="Hotlines"
-        component={VolcanicEruptionHotlines}
+        component={FiresHotlines}
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
@@ -50,7 +50,7 @@ export default function App() {
       />
       <Tab.Screen
         name="Tips"
-        component={VolcanicEruptionTips}
+        component={FiresTips}
         options={{
           tabBarLabel: "Tips",
           tabBarBadge: 3,
