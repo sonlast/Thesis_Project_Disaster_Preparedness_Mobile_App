@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   FlatList,
+  ImageBackground,
   Pressable,
   StyleSheet,
   TextInput,
@@ -9,7 +10,10 @@ import {
 } from "react-native";
 import { useFonts, Anybody_700Bold } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome5, MaterialCommunityIcons } from "react-native-vector-icons";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from "react-native-vector-icons";
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -59,10 +63,25 @@ const MyApp = () => {
           style={styles.categoryButton}
           onPress={() => navigation.navigate(item.name)}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-            <FontAwesome5 name={item.icon} paddingLeft={35} size={24} color="#660000" />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <FontAwesome5
+              name={item.icon}
+              paddingLeft={35}
+              size={24}
+              color="#660000"
+            />
             <Text style={styles.txtBtn}>{item.name}</Text>
-            <MaterialCommunityIcons name="chevron-right" size={24} color="#660000" />
+            <MaterialCommunityIcons
+              name="chevron-right"
+              size={24}
+              color="#660000"
+            />
           </View>
         </Pressable>
       );
@@ -103,16 +122,29 @@ const MyApp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <View style={styles.inputContainer}>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Search..."
-              placeholderTextColor={"#ffffff"}
-              style={styles.input}
-              onChangeText={(text) => setUsetInput(text)}
-            />
+        <ImageBackground
+          source={require("../assets/prereqs-images/city-of-taguig.jpg")}
+          style={{ 
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "250%",
+            opacity: 0.76,
+          }}
+        >
+          <View style={styles.inputContainer}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                placeholder="Search..."
+                placeholderTextColor={"#ffffff"}
+                style={styles.input}
+                onChangeText={(text) => setUsetInput(text)}
+              />
+              <FontAwesome5 name="search" size={18} color="#ffffff" />
+            </View>
           </View>
-        </View>
+        </ImageBackground>
         <FlatList
           data={categories}
           showsVerticalScrollIndicator={false}
@@ -135,8 +167,7 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
-    height: 775,
+    height: "100%",
   },
   categoryButton: {
     justifyContent: "center",
@@ -170,7 +201,8 @@ const styles = StyleSheet.create({
     borderColor: "#ffffff",
     borderRadius: 20,
     borderWidth: 2,
-    width: 350,
+    marginTop: 20,
+    width: 330,
     height: 40,
   },
   inputWrapper: {
@@ -187,15 +219,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     paddingRight: 11,
   },
-  // searchIcon: {
-  //   width: 20,
-  //   height: 20,
-  //   padding: 12.5,
-  // },
-  // image: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  // },
 });
 
 export default MyApp;
