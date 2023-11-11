@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Pressable, Linking, Text, View, StyleSheet } from "react-native";
+import {
+  Modal,
+  Pressable,
+  Linking,
+  Text,
+  View,
+  StyleSheet,
+} from "react-native";
 import {
   useFonts,
   Anybody_700Bold_Italic,
@@ -9,6 +16,26 @@ import { FontAwesome5 } from "react-native-vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 
 const MyApp = () => {
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [data, setData] = React.useState([
+    {
+      id: 1,
+      barangay: "Bagumbayan",
+    },
+    {
+      id: 2,
+      barangay: "Bambang",
+    },
+    {
+      id: 3,
+      barangay: "Calzada",
+    },
+    {
+      id: 4,
+      barangay: "Central Bicutan",
+    },
+  ]);
+
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
     Anybody_700Bold,
@@ -30,7 +57,7 @@ const MyApp = () => {
         >
           EMERGENCY HOTLINES
         </Text>
-        <ScrollView>
+        <ScrollView nestedScrollEnabled>
           <View style={styles.content}>
             <Text
               style={{
@@ -163,6 +190,34 @@ const MyApp = () => {
                 />
               </View>
             </Pressable>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+              }}
+            >
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Hello World!</Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  >
+                    <Text style={styles.textStylehide}>Hide Modal</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
+            <Pressable
+              style={styles.buttonOpen}
+              onPress={() => setModalVisible(true)}
+            >
+              <Text style={styles.textStyle}>Choose a Barangay</Text>
+            </Pressable>
           </View>
         </ScrollView>
       </View>
@@ -199,6 +254,61 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 1,
     justifyContent: "center",
+    elevation: 10,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  buttonOpen: {
+    backgroundColor: "#FF0000",
+    alignItems: "center",
+    borderColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 3,
+    width: 300,
+    height: 50,
+    justifyContent: "center",
+    marginTop: 20,
+    elevation: 10,
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+    alignItems: "center",
+    borderColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 3,
+    width: 300,
+    height: 50,
+    justifyContent: "center",
+    marginTop: 20,
+    elevation: 10,
+  },
+  textStyle: {
+    fontFamily: "Anybody_700Bold",
+    fontSize: 25,
+    textAlign: "center",
+    color: "#ffffff",
+  },
+  textStylehide: {
+    fontFamily: "Anybody_700Bold",
+    fontSize: 15,
+    textAlign: "center",
+    color: "#000000",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 
