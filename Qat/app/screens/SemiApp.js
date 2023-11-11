@@ -101,7 +101,7 @@ function CategoryStack() {
         }}
       />
       <Stack.Screen
-        name="Wildfires"
+        name="Fires"
         component={Firesnav}
         options={{
           headerTitleStyle: {
@@ -224,7 +224,7 @@ function App() {
           width: 250,
         },
         drawerLabelStyle: {
-          fontSize: 13,
+          fontSize: 15,
           fontFamily: "Anybody_700Bold",
         },
         drawerActiveBackgroundColor: "#ffffff",
@@ -233,7 +233,7 @@ function App() {
         headerTintColor: "#ffffff",
         headerTitleStyle: {
           fontFamily: "Anybody_700Bold",
-          fontSize: 17,
+          fontSize: 20,
         },
         headerStyle: {
           backgroundColor: "#660000",

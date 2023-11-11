@@ -5,6 +5,7 @@ import {
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
+import { ScrollView } from "react-native-gesture-handler";
 
 const MyApp = () => {
   let [fontsLoaded, fontError] = useFonts({
@@ -19,7 +20,29 @@ const MyApp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={{ color: "#000000" }}>EARTHQUAKE TIPS</Text>
+        <Text
+          style={{
+            fontFamily: "Anybody_700Bold",
+            fontSize: 24,
+            color: "#FF0000",
+          }}
+        >
+          EMERGENCY TIPS
+        </Text>
+        <ScrollView>
+          <View style={styles.content2}>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 20,
+                color: "#660000",
+                marginTop: 20,
+              }}
+            >
+              Events
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -28,59 +51,15 @@ const MyApp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#ffffff",
   },
   content: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 150,
+    padding: 20,
   },
-  imagez: {
-    width: 200,
-    height: 200,
-    resizeMode: "contain",
-  },
-  buttons: {
-    marginTop: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  loginbutton: {
-    alignItems: "center",
-    borderColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 3,
-    width: 200,
-    height: 50,
-    marginTop: 1,
-  },
-  txt: {
-    color: "#fff",
-    fontFamily: "Anybody_700Bold",
-    margin: 11,
-  },
-  inputContainer: {
-    color: "#fff",
-    borderColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 2,
-    width: 300,
-    height: 40,
-    marginTop: 50,
-    paddingLeft: 20,
-  },
-  inputWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 5,
-  },
-  input: {
-    flex: 1,
-    color: "#fff",
-    fontFamily: "Anybody_700Bold",
-    fontSize: 13,
+  content2: {
+    padding: 20,
   },
 });
 

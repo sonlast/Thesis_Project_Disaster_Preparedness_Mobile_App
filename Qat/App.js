@@ -47,13 +47,16 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// TODO: CONTENTS (CATEGORIES, SETTINGS) >>> Tomorrow After (Online Class)
-// TODO: SETUP FIRESTORE DATABASE >>> Tomorrow After (Contents)
+// * CONTENTS (CATEGORIES, SETTINGS) >>> Tomorrow After (Online Class) <<<<<<<<<<<<<<
+// * SETUP FIRESTORE DATABASE >>> Tomorrow After (Contents)
 // TODO: FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.) >>> Tomorrow After (Firestore)
 // TODO: DATA ANALYTICS (USERS, LOCATIONS OF USERS, DISASTER REPORTS) >>> Tomorrow After (Functionalities)
+// TODO: GOOGLE AUTHENTICATION >>> Sunday After (Data Analytics)
 
-// TODO: AUTHENTICATION FLOWS >>> Sunday After (Face-to-Face Class)
-// TODO: UI/UX DESIGN / FLOWCHART >>> Sunday After (Authentication Flows)
+// * AUTHENTICATION FLOWS >>> Sunday After (Face-to-Face Class) <<<<<<<<<<<<<<
+// * UI/UX DESIGN / FLOWCHART >>> Sunday After (Authentication Flows) <<<<<<<<<<<<<<
+
+// TODO: ADMIN DASHBOARD >>> Sunday After (UI/UX Design / Flowchart)
 
 // ! MAGPUPUYAT AKO SA SUNDAY PARA MATAPOS KO TO LAHAT (LIMIT TO 3AM)
-// ! 59 HOURS 39 MINUTES LEFT TILL DEADLINE
+// ! 41 HOURS 5 MINUTES LEFT TILL DEADLINE

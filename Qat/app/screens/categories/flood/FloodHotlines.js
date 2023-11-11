@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Pressable, Linking, Text, View, StyleSheet } from "react-native";
 import {
   useFonts,
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
+import { FontAwesome5 } from "react-native-vector-icons";
+import { ScrollView } from "react-native-gesture-handler";
 
 const MyApp = () => {
   let [fontsLoaded, fontError] = useFonts({
@@ -19,7 +21,72 @@ const MyApp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={{ color: "#000000" }}>FLOOD HOTLINES</Text>
+        <Text
+          style={{
+            fontFamily: "Anybody_700Bold",
+            fontSize: 24,
+            color: "#FF0000",
+          }}
+        >
+          EMERGENCY HOTLINES
+        </Text>
+        <ScrollView>
+          <View style={styles.content}>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 20,
+                color: "#660000",
+                marginTop: 20,
+              }}
+            >
+              SMART
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 961 703 0706
+            </Text>
+            <Pressable
+              onPress={() => {
+                Linking.openURL("tel: 09617030706");
+              }}
+              style={{
+                backgroundColor: "#660000",
+                alignItems: "center",
+                borderColor: "#fff",
+                borderRadius: 20,
+                borderWidth: 3,
+                width: 200,
+                height: 50,
+                marginTop: 1,
+                justifyContent: "center",
+              }}
+            >
+              <View style={styles.callContainer}>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
+                <FontAwesome5
+                  name="phone"
+                  size={24}
+                  color="#fff"
+                  style={{ paddingLeft: 20 }}
+                />
+              </View>
+            </Pressable>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -28,59 +95,21 @@ const MyApp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#ffffff",
   },
   content: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 150,
+    padding: 20,
   },
-  imagez: {
-    width: 200,
-    height: 200,
-    resizeMode: "contain",
-  },
-  buttons: {
-    marginTop: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  loginbutton: {
-    alignItems: "center",
-    borderColor: "#fff",
+  callContainer: {
     borderRadius: 20,
-    borderWidth: 3,
-    width: 200,
-    height: 50,
-    marginTop: 1,
-  },
-  txt: {
-    color: "#fff",
-    fontFamily: "Anybody_700Bold",
-    margin: 11,
-  },
-  inputContainer: {
-    color: "#fff",
-    borderColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 2,
-    width: 300,
-    height: 40,
-    marginTop: 50,
-    paddingLeft: 20,
-  },
-  inputWrapper: {
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 5,
-  },
-  input: {
-    flex: 1,
-    color: "#fff",
-    fontFamily: "Anybody_700Bold",
-    fontSize: 13,
+    paddingHorizontal: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 });
 
