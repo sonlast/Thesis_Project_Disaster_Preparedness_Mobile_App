@@ -36,11 +36,11 @@ const MyApp = () => {
               style={{
                 fontFamily: "Anybody_700Bold",
                 fontSize: 20,
-                color: "#660000",
+                color: "#FF0000",
                 marginTop: 20,
               }}
             >
-              SMART
+              TAGUIG RESCUE
             </Text>
             <Text
               style={{
@@ -49,23 +49,101 @@ const MyApp = () => {
                 color: "#660000",
               }}
             >
-              +63 961 703 0706
+              +63 919 070 3112
             </Text>
             <Pressable
               onPress={() => {
-                Linking.openURL("tel: 09617030706");
+                Linking.openURL("tel: 09190703112");
               }}
+              style={styles.pressablecallbtn}
+            >
+              <View style={styles.callContainer}>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
+                <FontAwesome5
+                  name="phone"
+                  size={24}
+                  color="#fff"
+                  style={{ paddingLeft: 20 }}
+                />
+              </View>
+            </Pressable>
+
+            <Text
               style={{
-                backgroundColor: "#660000",
-                alignItems: "center",
-                borderColor: "#fff",
-                borderRadius: 20,
-                borderWidth: 3,
-                width: 200,
-                height: 50,
-                marginTop: 1,
-                justifyContent: "center",
+                fontFamily: "Anybody_700Bold",
+                fontSize: 20,
+                color: "#FF0000",
+                marginTop: 20,
               }}
+            >
+              SAFE CITY TAGUIG
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 917 833 1327
+            </Text>
+            <Pressable
+              onPress={() => {
+                Linking.openURL("tel: 09178331327");
+              }}
+              style={styles.pressablecallbtn}
+            >
+              <View style={styles.callContainer}>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
+                <FontAwesome5
+                  name="phone"
+                  size={24}
+                  color="#fff"
+                  style={{ paddingLeft: 20 }}
+                />
+              </View>
+            </Pressable>
+
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 20,
+                color: "#FF0000",
+                marginTop: 20,
+              }}
+            >
+              DOCTOR ON CALL
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 919 079 9112
+            </Text>
+            <Pressable
+              onPress={() => {
+                Linking.openURL("tel: 09190799112");
+              }}
+              style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
                 <Text
@@ -110,6 +188,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  pressablecallbtn: {
+    backgroundColor: "#660000",
+    alignItems: "center",
+    borderColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 3,
+    width: 200,
+    height: 50,
+    marginTop: 1,
+    justifyContent: "center",
   },
 });
 
