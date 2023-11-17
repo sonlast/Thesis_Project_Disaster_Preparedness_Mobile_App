@@ -56,7 +56,23 @@ export default App;
 // * AUTHENTICATION FLOWS >>> Sunday After (Face-to-Face Class) <<<<<<<<<<<<<<
 // * UI/UX DESIGN / FLOWCHART >>> Sunday After (Authentication Flows) <<<<<<<<<<<<<<
 
-// TODO: ADMIN DASHBOARD >>> Sunday After (UI/UX Design / Flowchart)
+// TODO: Sign up -> Log in (Authentication)
+// TODO: Data Privacy
+// TODO: Log in -> Username/Password (!email/password)
+// TODO: Landline Hotline Handling
+// TODO: Location Services (Location)
+// TODO: Evacuation Area (Earthquake Booths)
+// TODO: Others Category (for First Aid)
+// TODO: User Feedback
 
-// ! MAGPUPUYAT AKO SA SUNDAY PARA MATAPOS KO TO LAHAT (LIMIT TO 3AM)
-// ! 27 HOURS 33 MINUTES LEFT TILL DEADLINE
+// TODO: Admin Dashboard (Analytics)
+// TODO: - Users
+// TODO: - User Interaction
+// TODO: - User Data
+// TODO: - Algorithm (User Behavior Analysis)
+
+// * Misc:
+// * Video Presentation (Process of Location Services)
+// * App Name: Quick Response Aid (QRA)
+
+// ! 58 hours 54 minutes

@@ -1,7 +1,11 @@
 import * as React from "react";
-import { Image, StyleSheet, Text, View, } from "react-native";
-import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import { DrawerItemList } from "@react-navigation/drawer";
 import * as ImagePicker from "expo-image-picker";
@@ -47,7 +51,7 @@ function CategoryStack() {
         name="Categoriez"
         component={Categoriez}
         options={{
-          headerShown: false
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -116,25 +120,28 @@ function CategoryStack() {
 
 function App() {
   const [image, setImage] = React.useState(null);
-  const [userName, setUserName] = React.useState("@username" + Math.floor(1000 + Math.random() * 9000));
+  const [userName, setUserName] = React.useState(
+    "@username" + Math.floor(1000 + Math.random() * 9000)
+  );
 
-	let [fontsLoaded, fontError] = useFonts({
-		Anybody_700Bold_Italic,
-		Anybody_700Bold,
-	});
+  const navigator = useNavigation();
 
-	if (!fontsLoaded && !fontError) {
-		return null;
-  };
+  let [fontsLoaded, fontError] = useFonts({
+    Anybody_700Bold_Italic,
+    Anybody_700Bold,
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images, 
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-    })
-    .catch(error => console.log(error));
+    }).catch((error) => console.log(error));
 
     if (!result.canceled && result.assets) {
       setImage(result.assets[0].uri);
@@ -157,67 +164,65 @@ function App() {
   return (
     <Drawer.Navigator
       initialRouteName="Categories"
-      drawerContent={
-        (props) => {
-          return (
-            <SafeAreaView>
-              <View
+      drawerContent={(props) => {
+        return (
+          <SafeAreaView>
+            <View
+              style={{
+                height: 200,
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                borderBottomColor: "#ffffff",
+                borderBottomwWidth: 1,
+              }}
+            >
+              <TouchableOpacity onPress={pickImage}>
+                {!image && (
+                  <View
+                    style={{ flexDirection: "column", alignItems: "center" }}
+                  >
+                    <MaterialCommunityIcons
+                      name="upload"
+                      size={24}
+                      color="#ffffff"
+                    />
+                    <Text
+                      style={{
+                        marginTop: 10,
+                        color: "#ffffff",
+                        fontFamily: "Anybody_700Bold",
+                      }}
+                    >
+                      Upload Profile Picture
+                    </Text>
+                  </View>
+                )}
+                {image && (
+                  <Image
+                    source={{ uri: image }}
+                    style={{ width: 100, height: 100 }}
+                    borderRadius={50}
+                  />
+                )}
+              </TouchableOpacity>
+
+              <Text
                 style={{
-                  height: 200,
-                  width: "100%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderBottomColor: "#ffffff",
-                  borderBottomwWidth: 1,
+                  color: "#ffffff",
+                  fontSize: 12,
+                  fontFamily: "Anybody_700Bold",
+                  marginTop: 20,
                 }}
               >
-                <TouchableOpacity onPress={pickImage}>
-                  {!image && (
-                    <View
-                      style={{ flexDirection: "column", alignItems: "center" }}
-                    >
-                      <MaterialCommunityIcons
-                        name="upload"
-                        size={24}
-                        color="#ffffff"
-                      />
-                      <Text
-                        style={{
-                          marginTop: 10,
-                          color: "#ffffff",
-                          fontFamily: "Anybody_700Bold",
-                        }}
-                      >
-                        Upload Profile Picture
-                      </Text>
-                    </View>
-                  )}
-                  {image && (
-                    <Image
-                      source={{ uri: image }}
-                      style={{ width: 100, height: 100 }}
-                      borderRadius={50}
-                    />
-                  )}
-                </TouchableOpacity>
+                {userName}
+              </Text>
+            </View>
 
-                <Text
-                  style={{
-                    color: "#ffffff",
-                    fontSize: 12,
-                    fontFamily: "Anybody_700Bold",
-                    marginTop: 20,
-                  }}
-                >
-                  {userName}
-                </Text>
-              </View>
-
-              <DrawerItemList {...props} />
-            </SafeAreaView>
-          );
-        }
-      }
+            <DrawerItemList {...props} />
+          </SafeAreaView>
+        );
+      }}
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#660000",
@@ -246,7 +251,11 @@ function App() {
         options={{
           drawerLabel: "Categories",
           drawerIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name="card-multiple" size={24} color={focused ? '#000000' : '#ffffff'} />
+            <MaterialCommunityIcons
+              name="card-multiple"
+              size={24}
+              color={focused ? "#000000" : "#ffffff"}
+            />
           ),
         }}
       />
@@ -255,7 +264,11 @@ function App() {
         component={Profile}
         options={{
           drawerIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name="account" size={24} color={focused ? "#000000" : "#ffffff"} />
+            <MaterialCommunityIcons
+              name="account"
+              size={24}
+              color={focused ? "#000000" : "#ffffff"}
+            />
           ),
         }}
       />
@@ -264,8 +277,42 @@ function App() {
         component={Settings}
         options={{
           drawerIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name="cog" size={24} color={focused ? "#000000" : "#ffffff"} />
+            <MaterialCommunityIcons
+              name="cog"
+              size={24}
+              color={focused ? "#000000" : "#ffffff"}
+            />
           ),
+        }}
+      />
+      <Drawer.Screen
+        name="Logout"
+        component={Settings} // This won't be used, but is required
+        options={{
+          drawerIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons
+              name="logout"
+              size={24}
+              color={focused ? "#000000" : "#ffffff"}
+            />
+          ),
+        }}
+        listeners={{
+          focus: async () => {
+            Alert.alert("Logout", "Are you sure you want to logout?", [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel",
+              },
+              {
+                text: "OK",
+                onPress: () => {
+                  navigator.navigate("Login");
+                },
+              },
+            ]);
+          },
         }}
       />
     </Drawer.Navigator>
