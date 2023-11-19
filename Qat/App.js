@@ -47,15 +47,16 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// * CONTENTS (CATEGORIES, SETTINGS) >>> Tomorrow After (Online Class) <<<<<<<<<<<<<<
-// * SETUP FIRESTORE DATABASE >>> Tomorrow After (Contents)
-// TODO: FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.) >>> Tomorrow After (Firestore)
-// TODO: DATA ANALYTICS (USERS, LOCATIONS OF USERS, DISASTER REPORTS) >>> Tomorrow After (Functionalities)
-// TODO: GOOGLE AUTHENTICATION >>> Sunday After (Data Analytics)
+// ! FEATURES I WANT:
+// TODO: CONTENTS (CATEGORIES, SETTINGS)
+// TODO: SETUP FIRESTORE DATABASE
+// TODO: FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
+// TODO: DATA ANALYTICS
+// TODO: GOOGLE AUTHENTICATION
+// TODO: AUTHENTICATION FLOWS
+// TODO: UI/UX DESIGN / FLOWCHART
 
-// * AUTHENTICATION FLOWS >>> Sunday After (Face-to-Face Class) <<<<<<<<<<<<<<
-// * UI/UX DESIGN / FLOWCHART >>> Sunday After (Authentication Flows) <<<<<<<<<<<<<<
-
+// ! FEATURES DEAN WANTS:
 // TODO: Sign up -> Log in (Authentication)
 // TODO: Data Privacy
 // TODO: Log in -> Username/Password (!email/password)
@@ -75,4 +76,5 @@ export default App;
 // * Video Presentation (Process of Location Services)
 // * App Name: Quick Response Aid (QRA)
 
-// ! 58 hours 54 minutes
+// ? MINIMUM REQUIREMENTS:
+// ? TOOLTIP IN PASSWORD

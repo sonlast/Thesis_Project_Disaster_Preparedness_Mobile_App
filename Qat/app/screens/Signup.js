@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import Tooltip from "rn-tooltip";
 import {
   useFonts,
   Anybody_700Bold_Italic,
@@ -127,6 +128,8 @@ const MyApp = () => {
     { label: "120", value: "one hundred-twenty" },
   ]);
 
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
   const pressSignup = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -183,18 +186,52 @@ const MyApp = () => {
             style={styles.imagez}
             source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
           />
+          <View style={styles.nameHorizontalContainer}>
+            <View style={[styles.nameinputContainer, { marginRight: 5 }]}>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="words"
+                  placeholder="First Name"
+                  placeholderTextColor="#999999"
+                  placeholderStyle={{ fontFamily: "Anybody_700Bold" }}
+                  textAlign="left"
+                  inputMode="email"
+                  keyboardType="email-address"
+                  autoFocus={false}
+                />
+              </View>
+            </View>
+            <View style={[styles.nameinputContainer, { marginLeft: 5 }]}>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="words"
+                  placeholder="Last Name"
+                  placeholderTextColor="#999999"
+                  placeholderStyle={{ fontFamily: "Anybody_700Bold" }}
+                  textAlign="left"
+                  inputMode="email"
+                  keyboardType="email-address"
+                  autoFocus={false}
+                />
+              </View>
+            </View>
+          </View>
           <View style={styles.inputContainer}>
             <View style={styles.inputWrapper}>
               <TextInput
                 style={styles.input}
-                autoCapitalize="words"
-                placeholder="Name"
-                placeholderTextColor="#999999"
+                autoCapitalize="none"
+                placeholder="Username"
+                placeholderTextColor="#999"
                 placeholderStyle={{ fontFamily: "Anybody_700Bold" }}
                 textAlign="left"
                 inputMode="email"
                 keyboardType="email-address"
                 autoFocus={false}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
               />
             </View>
           </View>
@@ -216,19 +253,22 @@ const MyApp = () => {
             </View>
           </View>
           <View style={styles.inputContainer}>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                style={styles.input}
-                placeholder="Password"
-                placeholderTextColor="#999"
-                textAlign="left"
-                secureTextEntry={true}
-                contextMenuHidden={true}
-                // ! if the value is change to email, this textinput inputs data similar with the email textinput
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-              />
-            </View>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="none"
+                  placeholder="Password"
+                  placeholderTextColor="#999"
+                  textAlign="left"
+                  secureTextEntry={true}
+                  contextMenuHidden={true}
+                  // ! if the value is change to email, this textinput inputs data similar with the email textinput
+                  value={password}
+                  onChangeText={(text) => setPassword(text)}
+                  onFocus={() => setTooltipVisible(true)}
+                  onBlur={() => setTooltipVisible(false)}
+                />
+              </View>
           </View>
           <View style={styles.horizontalContainer}>
             <View style={styles.ageContainer}>
@@ -280,7 +320,7 @@ const MyApp = () => {
             <Text
               style={{
                 color: "#fff",
-                marginTop: 30,
+                marginTop: 20,
                 fontSize: 15,
                 fontFamily: "Anybody_700Bold",
               }}
@@ -331,7 +371,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   buttons: {
-    marginTop: 50,
+    marginTop: 35,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -343,7 +383,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     width: 200,
     height: 50,
-    marginTop: 1,
   },
   txt: {
     color: "#000000",
@@ -355,6 +394,17 @@ const styles = StyleSheet.create({
     fontFamily: "Anybody_700Bold",
     margin: 11,
   },
+  nameinputContainer: {
+    color: "#fff",
+    backgroundColor: "#fff",
+    borderColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 2,
+    width: 145,
+    height: 40,
+    marginTop: 20,
+    paddingLeft: 20,
+  },
   inputContainer: {
     color: "#fff",
     backgroundColor: "#fff",
@@ -363,7 +413,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: 300,
     height: 40,
-    marginTop: 50,
+    marginTop: 40,
     paddingLeft: 20,
   },
   inputWrapper: {
@@ -377,6 +427,12 @@ const styles = StyleSheet.create({
     fontFamily: "Anybody_700Bold",
     fontSize: 13,
   },
+  nameHorizontalContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
   horizontalContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -385,7 +441,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   ageContainer: {
-    marginTop: 30,
+    marginTop: 25,
     marginRight: 25,
     marginBottom: 5,
     marginLeft: 5,
@@ -399,7 +455,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: 200,
     height: 40,
-    marginTop: 25,
+    marginTop: 20,
     paddingLeft: 20,
   },
   iconContainer: {
