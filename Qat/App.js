@@ -77,4 +77,4 @@ export default App;
 // * App Name: Quick Response Aid (QRA)
 
 // ? MINIMUM REQUIREMENTS:
-// ? TOOLTIP IN PASSWORD
+// ? AUTHENTICATE USING USERNAME

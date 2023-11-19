@@ -10,12 +10,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import Tooltip from "rn-tooltip";
 import {
   useFonts,
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
+import { Tooltip } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
@@ -136,7 +136,7 @@ const MyApp = () => {
         // Signed in
         const user = userCredential.user;
         Alert.alert("Quick Aid Taguig", "Account created successfully!");
-        navigation.navigate("SemiApp");
+        navigation.navigate("Login", { username: username });
         // ...
       })
       .catch((error) => {
@@ -253,6 +253,22 @@ const MyApp = () => {
             </View>
           </View>
           <View style={styles.inputContainer}>
+            <Tooltip
+              isVisible={tooltipVisible}
+              popover={
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 12,
+                  }}
+                >
+                  Password must be at least 8 characters.
+                </Text>
+              }
+              onOpen={() => setTooltipVisible(true)}
+              onClose={() => setTooltipVisible(false)}
+            >
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.input}
@@ -264,11 +280,19 @@ const MyApp = () => {
                   contextMenuHidden={true}
                   // ! if the value is change to email, this textinput inputs data similar with the email textinput
                   value={password}
-                  onChangeText={(text) => setPassword(text)}
+                  onChangeText={(text) => {
+                    setPassword(text);
+                    if (text.length < 8) {
+                      setTooltipVisible(true);
+                    } else {
+                      setTooltipVisible(false);
+                    }
+                  }}
                   onFocus={() => setTooltipVisible(true)}
                   onBlur={() => setTooltipVisible(false)}
                 />
               </View>
+            </Tooltip>
           </View>
           <View style={styles.horizontalContainer}>
             <View style={styles.ageContainer}>
