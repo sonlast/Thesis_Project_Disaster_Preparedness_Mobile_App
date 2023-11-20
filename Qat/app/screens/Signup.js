@@ -20,17 +20,23 @@ import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import Firebase Auth related functions
+import { getFirestore } from "firebase/firestore"; // Import Firebase Firestore related functions
 
 const MyApp = () => {
   const navigation = useNavigation();
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth(app);
+  const firestore = getFirestore(app);
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [age, setAge] = useState(null);
   const [items, setItems] = useState([
     { label: "Age", value: "zero" },
     { label: "18", value: "eighteen" },
@@ -199,6 +205,8 @@ const MyApp = () => {
                   inputMode="email"
                   keyboardType="email-address"
                   autoFocus={false}
+                  value={firstName}
+                  onChangeText={(text) => setFirstName(text)}
                 />
               </View>
             </View>
@@ -214,6 +222,8 @@ const MyApp = () => {
                   inputMode="email"
                   keyboardType="email-address"
                   autoFocus={false}
+                  value={lastName}
+                  onChangeText={(text) => setLastName(text)}
                 />
               </View>
             </View>
@@ -230,8 +240,8 @@ const MyApp = () => {
                 inputMode="email"
                 keyboardType="email-address"
                 autoFocus={false}
-                value={email}
-                onChangeText={(text) => setEmail(text)}
+                value={username}
+                onChangeText={(text) => setUsername(text)}
               />
             </View>
           </View>
@@ -304,10 +314,10 @@ const MyApp = () => {
                   fontSize: 12,
                 }}
                 open={open}
-                value={value}
+                value={age}
                 items={items}
                 setOpen={setOpen}
-                setValue={setValue}
+                setValue={setAge}
                 setItems={setItems}
                 showTickIcon={false}
                 listItemLabelStyle={{
@@ -325,6 +335,8 @@ const MyApp = () => {
                   placeholderTextColor="#999"
                   textAlign="left"
                   keyboardType="number-pad"
+                  value={contactNumber}
+                  onChangeText={(text) => setContactNumber(text)}
                 />
               </View>
             </View>

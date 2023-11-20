@@ -49,7 +49,7 @@ export default App;
 
 // ! FEATURES I WANT:
 // TODO: CONTENTS (CATEGORIES, SETTINGS)
-// TODO: SETUP FIRESTORE DATABASE
+// TODO: SETUP FIRESTORE DATABASE <------------------------------------------------------------------------------
 // TODO: FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
 // TODO: DATA ANALYTICS
 // TODO: GOOGLE AUTHENTICATION
@@ -69,7 +69,8 @@ export default App;
 // TODO: Admin Dashboard (Analytics)
 // TODO: - Users
 // TODO: - User Interaction
-// TODO: - User Data
+// TODO: - User Feedback
+// TODO: - User Location
 // TODO: - Algorithm (User Behavior Analysis)
 
 // * Misc:
@@ -77,4 +78,4 @@ export default App;
 // * App Name: Quick Response Aid (QRA)
 
 // ? MINIMUM REQUIREMENTS:
-// ? AUTHENTICATE USING USERNAME
+// ? AUTHENTICATE USING USERNAME AND TRANSFER USERNAME VALUE TO LOG IN SCREEN <-----------------------------------
