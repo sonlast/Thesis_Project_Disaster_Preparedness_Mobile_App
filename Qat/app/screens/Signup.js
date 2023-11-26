@@ -32,6 +32,7 @@ const MyApp = () => {
   const [password, setPassword] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
+
   const auth = getAuth(app);
   const firestore = getFirestore(app);
 
@@ -141,6 +142,7 @@ const MyApp = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+
         Alert.alert("Quick Aid Taguig", "Account created successfully!");
         navigation.navigate("Login", { username: username });
         // ...
