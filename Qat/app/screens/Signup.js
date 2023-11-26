@@ -20,7 +20,7 @@ import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import Firebase Auth related functions
-import { getFirestore } from "firebase/firestore"; // Import Firebase Firestore related functions
+import { getFirestore, collection, addDoc } from "firebase/firestore"; // Import Firebase Firestore related functions
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -139,9 +139,18 @@ const MyApp = () => {
 
   const pressSignup = () => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
+
+        await addDoc(collection(firestore, "users"), {
+          firstName: firstName,
+          lastName: lastName,
+          username: username,
+          email: email,
+          contactNumber: contactNumber,
+          age: age,
+        });
 
         Alert.alert("Quick Aid Taguig", "Account created successfully!");
         navigation.navigate("Login", { username: username });
@@ -157,6 +166,12 @@ const MyApp = () => {
             break;
           case "auth/missing-password":
             Alert.alert("Quick Aid Taguig", "Fill in your password.");
+            break;
+          case "auth/email-already-in-use":
+            Alert.alert(
+              "Quick Aid Taguig",
+              "The email address is already in use by another account."
+            );
             break;
           default:
             Alert.alert(
