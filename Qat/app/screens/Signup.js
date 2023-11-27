@@ -15,7 +15,7 @@ import {
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
-import { Tooltip } from "react-native-elements";
+import { Tooltip, CheckBox } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
@@ -32,6 +32,7 @@ const MyApp = () => {
   const [password, setPassword] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const auth = getAuth(app);
   const firestore = getFirestore(app);
@@ -39,100 +40,110 @@ const MyApp = () => {
   const [open, setOpen] = useState(false);
   const [age, setAge] = useState(null);
   const [items, setItems] = useState([
-    { label: "Age", value: "zero" },
-    { label: "18", value: "eighteen" },
-    { label: "19", value: "nineteen" },
-    { label: "20", value: "twenty" },
-    { label: "21", value: "twenty-one" },
-    { label: "22", value: "twenty-two" },
-    { label: "23", value: "twenty-three" },
-    { label: "24", value: "twenty-four" },
-    { label: "25", value: "twenty-five" },
-    { label: "26", value: "twenty-six" },
-    { label: "27", value: "twenty-seven" },
-    { label: "28", value: "twenty-eight" },
-    { label: "29", value: "twenty-nine" },
-    { label: "30", value: "thirty" },
-    { label: "31", value: "thirty-one" },
-    { label: "32", value: "thirty-two" },
-    { label: "33", value: "thirty-three" },
-    { label: "34", value: "thirty-four" },
-    { label: "35", value: "thirty-five" },
-    { label: "36", value: "thirty-six" },
-    { label: "37", value: "thirty-seven" },
-    { label: "38", value: "thirty-eight" },
-    { label: "39", value: "thirty-nine" },
-    { label: "40", value: "fourty" },
-    { label: "41", value: "fourty-one" },
-    { label: "42", value: "fourty-two" },
-    { label: "43", value: "fourty-three" },
-    { label: "44", value: "fourty-four" },
-    { label: "45", value: "fourty-five" },
-    { label: "46", value: "fourty-six" },
-    { label: "47", value: "fourty-seven" },
-    { label: "48", value: "fourty-eight" },
-    { label: "49", value: "fourty-nine" },
-    { label: "50", value: "fifty" },
-    { label: "51", value: "fifty-one" },
-    { label: "52", value: "fifty-two" },
-    { label: "53", value: "fifty-three" },
-    { label: "54", value: "fifty-four" },
-    { label: "55", value: "fifty-five" },
-    { label: "56", value: "fifty-six" },
-    { label: "57", value: "fifty-seven" },
-    { label: "58", value: "fifty-eight" },
-    { label: "59", value: "fifty-nine" },
-    { label: "60", value: "sixty" },
-    { label: "71", value: "seventy-one" },
-    { label: "72", value: "seventy-two" },
-    { label: "73", value: "seventy-three" },
-    { label: "74", value: "seventy-four" },
-    { label: "75", value: "seventy-five" },
-    { label: "76", value: "seventy-six" },
-    { label: "77", value: "seventy-seven" },
-    { label: "78", value: "seventy-eight" },
-    { label: "79", value: "seventy-nine" },
-    { label: "80", value: "eighty" },
-    { label: "81", value: "eighty-one" },
-    { label: "82", value: "eighty-two" },
-    { label: "83", value: "eighty-three" },
-    { label: "84", value: "eighty-four" },
-    { label: "85", value: "eighty-five" },
-    { label: "86", value: "eighty-six" },
-    { label: "87", value: "eighty-seven" },
-    { label: "88", value: "eighty-eight" },
-    { label: "89", value: "eighty-nine" },
-    { label: "90", value: "ninety" },
-    { label: "91", value: "ninety-one" },
-    { label: "92", value: "ninety-two" },
-    { label: "93", value: "ninety-three" },
-    { label: "94", value: "ninety-four" },
-    { label: "95", value: "ninety-five" },
-    { label: "96", value: "ninety-six" },
-    { label: "97", value: "ninety-seven" },
-    { label: "98", value: "ninety-eight" },
-    { label: "99", value: "ninety-nine" },
-    { label: "100", value: "one hundred" },
-    { label: "101", value: "one hundred-one" },
-    { label: "102", value: "one hundred-two" },
-    { label: "103", value: "one hundred-three" },
-    { label: "104", value: "one hundred-four" },
-    { label: "105", value: "one hundred-five" },
-    { label: "106", value: "one hundred-six" },
-    { label: "107", value: "one hundred-seven" },
-    { label: "108", value: "one hundred-eight" },
-    { label: "109", value: "one hundred-nine" },
-    { label: "110", value: "one hundred-ten" },
-    { label: "111", value: "one hundred-eleven" },
-    { label: "112", value: "one hundred-twelve" },
-    { label: "113", value: "one hundred-thirteen" },
-    { label: "114", value: "one hundred-fourteen" },
-    { label: "115", value: "one hundred-fifteen" },
-    { label: "116", value: "one hundred-sixteen" },
-    { label: "117", value: "one hundred-seventeen" },
-    { label: "118", value: "one hundred-eighteen" },
-    { label: "119", value: "one hundred-nineteen" },
-    { label: "120", value: "one hundred-twenty" },
+    { label: "Age", value: "no-age-input" },
+    { label: "18", value: "18" },
+    { label: "19", value: "19" },
+    { label: "20", value: "20" },
+    { label: "21", value: "21" },
+    { label: "22", value: "22" },
+    { label: "23", value: "23" },
+    { label: "24", value: "24" },
+    { label: "25", value: "25" },
+    { label: "26", value: "26" },
+    { label: "27", value: "27" },
+    { label: "28", value: "28" },
+    { label: "29", value: "29" },
+    { label: "30", value: "30" },
+    { label: "31", value: "31" },
+    { label: "32", value: "32" },
+    { label: "33", value: "33" },
+    { label: "34", value: "34" },
+    { label: "35", value: "35" },
+    { label: "36", value: "36" },
+    { label: "37", value: "37" },
+    { label: "38", value: "38" },
+    { label: "39", value: "39" },
+    { label: "40", value: "40" },
+    { label: "41", value: "41" },
+    { label: "42", value: "42" },
+    { label: "43", value: "43" },
+    { label: "44", value: "44" },
+    { label: "45", value: "45" },
+    { label: "46", value: "46" },
+    { label: "47", value: "47" },
+    { label: "48", value: "48" },
+    { label: "49", value: "49" },
+    { label: "50", value: "50" },
+    { label: "51", value: "51" },
+    { label: "52", value: "52" },
+    { label: "53", value: "53" },
+    { label: "54", value: "54" },
+    { label: "55", value: "55" },
+    { label: "56", value: "56" },
+    { label: "57", value: "57" },
+    { label: "58", value: "58" },
+    { label: "59", value: "59" },
+    { label: "60", value: "60" },
+    { label: "61", value: "61" },
+    { label: "62", value: "62" },
+    { label: "63", value: "63" },
+    { label: "64", value: "64" },
+    { label: "65", value: "65" },
+    { label: "66", value: "66" },
+    { label: "67", value: "67" },
+    { label: "68", value: "68" },
+    { label: "69", value: "69" },
+    { label: "70", value: "70" },
+    { label: "71", value: "71" },
+    { label: "72", value: "72" },
+    { label: "73", value: "73" },
+    { label: "74", value: "74" },
+    { label: "75", value: "75" },
+    { label: "76", value: "76" },
+    { label: "77", value: "77" },
+    { label: "78", value: "78" },
+    { label: "79", value: "79" },
+    { label: "80", value: "80" },
+    { label: "81", value: "81" },
+    { label: "82", value: "82" },
+    { label: "83", value: "83" },
+    { label: "84", value: "84" },
+    { label: "85", value: "85" },
+    { label: "86", value: "86" },
+    { label: "87", value: "87" },
+    { label: "88", value: "88" },
+    { label: "89", value: "89" },
+    { label: "90", value: "90" },
+    { label: "91", value: "91" },
+    { label: "92", value: "92" },
+    { label: "93", value: "93" },
+    { label: "94", value: "94" },
+    { label: "95", value: "95" },
+    { label: "96", value: "96" },
+    { label: "97", value: "97" },
+    { label: "98", value: "98" },
+    { label: "99", value: "99" },
+    { label: "100", value: "100" },
+    { label: "101", value: "101" },
+    { label: "102", value: "102" },
+    { label: "103", value: "103" },
+    { label: "104", value: "104" },
+    { label: "105", value: "105" },
+    { label: "106", value: "106" },
+    { label: "107", value: "107" },
+    { label: "108", value: "108" },
+    { label: "109", value: "109" },
+    { label: "110", value: "110" },
+    { label: "111", value: "111" },
+    { label: "112", value: "112" },
+    { label: "113", value: "113" },
+    { label: "114", value: "114" },
+    { label: "115", value: "115" },
+    { label: "116", value: "116" },
+    { label: "117", value: "117" },
+    { label: "118", value: "118" },
+    { label: "119", value: "119" },
+    { label: "120", value: "120" },
   ]);
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
@@ -363,12 +374,39 @@ const MyApp = () => {
           ) : (
             <>
               <View style={styles.buttons}>
-                <Pressable onPress={pressSignup} style={styles.signupbutton}>
+                <Pressable
+                  onPress={termsAccepted ? pressSignup : null}
+                  style={[
+                    styles.signupbutton,
+                    !termsAccepted ? styles.disabledbtn : {},
+                  ]}
+                >
                   <Text style={styles.txt}>Sign Up</Text>
                 </Pressable>
               </View>
             </>
           )}
+          <CheckBox
+            title="I agree to the Terms and Conditions"
+            checked={termsAccepted}
+            onPress={() => setTermsAccepted(!termsAccepted)}
+            containerStyle={{
+              backgroundColor: "#660000",
+              borderColor: "#660000",
+              margin: 0,
+              marginTop: 5,
+              marginRight: 1,
+              padding: 0,
+            }}
+            textStyle={{
+              color: "#fff",
+              fontFamily: "Anybody_700Bold",
+              fontSize: 12,
+            }}
+            uncheckedColor="#fff"
+            checkedIcon="check-square-o"
+            checkedColor="#fff"
+          />
           <View>
             <Text
               style={{
@@ -436,6 +474,9 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     width: 200,
     height: 50,
+  },
+  disabledbtn: {
+    opacity: 0.5,
   },
   txt: {
     color: "#000000",
