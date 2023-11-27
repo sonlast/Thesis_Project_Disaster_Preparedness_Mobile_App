@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Alert,
   Image,
@@ -163,7 +163,10 @@ const MyApp = () => {
           <CheckBox
             title="I agree to the Terms and Conditions"
             checked={checked}
-            onPress={() => setChecked(!checked)}
+            onPress={() => {
+              setChecked(!checked);
+              navigation.navigate("TermsConditions");
+            }}
             containerStyle={{
               backgroundColor: "#660000",
               borderColor: "#660000",

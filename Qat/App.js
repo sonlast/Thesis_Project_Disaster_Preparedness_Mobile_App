@@ -2,14 +2,16 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
 import SemiApp from "./app/screens/SemiApp";
+import TermsConditions from "./app/screens/TermsConditions";
 
 const Stack = createStackNavigator();
 
 function App() {
+  const [checked, setChecked] = React.useState(false);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
@@ -26,6 +28,11 @@ function App() {
         <Stack.Screen
           name="SemiApp"
           component={SemiApp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TermsConditions"
+          component={TermsConditions}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
