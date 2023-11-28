@@ -1,12 +1,36 @@
-import * as React from "react";
-import { Image, Text, View, ScrollView, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import {
+  BackHandler,
+  Image,
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import {
   useFonts,
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
+import { useNavigation } from "@react-navigation/native";
 
 const MyApp = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Categoriez");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
     Anybody_700Bold,

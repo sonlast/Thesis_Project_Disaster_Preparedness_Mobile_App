@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Alert,
+  BackHandler,
   Image,
   KeyboardAvoidingView,
   Text,
@@ -10,6 +11,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import {
   useFonts,
   Anybody_700Bold_Italic,
@@ -30,6 +32,7 @@ const MyApp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -147,6 +150,35 @@ const MyApp = () => {
   ]);
 
   const [tooltipVisible, setTooltipVisible] = useState(false);
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert(
+        "Quick Aid Taguig",
+        "Are you sure you want to cancel signing up?",
+        [
+          {
+            text: "Cancel",
+            onPress: () => null,
+            style: "cancel",
+          },
+          {
+            text: "YES",
+            onPress: () => navigation.navigate("Login"),
+          },
+        ]
+      );
+
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   const pressSignup = () => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -314,7 +346,7 @@ const MyApp = () => {
                   placeholder="Password"
                   placeholderTextColor="#999"
                   textAlign="left"
-                  secureTextEntry={true}
+                  secureTextEntry={!isPasswordVisible}
                   contextMenuHidden={true}
                   // ! if the value is change to email, this textinput inputs data similar with the email textinput
                   value={password}
@@ -329,6 +361,16 @@ const MyApp = () => {
                   onFocus={() => setTooltipVisible(true)}
                   onBlur={() => setTooltipVisible(false)}
                 />
+                <Pressable
+                  onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+                  style={styles.viewpassword}
+                >
+                  <Icon
+                    name={isPasswordVisible ? "eye-slash" : "eye"}
+                    size={20}
+                    color="grey"
+                  />
+                </Pressable>
               </View>
             </Tooltip>
           </View>
@@ -565,6 +607,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  viewpassword: {
+    position: "absolute",
+    top: 2.5,
+    right: 0,
+    bottom: 5,
+    left: 245,
   },
 });
 

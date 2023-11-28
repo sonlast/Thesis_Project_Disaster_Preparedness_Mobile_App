@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
   Image,
@@ -10,12 +10,14 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import {
   useFonts,
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase Auth related functions
 
@@ -25,8 +27,20 @@ const MyApp = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const auth = getAuth(app);
+
+  useEffect(() => {
+    const getLastEmail = async () => {
+      const lastemail = await AsyncStorage.getItem("lastemail");
+      if (lastemail !== null) {
+        setEmail(lastemail);
+      }
+    };
+
+    getLastEmail();
+  }, []);
 
   // LOG IN BUTTON
   const pressLogin = () => {
@@ -34,9 +48,9 @@ const MyApp = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        AsyncStorage.setItem("lastemail", email);
         Alert.alert("Quick Response Aid", "Login successful.");
         navigation.navigate("SemiApp");
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -134,11 +148,21 @@ const MyApp = () => {
                 placeholder="Password"
                 placeholderTextColor="#999"
                 textAlign="left"
-                secureTextEntry={true}
+                secureTextEntry={!isPasswordVisible}
                 contextMenuHidden={true}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
               />
+              <Pressable
+                onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+                style={styles.viewpassword}
+              >
+                <Icon
+                  name={isPasswordVisible ? "eye-slash" : "eye"}
+                  size={20}
+                  color="grey"
+                />
+              </Pressable>
             </View>
           </View>
           {loading ? (
@@ -238,6 +262,13 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontFamily: "Anybody_700Bold",
     fontSize: 13,
+  },
+  viewpassword: {
+    position: "absolute",
+    top: 2.5,
+    right: 0,
+    bottom: 5,
+    left: 245,
   },
 });
 

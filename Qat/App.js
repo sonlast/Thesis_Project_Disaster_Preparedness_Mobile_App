@@ -10,8 +10,6 @@ import TermsConditions from "./app/screens/TermsConditions";
 const Stack = createStackNavigator();
 
 function App() {
-  const [checked, setChecked] = React.useState(false);
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
@@ -54,41 +52,41 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// ! FEATURES I WANT:
-// * UI
-// TODO: CONTENTS (CATEGORIES, SETTINGS)
-// TODO: UI/UX DESIGN / FLOWCHART
-// * Functionality
-// TODO: SETUP FIRESTORE DATABASE (preliminary done)
-// TODO: FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
-// TODO: DATA ANALYTICS
-// TODO: GOOGLE AUTHENTICATION
-// TODO: AUTHENTICATION FLOWS
+// TODO: FEATURES I WANT:
+// ! UI
+// * CONTENTS (CATEGORIES, SETTINGS) (preliminary done)
+// ? UI/UX DESIGN / FLOWCHART
+// ! Functionality
+// * SETUP FIRESTORE DATABASE (preliminary done)
+// ? FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
+// ? DATA ANALYTICS
+// ? GOOGLE AUTHENTICATION
+// * AUTHENTICATION FLOWS
 
-// ! FEATURES DEAN WANTS:
-// TODO: Sign up -> Log in (Authentication)
-// TODO: Data Privacy
-// TODO: Log in -> Username/Password (!email/password)
-// TODO: Landline Hotline Handling
-// TODO: Location Services (Location)
-// TODO: Evacuation Area (Earthquake Booths)
-// TODO: Others Category (for First Aid)
-// TODO: User Feedback
+// TODO: FEATURES DEAN WANTS:
+// ? Sign up -> Log in (Authentication)
+// ? Data Privacy
+// ? Log in -> Username/Password (!email/password)
+// ? Landline Hotline Handling
+// ? Location Services (Location)
+// ? Evacuation Area (Earthquake Booths)
+// ? Others Category (for First Aid)
+// ? User Feedback
 
 // TODO: Admin Dashboard (Analytics)
-// TODO: - Users
-// TODO: - User Interaction
-// TODO: - User Feedback
-// TODO: - User Location
-// TODO: - Algorithm (User Behavior Analysis)
+// ? - Users
+// ? - User Interaction
+// ? - User Feedback
+// ? - User Location
+// ? - Algorithm (User Behavior Analysis)
 
-// * Misc:
-// * Video Presentation (Process of Location Services)
-// * App Name: Quick Response Aid (QRA)
+// ? Misc:
+// ? Video Presentation (Process of Location Services)
+// ? App Name: Quick Response Aid (QRA)
 
-// ? FOR NOW:
+// TODO: FOR NOW
 // ? Google Authentication
-// ? Username usage in Logging in
-// ? Navigation flows in categories
-// ? Replace QUICK AID TAGUIG to QUICK RESPONSE AID
+// * Autofill email in Log in
+// * Navigation flows in all categories
 // ? Rebrand Logo Name and Logo "Quick Response Aid"
+// * View Password (Login & Signup)
