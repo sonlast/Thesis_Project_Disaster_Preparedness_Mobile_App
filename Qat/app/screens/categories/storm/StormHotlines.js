@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import {
   Alert,
+  BackHandler,
   Modal,
   Pressable,
   Linking,
@@ -15,8 +16,25 @@ import {
 } from "@expo-google-fonts/anybody";
 import { FontAwesome5 } from "react-native-vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const MyApp = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Categoriez");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
   const [modalVisible, setModalVisible] = React.useState(false);
   const [data, setData] = React.useState([
     {

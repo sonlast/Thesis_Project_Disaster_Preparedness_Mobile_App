@@ -10,7 +10,6 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
 } from "react-native";
-import { CheckBox } from "react-native-elements";
 import {
   useFonts,
   Anybody_700Bold_Italic,
@@ -24,7 +23,6 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Import F
 const MyApp = () => {
   const navigation = useNavigation();
 
-  const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,7 +34,7 @@ const MyApp = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        Alert.alert("Quick Aid Taguig", "Login successful.");
+        Alert.alert("Quick Response Aid", "Login successful.");
         navigation.navigate("SemiApp");
         // ...
       })
@@ -45,38 +43,38 @@ const MyApp = () => {
         const errorMessage = error.message;
         switch (errorCode) {
           case "auth/invalid-login-credentials":
-            Alert.alert("Quick Aid Taguig", "Account doesn't exist.");
+            Alert.alert("Quick Response Aid", "Account doesn't exist.");
             break;
           case "auth/user-not-found":
-            Alert.alert("Quick Aid Taguig", "Account doesn't exist.");
+            Alert.alert("Quick Response Aid", "Account doesn't exist.");
             break;
           case "auth/invalid-email":
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               "Invalid email address. Please provide a valid email."
             );
             break;
           case "auth/weak-password":
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               "Password is too weak. Please provide a stronger password."
             );
             break;
           case "auth/wrong-password":
-            Alert.alert("Quick Aid Taguig", "Incorrect password.");
+            Alert.alert("Quick Response Aid", "Incorrect password.");
             break;
           case "auth/missing-password":
-            Alert.alert("Quick Aid Taguig", "Please provide a password.");
+            Alert.alert("Quick Response Aid", "Please provide a password.");
             break;
           case "auth/too-many-requests":
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               "Too many requests. Please try again later."
             );
             break;
           default:
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
             );
             break;
@@ -148,42 +146,12 @@ const MyApp = () => {
           ) : (
             <>
               <View style={styles.buttons}>
-                <Pressable
-                  onPress={checked ? pressLogin : null}
-                  style={[
-                    styles.loginbutton,
-                    !checked ? styles.disabledbtn : {},
-                  ]}
-                >
+                <Pressable onPress={pressLogin} style={styles.loginbutton}>
                   <Text style={styles.txt}>Log In</Text>
                 </Pressable>
               </View>
             </>
           )}
-          <CheckBox
-            title="I agree to the Terms and Conditions"
-            checked={checked}
-            onPress={() => {
-              setChecked(!checked);
-              navigation.navigate("TermsConditions");
-            }}
-            containerStyle={{
-              backgroundColor: "#660000",
-              borderColor: "#660000",
-              margin: 0,
-              marginTop: 5,
-              marginRight: 1,
-              padding: 0,
-            }}
-            textStyle={{
-              color: "#fff",
-              fontFamily: "Anybody_700Bold",
-              fontSize: 12,
-            }}
-            uncheckedColor="#fff"
-            checkedIcon="check-square-o"
-            checkedColor="#fff"
-          />
           <View style={{ marginTop: 10 }}>
             <Text style={styles.xtratxt}>
               Don't have an account?{" "}
@@ -229,9 +197,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 50,
     marginTop: 1,
-  },
-  disabledbtn: {
-    opacity: 0.5,
   },
   signupbutton: {
     alignItems: "center",

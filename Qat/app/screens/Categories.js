@@ -1,6 +1,8 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import {
+  Alert,
   FlatList,
+  BackHandler,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -17,6 +19,31 @@ import {
 
 const MyApp = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Quick Aid Taguig", "Are you sure you want to exit?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        {
+          text: "YES",
+          onPress: () => BackHandler.exitApp(),
+        },
+      ]);
+
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   const [userInput, setUsetInput] = React.useState("");
 
@@ -124,7 +151,7 @@ const MyApp = () => {
       <View style={styles.content}>
         <ImageBackground
           source={require("../assets/prereqs-images/city-of-taguig.jpg")}
-          style={{ 
+          style={{
             flex: 1,
             justifyContent: "center",
             alignItems: "center",

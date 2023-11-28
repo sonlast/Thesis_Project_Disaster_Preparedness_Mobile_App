@@ -86,5 +86,9 @@ export default App;
 // * Video Presentation (Process of Location Services)
 // * App Name: Quick Response Aid (QRA)
 
-// ? MINIMUM REQUIREMENTS:
-// ? AUTHENTICATE USING USERNAME AND TRANSFER USERNAME VALUE TO LOG IN SCREEN
+// ? FOR NOW:
+// ? Google Authentication
+// ? Username usage in Logging in
+// ? Navigation flows in categories
+// ? Replace QUICK AID TAGUIG to QUICK RESPONSE AID
+// ? Rebrand Logo Name and Logo "Quick Response Aid"

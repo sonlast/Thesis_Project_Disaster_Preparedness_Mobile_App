@@ -32,7 +32,7 @@ const MyApp = () => {
   const [password, setPassword] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [loading, setLoading] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const auth = getAuth(app);
   const firestore = getFirestore(app);
@@ -163,7 +163,7 @@ const MyApp = () => {
           age: age,
         });
 
-        Alert.alert("Quick Aid Taguig", "Account created successfully!");
+        Alert.alert("Quick Response Aid", "Account created successfully!");
         navigation.navigate("Login", { username: username });
         // ...
       })
@@ -173,20 +173,20 @@ const MyApp = () => {
 
         switch (errorCode) {
           case "auth/invalid-email":
-            Alert.alert("Quick Aid Taguig", "Fill in the required fields.");
+            Alert.alert("Quick Response Aid", "Fill in the required fields.");
             break;
           case "auth/missing-password":
-            Alert.alert("Quick Aid Taguig", "Fill in your password.");
+            Alert.alert("Quick Response Aid", "Fill in your password.");
             break;
           case "auth/email-already-in-use":
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               "The email address is already in use by another account."
             );
             break;
           default:
             Alert.alert(
-              "Quick Aid Taguig",
+              "Quick Response Aid",
               `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
             );
             break;
@@ -375,10 +375,10 @@ const MyApp = () => {
             <>
               <View style={styles.buttons}>
                 <Pressable
-                  onPress={termsAccepted ? pressSignup : null}
+                  onPress={checked ? pressSignup : null}
                   style={[
                     styles.signupbutton,
-                    !termsAccepted ? styles.disabledbtn : {},
+                    !checked ? styles.disabledbtn : {},
                   ]}
                 >
                   <Text style={styles.txt}>Sign Up</Text>
@@ -388,8 +388,11 @@ const MyApp = () => {
           )}
           <CheckBox
             title="I agree to the Terms and Conditions"
-            checked={termsAccepted}
-            onPress={() => setTermsAccepted(!termsAccepted)}
+            checked={checked}
+            onPress={() => {
+              setChecked(!checked);
+              navigation.navigate("TermsConditions");
+            }}
             containerStyle={{
               backgroundColor: "#660000",
               borderColor: "#660000",

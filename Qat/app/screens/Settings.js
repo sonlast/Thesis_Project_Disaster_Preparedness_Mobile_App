@@ -1,12 +1,29 @@
-import * as React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useEffect } from "react";
+import { BackHandler, StyleSheet, Text, View, Button } from "react-native";
 import {
   useFonts,
   Anybody_700Bold,
   Anybody_700Bold_Italic,
 } from "@expo-google-fonts/anybody";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Settings() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Categoriez");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
   let [fontsLoaded] = useFonts({
     Anybody_700Bold,
     Anybody_700Bold_Italic,

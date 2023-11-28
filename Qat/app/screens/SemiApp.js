@@ -287,7 +287,7 @@ function App() {
       />
       <Drawer.Screen
         name="Logout"
-        component={Settings} // This won't be used, but is required
+        component={Categoriez} // This won't be used, but is required
         options={{
           drawerIcon: ({ color, focused }) => (
             <MaterialCommunityIcons
@@ -299,19 +299,25 @@ function App() {
         }}
         listeners={{
           focus: async () => {
-            Alert.alert("Logout", "Are you sure you want to logout?", [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel",
-              },
-              {
-                text: "OK",
-                onPress: () => {
-                  navigator.navigate("Login");
+            Alert.alert(
+              "Quick Response Aid",
+              "Are you sure you want to logout?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => {
+                    navigator.navigate("Categories");
+                  },
+                  style: "cancel",
                 },
-              },
-            ]);
+                {
+                  text: "OK",
+                  onPress: () => {
+                    navigator.navigate("Login");
+                  },
+                },
+              ]
+            );
           },
         }}
       />
