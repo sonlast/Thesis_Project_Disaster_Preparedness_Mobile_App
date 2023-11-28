@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import {
   Alert,
+  ActivityIndicator,
   BackHandler,
   Image,
   KeyboardAvoidingView,
+  Platform,
   Text,
   View,
   StyleSheet,
   Pressable,
   TextInput,
-  TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {
@@ -452,30 +453,6 @@ const MyApp = () => {
             checkedIcon="check-square-o"
             checkedColor="#fff"
           />
-          <View>
-            <Text
-              style={{
-                color: "#fff",
-                marginTop: 20,
-                fontSize: 15,
-                fontFamily: "Anybody_700Bold",
-              }}
-            >
-              or
-            </Text>
-          </View>
-          <View>
-            <TouchableOpacity>
-              <View style={styles.iconContainer}>
-                <Text style={styles.txt}>Sign up with: </Text>
-                <Image
-                  source={require("../assets/google-icons-android/icons8-google-192(-xxxhdpi).png")}
-                  fadeDuration={0}
-                  style={{ width: 45, height: 45 }}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
           <View style={{ marginTop: 10 }}>
             <Text style={styles.xtratxt}>
               Already have an account?{" "}

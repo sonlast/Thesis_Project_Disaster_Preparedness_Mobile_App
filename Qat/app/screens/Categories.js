@@ -45,7 +45,7 @@ const MyApp = () => {
     return () => backHandler.remove();
   }, []);
 
-  const [userInput, setUsetInput] = React.useState("");
+  const [userInput, setUserInput] = React.useState("");
 
   const categories = [
     {
@@ -166,7 +166,7 @@ const MyApp = () => {
                 placeholder="Search..."
                 placeholderTextColor={"#ffffff"}
                 style={styles.input}
-                onChangeText={(text) => setUsetInput(text)}
+                onChangeText={(text) => setUserInput(text)}
               />
               <FontAwesome5 name="search" size={18} color="#ffffff" />
             </View>
@@ -238,6 +238,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingLeft: 20,
     paddingRight: 10,
+    paddingBottom: 5,
   },
   input: {
     flex: 1,

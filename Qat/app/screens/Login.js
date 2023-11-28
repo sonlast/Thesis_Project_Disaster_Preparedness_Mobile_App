@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Image,
   Text,
   View,
   StyleSheet,
+  Platform,
   Pressable,
   TextInput,
   ActivityIndicator,
@@ -215,15 +216,6 @@ const styles = StyleSheet.create({
   loginbutton: {
     alignItems: "center",
     backgroundColor: "#fff",
-    borderColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 3,
-    width: 200,
-    height: 50,
-    marginTop: 1,
-  },
-  signupbutton: {
-    alignItems: "center",
     borderColor: "#fff",
     borderRadius: 20,
     borderWidth: 3,
