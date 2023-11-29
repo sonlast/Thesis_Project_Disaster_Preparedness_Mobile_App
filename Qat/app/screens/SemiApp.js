@@ -26,6 +26,7 @@ import Profile from "./Profile";
 import Settings from "./Settings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { getAuth, signOut } from "firebase/auth";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -119,6 +120,7 @@ function CategoryStack() {
 }
 
 function App() {
+  const auth = getAuth();
   const [image, setImage] = React.useState(null);
   const [userName, setUserName] = React.useState(
     "@username" + Math.floor(1000 + Math.random() * 9000)
@@ -306,13 +308,15 @@ function App() {
                 {
                   text: "Cancel",
                   onPress: () => {
+                    console.log("Cancelled logout.");
                     navigator.navigate("Categories");
                   },
                   style: "cancel",
                 },
                 {
                   text: "OK",
-                  onPress: () => {
+                  onPress: async () => {
+                    await signOut(auth);
                     navigator.navigate("Login");
                   },
                 },

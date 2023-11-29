@@ -52,21 +52,22 @@ const styles = StyleSheet.create({
 
 export default App;
 
-// TODO: FEATURES I WANT:
-// ! UI
+// FEATURES I WANT:
+// TODO: UI
 // * CONTENTS (CATEGORIES, SETTINGS) (preliminary done)
 // ? UI/UX DESIGN / FLOWCHART
-// ! Functionality
+// TODO: Functionality
 // * SETUP FIRESTORE DATABASE (preliminary done)
 // ? FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
 // ? DATA ANALYTICS
-// ? GOOGLE AUTHENTICATION
+// ! GOOGLE AUTHENTICATION
 // * AUTHENTICATION FLOWS
 
-// TODO: FEATURES DEAN WANTS:
-// ? Sign up -> Log in (Authentication)
-// ? Data Privacy
-// ? Log in -> Username/Password (!email/password)
+// FEATURES DEAN WANTS:
+// * Sign up -> Log in (Authentication)
+// * Data Privacy
+// ! Log in -> Username/Password (!email/password)
+// * Autofill Last Email Used
 // ? Landline Hotline Handling
 // ? Location Services (Location)
 // ? Evacuation Area (Earthquake Booths)
@@ -85,8 +86,19 @@ export default App;
 // ? App Name: Quick Response Aid (QRA)
 
 // TODO: FOR NOW
-// ? Google Authentication
+// ? Rebrand Logo Name and Logo "Quick Response Aid"
+// ? Database (Profile Picture, Username Display)
+
+// * DONE
+// * View Password (Login & Signup)
+// * Loading Activity Indicator (Login & Signup)
+// * onAuthStateChanged (Login & Signup)
+// * Console Logs for Testing
 // * Autofill email in Log in
 // * Navigation flows in all categories
-// ? Rebrand Logo Name and Logo "Quick Response Aid"
-// * View Password (Login & Signup)
+// * Data Privacy via Terms and Conditions
+
+// AGENDA
+// ! Deprecated
+// * DONE
+// ? Todo

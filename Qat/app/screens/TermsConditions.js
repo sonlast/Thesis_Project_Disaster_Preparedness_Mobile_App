@@ -27,12 +27,18 @@ function TermsConditions() {
         [
           {
             text: "Cancel",
-            onPress: () => null,
+            onPress: () => {
+              console.log("Cancelled exit.");
+              null;
+            },
             style: "cancel",
           },
           {
             text: "YES",
-            onPress: () => navigation.navigate("Login"),
+            onPress: () => {
+              console.log("Exiting without accepting terms.");
+              navigation.navigate("Login");
+            },
           },
         ]
       );
@@ -132,7 +138,10 @@ function TermsConditions() {
             constitutes acceptance of the revised terms.
           </Text>
           <Pressable
-            onPress={() => navigation.navigate("Signup")}
+            onPress={() => {
+              console.log("Accepted terms.");
+              navigation.navigate("Signup");
+            }}
             style={styles.button}
           >
             <Text style={styles.buttonText}>I Agree</Text>

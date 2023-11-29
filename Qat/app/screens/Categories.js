@@ -30,7 +30,10 @@ const MyApp = () => {
         },
         {
           text: "YES",
-          onPress: () => BackHandler.exitApp(),
+          onPress: () => {
+            console.log("Exited app.");
+            BackHandler.exitApp();
+          },
         },
       ]);
 

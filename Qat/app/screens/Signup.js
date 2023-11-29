@@ -231,6 +231,7 @@ const MyApp = () => {
   };
 
   const pressLogin = () => {
+    console.log("Navigated to Login Screen.");
     navigation.navigate("Login");
   };
 
@@ -267,7 +268,10 @@ const MyApp = () => {
                   keyboardType="email-address"
                   autoFocus={false}
                   value={firstName}
-                  onChangeText={(text) => setFirstName(text)}
+                  onChangeText={(text) => {
+                    console.log("Typing firstname...");
+                    setFirstName(text);
+                  }}
                 />
               </View>
             </View>
@@ -284,7 +288,10 @@ const MyApp = () => {
                   keyboardType="email-address"
                   autoFocus={false}
                   value={lastName}
-                  onChangeText={(text) => setLastName(text)}
+                  onChangeText={(text) => {
+                    console.log("Typing lastname...");
+                    setLastName(text);
+                  }}
                 />
               </View>
             </View>
@@ -302,7 +309,10 @@ const MyApp = () => {
                 keyboardType="email-address"
                 autoFocus={false}
                 value={username}
-                onChangeText={(text) => setUsername(text)}
+                onChangeText={(text) => {
+                  console.log("Typing username...");
+                  setUsername(text);
+                }}
               />
             </View>
           </View>
@@ -319,7 +329,10 @@ const MyApp = () => {
                 keyboardType="email-address"
                 autoFocus={false}
                 value={email}
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={(text) => {
+                  console.log("Typing email...");
+                  setEmail(text);
+                }}
               />
             </View>
           </View>
@@ -352,6 +365,7 @@ const MyApp = () => {
                   // ! if the value is change to email, this textinput inputs data similar with the email textinput
                   value={password}
                   onChangeText={(text) => {
+                    console.log("Typing password...");
                     setPassword(text);
                     if (text.length < 8) {
                       setTooltipVisible(true);
@@ -363,7 +377,14 @@ const MyApp = () => {
                   onBlur={() => setTooltipVisible(false)}
                 />
                 <Pressable
-                  onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+                  onPress={() => {
+                    setIsPasswordVisible(!isPasswordVisible);
+                    console.log(
+                      !isPasswordVisible
+                        ? "Password is visible."
+                        : "Password is hidden."
+                    );
+                  }}
                   style={styles.viewpassword}
                 >
                   <Icon
@@ -388,7 +409,10 @@ const MyApp = () => {
                 value={age}
                 items={items}
                 setOpen={setOpen}
-                setValue={setAge}
+                setValue={(value) => {
+                  console.log("Age Selected...");
+                  setAge(value);
+                }}
                 setItems={setItems}
                 showTickIcon={false}
                 listItemLabelStyle={{
@@ -407,7 +431,10 @@ const MyApp = () => {
                   textAlign="left"
                   keyboardType="number-pad"
                   value={contactNumber}
-                  onChangeText={(text) => setContactNumber(text)}
+                  onChangeText={(text) => {
+                    console.log("Typing contact number...");
+                    setContactNumber(text);
+                  }}
                 />
               </View>
             </View>
@@ -433,6 +460,7 @@ const MyApp = () => {
             title="I agree to the Terms and Conditions"
             checked={checked}
             onPress={() => {
+              console.log("Navigated to the Terms and Conditions...");
               setChecked(!checked);
               navigation.navigate("TermsConditions");
             }}

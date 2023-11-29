@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Alert,
+  BackHandler,
   Image,
   Text,
   View,
@@ -20,7 +21,11 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase Auth related functions
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth"; // Import Firebase Auth related functions
 
 // * APP
 const MyApp = () => {
@@ -43,14 +48,48 @@ const MyApp = () => {
     getLastEmail();
   }, []);
 
+  useEffect(() => {
+    const backAction = () => {
+      console.log("Exited app.");
+      BackHandler.exitApp();
+
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("User is signed in.");
+        navigation.navigate("SemiApp");
+      } else {
+        console.log("User is signed out.");
+        navigation.navigate("Login");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   // LOG IN BUTTON
   const pressLogin = () => {
+    setLoading(true);
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         AsyncStorage.setItem("lastemail", email);
         Alert.alert("Quick Response Aid", "Login successful.");
+        console.log("Initiating log in.");
+        console.log("Logged in successful.");
         navigation.navigate("SemiApp");
       })
       .catch((error) => {
@@ -59,6 +98,7 @@ const MyApp = () => {
         switch (errorCode) {
           case "auth/invalid-login-credentials":
             Alert.alert("Quick Response Aid", "Account doesn't exist.");
+            console.log("Unsuccessful Login.");
             break;
           case "auth/user-not-found":
             Alert.alert("Quick Response Aid", "Account doesn't exist.");
@@ -68,30 +108,36 @@ const MyApp = () => {
               "Quick Response Aid",
               "Invalid email address. Please provide a valid email."
             );
+            console.log("Unsuccessful Login.");
             break;
           case "auth/weak-password":
             Alert.alert(
               "Quick Response Aid",
               "Password is too weak. Please provide a stronger password."
             );
+            console.log("Unsuccessful Login.");
             break;
           case "auth/wrong-password":
             Alert.alert("Quick Response Aid", "Incorrect password.");
+            console.log("Unsuccessful Login.");
             break;
           case "auth/missing-password":
             Alert.alert("Quick Response Aid", "Please provide a password.");
+            console.log("Unsuccessful Login.");
             break;
           case "auth/too-many-requests":
             Alert.alert(
               "Quick Response Aid",
               "Too many requests. Please try again later."
             );
+            console.log("Unsuccessful Login.");
             break;
           default:
             Alert.alert(
               "Quick Response Aid",
               `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
             );
+            console.log("Unsuccessful Login.");
             break;
         }
       })
@@ -102,6 +148,7 @@ const MyApp = () => {
 
   // SIGN UP BUTTON
   const pressSignup = () => {
+    console.log("Navigated to sign up.");
     navigation.navigate("Signup");
   };
 
@@ -137,7 +184,10 @@ const MyApp = () => {
                 keyboardType="email-address"
                 autoFocus={false}
                 value={email}
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={(text) => {
+                  console.log("Typing email...");
+                  setEmail(text);
+                }}
               />
             </View>
           </View>
@@ -152,10 +202,21 @@ const MyApp = () => {
                 secureTextEntry={!isPasswordVisible}
                 contextMenuHidden={true}
                 value={password}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => {
+                  console.log("Typing password...");
+                  setPassword(text);
+                }}
               />
               <Pressable
-                onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+                onPress={() => {
+                  setIsPasswordVisible(!isPasswordVisible);
+                  console.log(
+                    !isPasswordVisible
+                      ? "Password is visible."
+                      : "Password is hidden."
+                  );
+                  // console.log(`Password visibility: ${!isPasswordVisible}.`);
+                }}
                 style={styles.viewpassword}
               >
                 <Icon
@@ -167,7 +228,9 @@ const MyApp = () => {
             </View>
           </View>
           {loading ? (
-            <ActivityIndicator size="large" color="#0000ff" />
+            <View style={styles.activityindi}>
+              <ActivityIndicator size="large" color="#ffffff" />
+            </View>
           ) : (
             <>
               <View style={styles.buttons}>
@@ -261,6 +324,9 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 5,
     left: 245,
+  },
+  activityindi: {
+    marginTop: 50,
   },
 });
 
