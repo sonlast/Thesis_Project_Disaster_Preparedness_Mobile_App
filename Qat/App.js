@@ -53,10 +53,8 @@ const styles = StyleSheet.create({
 export default App;
 
 // FEATURES I WANT:
-// TODO: UI
 // * CONTENTS (CATEGORIES, SETTINGS) (preliminary done)
 // ? UI/UX DESIGN / FLOWCHART
-// TODO: Functionality
 // * SETUP FIRESTORE DATABASE (preliminary done)
 // ? FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
 // ? DATA ANALYTICS
@@ -86,8 +84,8 @@ export default App;
 // ? App Name: Quick Response Aid (QRA)
 
 // TODO: FOR NOW
-// ? Rebrand Logo Name and Logo "Quick Response Aid"
-// ? Database (Profile Picture, Username Display)
+// ? Rebranding Logo Name and Logo "Quick Response Aid"
+// ? Adding Information to Database (Profile Picture, Username Display)
 
 // * DONE
 // * View Password (Login & Signup)
