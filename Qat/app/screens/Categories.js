@@ -135,7 +135,7 @@ const MyApp = () => {
   //         style={styles.categoryButton}
   //         onPress={() => navigation.navigate(item.name)}
   //       >
-  //         <Text style={styles.txtBtn}>{item.name}</Text>
+  // <Text style={styles.txtBtn}>{item.name}</Text>
   //       </Pressable>
   //     );
   //   }

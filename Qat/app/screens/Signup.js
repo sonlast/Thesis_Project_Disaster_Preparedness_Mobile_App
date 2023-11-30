@@ -23,7 +23,13 @@ import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { app } from "../../firebaseConfig"; // Import Firebase Config file
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import Firebase Auth related functions
-import { getFirestore, collection, addDoc } from "firebase/firestore"; // Import Firebase Firestore related functions
+import {
+  getFirestore,
+  collection,
+  doc,
+  addDoc,
+  setDoc,
+} from "firebase/firestore"; // Import Firebase Firestore related functions
 
 const MyApp = () => {
   const navigation = useNavigation();
@@ -187,7 +193,8 @@ const MyApp = () => {
         // Signed in
         const user = userCredential.user;
 
-        await addDoc(collection(firestore, "users"), {
+        const userDoc = doc(firestore, "users", user.uid);
+        await setDoc(userDoc, {
           firstName: firstName,
           lastName: lastName,
           username: username,

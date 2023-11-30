@@ -2,6 +2,7 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import Loading from "./app/screens/Loading";
 import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
 import SemiApp from "./app/screens/SemiApp";
@@ -12,7 +13,17 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator
+        initialRouteName="Loading"
+        screenOptions={{
+          cardStyle: { backgroundColor: "#660000" },
+        }}
+      >
+        <Stack.Screen
+          name="Loading"
+          component={Loading}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Login"
           component={Login}
@@ -86,6 +97,8 @@ export default App;
 // TODO: FOR NOW
 // ? Rebranding Logo Name and Logo "Quick Response Aid"
 // ? Adding Information to Database (Profile Picture, Username Display)
+// ? Get username from firestore database
+// ? Handle log in errors (navigation)
 
 // * DONE
 // * View Password (Login & Signup)
@@ -98,5 +111,5 @@ export default App;
 
 // AGENDA
 // ! Deprecated
-// * DONE
-// ? Todo
+// * Accomplished
+// ? Assigned

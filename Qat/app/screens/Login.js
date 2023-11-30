@@ -64,20 +64,6 @@ const MyApp = () => {
     return () => backHandler.remove();
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("User is signed in.");
-        navigation.navigate("SemiApp");
-      } else {
-        console.log("User is signed out.");
-        navigation.navigate("Login");
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   // LOG IN BUTTON
   const pressLogin = () => {
     setLoading(true);

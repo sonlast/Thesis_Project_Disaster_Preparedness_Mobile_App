@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import {
   createStackNavigator,
@@ -26,6 +26,7 @@ import Profile from "./Profile";
 import Settings from "./Settings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { getFirestore } from "firebase/firestore";
 import { getAuth, signOut } from "firebase/auth";
 
 const Stack = createStackNavigator();
@@ -120,11 +121,10 @@ function CategoryStack() {
 }
 
 function App() {
+  const db = getFirestore();
   const auth = getAuth();
-  const [image, setImage] = React.useState(null);
-  const [userName, setUserName] = React.useState(
-    "@username" + Math.floor(1000 + Math.random() * 9000)
-  );
+  const [image, setImage] = useState(null);
+  const [userName, setUserName] = useState("");
 
   const navigator = useNavigation();
 
