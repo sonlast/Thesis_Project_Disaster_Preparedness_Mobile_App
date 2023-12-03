@@ -22,7 +22,6 @@ import Earthquakenav from "./categories/Earthquakenav";
 import Floodnav from "./categories/Floodnav";
 import Landslidenav from "./categories/Landslidenav";
 import Firesnav from "./categories/Firesnav";
-import Profile from "./Profile";
 import Settings from "./Settings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -255,19 +254,6 @@ function App() {
           drawerIcon: ({ color, focused }) => (
             <MaterialCommunityIcons
               name="card-multiple"
-              size={24}
-              color={focused ? "#000000" : "#ffffff"}
-            />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          drawerIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons
-              name="account"
               size={24}
               color={focused ? "#000000" : "#ffffff"}
             />

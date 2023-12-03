@@ -113,3 +113,6 @@ export default App;
 // ! Deprecated
 // * Accomplished
 // ? Assigned
+
+// MASTER EMAIL: master1@gmail.com
+// MASTER PASSWORD: master1

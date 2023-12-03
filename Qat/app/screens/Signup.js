@@ -447,7 +447,9 @@ const MyApp = () => {
             </View>
           </View>
           {loading ? (
-            <ActivityIndicator size="large" color="#0000ff" />
+            <View style={styles.activityindi}>
+              <ActivityIndicator size="large" color="#ffffff" />
+            </View>
           ) : (
             <>
               <View style={styles.buttons}>
@@ -626,6 +628,9 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 5,
     left: 245,
+  },
+  activityindi: {
+    marginTop: 50,
   },
 });
 
