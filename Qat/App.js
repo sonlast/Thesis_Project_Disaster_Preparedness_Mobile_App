@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
 export default App;
 
 // FEATURES I WANT:
-// * CONTENTS (CATEGORIES, SETTINGS) (preliminary done)
+// * CONTENTS (CATEGORIES, SETTINGS) (!categories)
 // ? UI/UX DESIGN / FLOWCHART
-// * SETUP FIRESTORE DATABASE (preliminary done)
+// * SETUP FIRESTORE DATABASE (*account details, !profile picture, !settings)
 // ? FUNCTIONALITIES (REPORTING, EMERGENCY CALL, SOS, ETC.)
-// ? DATA ANALYTICS
+// ? DATA ANALYTICS (Aptabase)
 // ! GOOGLE AUTHENTICATION
 // * AUTHENTICATION FLOWS
 
@@ -81,7 +81,7 @@ export default App;
 // ? Location Services (Location)
 // ? Evacuation Area (Earthquake Booths)
 // ? Others Category (for First Aid)
-// ? User Feedback
+// ? Settings
 
 // TODO: Admin Dashboard (Analytics)
 // ? - Users
@@ -114,5 +114,15 @@ export default App;
 // * Accomplished
 // ? Assigned
 
-// MASTER EMAIL: master1@gmail.com
-// MASTER PASSWORD: master1
+// TRYOUT EMAIL: master1@gmail.com
+// TRYOUT PASSWORD: master1
+
+// ? ------------------ SETTINGS INCLUDES
+// ? Change Password
+// ? Terms and Conditions
+// ? Privacy Policy
+// ? Help Center
+// ? Send Feedback
+// ? Report a Problem
+// ? log out
+// ? Account Deletion
