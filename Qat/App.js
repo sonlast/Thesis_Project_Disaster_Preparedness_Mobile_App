@@ -78,7 +78,7 @@ export default App;
 // ! Log in -> Username/Password (!email/password)
 // * Autofill Last Email Used
 // ? Landline Hotline Handling
-// ? Location Services (Location)
+// ? Location Services (Location) (PERMISSIONS)
 // ? Evacuation Area (Earthquake Booths)
 // ? Others Category (for First Aid)
 // ? Settings
