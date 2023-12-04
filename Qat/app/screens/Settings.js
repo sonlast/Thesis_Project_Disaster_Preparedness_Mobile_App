@@ -16,12 +16,36 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import { app } from "../../firebaseConfig";
+import { useImage } from "./ImageContext";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 export default function Settings() {
+  const db = getFirestore();
   const navigation = useNavigation();
-  const [image, setImage] = useState(null);
+  const imageContext = useImage();
+  const image = imageContext.image;
+  const setImage = imageContext.setImage;
   const [userName, setUserName] = useState("");
+  const auth = getAuth();
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const userDocRef = doc(db, "users", auth.currentUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setUserName(userData.username || "");
+        }
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+
+    fetchUsername();
+  }, [auth, db]);
 
   useEffect(() => {
     const backAction = () => {
@@ -82,7 +106,7 @@ export default function Settings() {
             height: 200,
             width: "100%",
             borderBottomColor: "#ffffff",
-            borderBottomwWidth: 1,
+            borderBottomWidth: 1,
           }}
         >
           <TouchableOpacity onPress={pickImage}>

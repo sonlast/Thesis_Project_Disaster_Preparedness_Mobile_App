@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import { DrawerItemList } from "@react-navigation/drawer";
 import * as ImagePicker from "expo-image-picker";
+import { ImageProvider, useImage } from "./ImageContext";
 import {
   useFonts,
   Anybody_700Bold,
@@ -25,7 +26,7 @@ import Firesnav from "./categories/Firesnav";
 import Settings from "./Settings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth, signOut } from "firebase/auth";
 
 const Stack = createStackNavigator();
@@ -122,10 +123,30 @@ function CategoryStack() {
 function App() {
   const db = getFirestore();
   const auth = getAuth();
-  const [image, setImage] = useState(null);
+  const imageProps = useImage() || {};
+  const image = imageProps.image || null;
+  const setImage = imageProps.setImage || (() => {});
   const [userName, setUserName] = useState("");
 
   const navigator = useNavigation();
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const userDocRef = doc(db, "users", auth.currentUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setUserName(userData.username || "");
+        }
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+
+    fetchUsername();
+  }, [auth, db]);
 
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
@@ -327,6 +348,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <ImageProvider>
+      <App />
+    </ImageProvider>
+  );
+}
 
 // EDIT ICONS IN DISASTER CATEGORIES
