@@ -97,7 +97,6 @@ export default App;
 // TODO: FOR NOW
 // ? Rebranding Logo Name and Logo "Quick Response Aid"
 // ? Adding Information to Database (Profile Picture, Username Display)
-// ? Get username from firestore database
 // ? Handle log in errors (navigation)
 
 // * DONE
@@ -108,6 +107,7 @@ export default App;
 // * Autofill email in Log in
 // * Navigation flows in all categories
 // * Data Privacy via Terms and Conditions
+// * Get username from firestore database
 
 // AGENDA
 // ! Deprecated
@@ -118,6 +118,8 @@ export default App;
 // TRYOUT PASSWORD: master1
 
 // ? ------------------ SETTINGS INCLUDES
+// * Sync Profile Picture
+// ? Edit username
 // ? Change Password
 // ? Terms and Conditions
 // ? Privacy Policy

@@ -3,10 +3,11 @@ import {
   BackHandler,
   Image,
   StyleSheet,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
-  Button,
+  Pressable,
 } from "react-native";
 import {
   useFonts,
@@ -98,17 +99,8 @@ export default function Settings() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <View
-          style={{
-            flex: 1,
-            marginTop: 30,
-            height: 200,
-            width: "100%",
-            borderBottomColor: "#ffffff",
-            borderBottomWidth: 1,
-          }}
-        >
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
           <TouchableOpacity onPress={pickImage}>
             {!image && (
               <View style={{ flexDirection: "column", alignItems: "center" }}>
@@ -136,19 +128,45 @@ export default function Settings() {
               />
             )}
           </TouchableOpacity>
-
           <Text
             style={{
               color: "#ffffff",
-              fontSize: 12,
+              fontSize: 14,
               fontFamily: "Anybody_700Bold",
               marginTop: 20,
             }}
           >
-            {userName}
+            @{userName}
           </Text>
         </View>
-      </View>
+        <Pressable>
+          <Text style={[styles.text, { marginTop: 40 }]}>Change Password</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Change Password</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Terms and Conditions</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Privacy Policy</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Help Center</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Send Feedback</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Report a Problem</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Log Out</Text>
+        </Pressable>
+        <Pressable>
+          <Text style={styles.text}>Account Deletion</Text>
+        </Pressable>
+      </ScrollView>
     </View>
   );
 }
@@ -164,5 +182,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 20,
+  },
+  text: {
+    color: "#ffffff",
+    fontFamily: "Anybody_700Bold",
+    fontSize: 20,
+    marginBottom: 20,
   },
 });

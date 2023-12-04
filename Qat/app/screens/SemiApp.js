@@ -237,7 +237,7 @@ function App() {
                   marginTop: 20,
                 }}
               >
-                {userName}
+                @{userName}
               </Text>
             </View>
 
