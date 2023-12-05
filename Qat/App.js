@@ -121,6 +121,7 @@ export default App;
 // * Sync Profile Picture
 // ? Edit username
 // ? Change Password
+// ? Location
 // ? Terms and Conditions
 // ? Privacy Policy
 // ? Help Center

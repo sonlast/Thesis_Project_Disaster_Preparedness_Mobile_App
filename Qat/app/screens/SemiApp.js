@@ -127,11 +127,13 @@ function App() {
   const image = imageProps.image || null;
   const setImage = imageProps.setImage || (() => {});
   const [userName, setUserName] = useState("");
+  const [userFirstname, setUserFirstname] = useState("");
+  const [userLastname, setUserLastname] = useState("");
 
   const navigator = useNavigation();
 
   useEffect(() => {
-    const fetchUsername = async () => {
+    const fetchData = async () => {
       try {
         const userDocRef = doc(db, "users", auth.currentUser.uid);
         const userDocSnap = await getDoc(userDocRef);
@@ -139,13 +141,15 @@ function App() {
         if (userDocSnap.exists()) {
           const userData = userDocSnap.data();
           setUserName(userData.username || "");
+          setUserFirstname(userData.firstName || "");
+          setUserLastname(userData.lastName || "");
         }
       } catch (error) {
-        console.error("Error fetching username:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchUsername();
+    fetchData();
   }, [auth, db]);
 
   let [fontsLoaded, fontError] = useFonts({
@@ -223,24 +227,37 @@ function App() {
                 {image && (
                   <Image
                     source={{ uri: image }}
-                    style={{ width: 100, height: 100 }}
-                    borderRadius={50}
+                    style={{
+                      width: 100,
+                      height: 100,
+                      borderRadius: 50,
+                      borderWidth: 3,
+                      borderColor: "#ffffff",
+                    }}
                   />
                 )}
               </TouchableOpacity>
-
+              <Text
+                style={{
+                  color: "#ffffff",
+                  fontSize: 16,
+                  fontFamily: "Anybody_700Bold",
+                  marginTop: 30,
+                }}
+              >
+                @{userName}
+              </Text>
               <Text
                 style={{
                   color: "#ffffff",
                   fontSize: 12,
                   fontFamily: "Anybody_700Bold",
-                  marginTop: 20,
+                  marginTop: 10,
                 }}
               >
-                @{userName}
+                {userFirstname} {userLastname}
               </Text>
             </View>
-
             <DrawerItemList {...props} />
           </SafeAreaView>
         );

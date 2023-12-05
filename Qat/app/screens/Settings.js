@@ -28,10 +28,12 @@ export default function Settings() {
   const image = imageContext.image;
   const setImage = imageContext.setImage;
   const [userName, setUserName] = useState("");
+  const [userFirstname, setUserFirstname] = useState("");
+  const [userLastname, setUserLastname] = useState("");
   const auth = getAuth();
 
   useEffect(() => {
-    const fetchUsername = async () => {
+    const fetchData = async () => {
       try {
         const userDocRef = doc(db, "users", auth.currentUser.uid);
         const userDocSnap = await getDoc(userDocRef);
@@ -39,13 +41,15 @@ export default function Settings() {
         if (userDocSnap.exists()) {
           const userData = userDocSnap.data();
           setUserName(userData.username || "");
+          setUserFirstname(userData.firstName || "");
+          setUserLastname(userData.lastName || "");
         }
       } catch (error) {
-        console.error("Error fetching username:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchUsername();
+    fetchData();
   }, [auth, db]);
 
   useEffect(() => {
@@ -106,12 +110,12 @@ export default function Settings() {
               <View style={{ flexDirection: "column", alignItems: "center" }}>
                 <MaterialCommunityIcons
                   name="upload"
-                  size={24}
+                  size={20}
                   color="#ffffff"
                 />
                 <Text
                   style={{
-                    marginTop: 10,
+                    marginTop: 20,
                     color: "#ffffff",
                     fontFamily: "Anybody_700Bold",
                   }}
@@ -123,48 +127,145 @@ export default function Settings() {
             {image && (
               <Image
                 source={{ uri: image }}
-                style={{ width: 100, height: 100 }}
-                borderRadius={50}
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 50,
+                  borderWidth: 3,
+                  borderColor: "#ffffff",
+                }}
               />
             )}
           </TouchableOpacity>
           <Text
             style={{
               color: "#ffffff",
-              fontSize: 14,
+              fontSize: 16,
               fontFamily: "Anybody_700Bold",
-              marginTop: 20,
+              marginTop: 30,
             }}
           >
             @{userName}
           </Text>
+          <Text
+            style={{
+              color: "#fef",
+              fontSize: 12,
+              fontFamily: "Anybody_700Bold",
+              marginTop: 10,
+            }}
+          >
+            {userFirstname} {userLastname}
+          </Text>
         </View>
         <Pressable>
-          <Text style={[styles.text, { marginTop: 40 }]}>Change Password</Text>
+          <View style={[styles.row, { marginTop: 20 }]}>
+            <MaterialCommunityIcons
+              name="account-edit-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>
+              Change Password
+            </Text>
+          </View>
         </Pressable>
         <Pressable>
-          <Text style={styles.text}>Change Password</Text>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name={"map-marker-outline"}
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Location</Text>
+          </View>
+        </Pressable>
+        <View style={styles.divider} />
+
+        <Pressable>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="file-document-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>
+              Terms and Conditions
+            </Text>
+          </View>
         </Pressable>
         <Pressable>
-          <Text style={styles.text}>Terms and Conditions</Text>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="lock-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Privacy Policy</Text>
+          </View>
+        </Pressable>
+        <View style={styles.divider} />
+        <Pressable>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="account-question-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Help Center</Text>
+          </View>
         </Pressable>
         <Pressable>
-          <Text style={styles.text}>Privacy Policy</Text>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="comment-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Send Feedback</Text>
+          </View>
         </Pressable>
         <Pressable>
-          <Text style={styles.text}>Help Center</Text>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="alert-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>
+              Report a Problem
+            </Text>
+          </View>
+        </Pressable>
+        <View style={styles.divider} />
+        <Pressable>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="logout"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Log Out</Text>
+          </View>
         </Pressable>
         <Pressable>
-          <Text style={styles.text}>Send Feedback</Text>
-        </Pressable>
-        <Pressable>
-          <Text style={styles.text}>Report a Problem</Text>
-        </Pressable>
-        <Pressable>
-          <Text style={styles.text}>Log Out</Text>
-        </Pressable>
-        <Pressable>
-          <Text style={styles.text}>Account Deletion</Text>
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="delete-outline"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Delete Account</Text>
+          </View>
         </Pressable>
       </ScrollView>
     </View>
@@ -175,19 +276,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#660000",
   },
   content: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
   },
   text: {
     color: "#ffffff",
     fontFamily: "Anybody_700Bold",
-    fontSize: 20,
+    fontSize: 15,
     marginBottom: 20,
+  },
+  icon: {
+    marginRight: 10,
+    marginLeft: 15,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  divider: {
+    height: 1,
+    backgroundColor: "#ffffff",
+    marginVertical: 10,
   },
 });
