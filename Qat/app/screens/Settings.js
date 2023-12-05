@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   BackHandler,
   Image,
+  Platform,
   StyleSheet,
   ScrollView,
   Text,
@@ -9,6 +10,7 @@ import {
   View,
   Pressable,
 } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import {
   useFonts,
   Anybody_700Bold,
@@ -17,6 +19,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import * as Location from "expo-location";
 import { useImage } from "./ImageContext";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -24,6 +27,9 @@ import { getAuth } from "firebase/auth";
 export default function Settings() {
   const db = getFirestore();
   const navigation = useNavigation();
+  const [location, setLocation] = useState(null);
+  const [locationName, setLocationName] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const imageContext = useImage();
   const image = imageContext.image;
   const setImage = imageContext.setImage;
@@ -31,6 +37,44 @@ export default function Settings() {
   const [userFirstname, setUserFirstname] = useState("");
   const [userLastname, setUserLastname] = useState("");
   const auth = getAuth();
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+
+      // Fetch detailed address using the current coordinates
+      let reverseGeocode = await Location.reverseGeocodeAsync({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
+
+      if (reverseGeocode && reverseGeocode.length > 0) {
+        const address = reverseGeocode[0];
+        const selectedAddress = [address.city, address.region, address.country];
+        const locationName = selectedAddress.filter(Boolean).join(", ");
+        setLocationName(locationName);
+      } else {
+        setLocationName("Location Not Found");
+      }
+    })();
+  }, []);
+
+  let text = "Waiting Location..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    const { coords } = location;
+    if (locationName) {
+      text = `${locationName}`;
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,11 +223,30 @@ export default function Settings() {
               color="#ffffff"
               style={styles.icon}
             />
-            <Text style={[styles.text, { marginTop: 20 }]}>Location</Text>
+            <Text style={[styles.text, { marginTop: 20 }]}>{text}</Text>
           </View>
         </Pressable>
+        <MapView
+          style={{ width: "100%", height: 200 }}
+          initialRegion={{
+            latitude: location?.coords.latitude || 0,
+            longitude: location?.coords.longitude || 0,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          {location && (
+            <Marker
+              coordinate={{
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }}
+              title={locationName}
+              description={locationName}
+            />
+          )}
+        </MapView>
         <View style={styles.divider} />
-
         <Pressable>
           <View style={styles.row}>
             <MaterialCommunityIcons
