@@ -2,7 +2,7 @@ import * as React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Loading from "./app/screens/Loading";
+import Loading from "./app/screens/miscellaneous/Loading";
 import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
 import SemiApp from "./app/screens/SemiApp";
@@ -78,10 +78,10 @@ export default App;
 // ! Log in -> Username/Password (!email/password)
 // * Autofill Last Email Used
 // ? Landline Hotline Handling
-// ? Location Services (Location) (PERMISSIONS)
+// ? Location Services (Location) (PERMISSIONS) (preliminary)
 // ? Evacuation Area (Earthquake Booths)
 // ? Others Category (for First Aid)
-// ? Settings
+// ? Settings (almost)
 
 // TODO: Admin Dashboard (Analytics)
 // ? - Users
@@ -115,17 +115,16 @@ export default App;
 // ? Assigned
 
 // TRYOUT EMAIL: master1@gmail.com
-// TRYOUT PASSWORD: master1
+// TRYOUT PASSWORD: danicao
 
 // ? ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
-// ? Edit username
-// ? Change Password
-// ? Location
-// ? Terms and Conditions
-// ? Privacy Policy
-// ? Help Center
+// * Change Password
+// * Location
+// * Terms and Conditions
+// * Privacy Policy
+// * log out
+// * Account Deletion
+// ? Edit Username (unprioritized feature)
 // ? Send Feedback
 // ? Report a Problem
-// ? log out
-// ? Account Deletion

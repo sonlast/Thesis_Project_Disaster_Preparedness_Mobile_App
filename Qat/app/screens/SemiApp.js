@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 import { DrawerItemList } from "@react-navigation/drawer";
 import * as ImagePicker from "expo-image-picker";
-import { ImageProvider, useImage } from "./ImageContext";
+import { ImageProvider, useImage } from "./miscellaneous/ImageContext";
 import {
   useFonts,
   Anybody_700Bold,
@@ -23,7 +23,9 @@ import Earthquakenav from "./categories/Earthquakenav";
 import Floodnav from "./categories/Floodnav";
 import Landslidenav from "./categories/Landslidenav";
 import Firesnav from "./categories/Firesnav";
-import Settings from "./Settings";
+import Settingz from "./Settings";
+import TermsConditions from "./settings/TandCSettings";
+import PrivacyPolicy from "./settings/PPSettings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -109,6 +111,54 @@ function CategoryStack() {
       <Stack.Screen
         name="Fires"
         component={Firesnav}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function SettingStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Settingz"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#660000",
+        },
+        headerTintColor: "#ffffff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    >
+      <Stack.Screen
+        // initialRouteName="Categories"
+        name="Settingz"
+        component={Settingz}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Terms and Conditions"
+        component={TermsConditions}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Privacy Policy"
+        component={PrivacyPolicy}
         options={{
           headerTitleStyle: {
             fontFamily: "Anybody_700Bold",
@@ -300,8 +350,9 @@ function App() {
       />
       <Drawer.Screen
         name="Settings"
-        component={Settings}
+        component={SettingStack}
         options={{
+          drawerLabel: "Settings",
           drawerIcon: ({ color, focused }) => (
             <MaterialCommunityIcons
               name="cog"
@@ -338,7 +389,7 @@ function App() {
                   style: "cancel",
                 },
                 {
-                  text: "OK",
+                  text: "Log Out",
                   onPress: async () => {
                     await signOut(auth);
                     navigator.navigate("Login");
