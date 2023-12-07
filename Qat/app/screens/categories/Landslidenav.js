@@ -10,6 +10,7 @@ import {
 import Landslide from "./landslide/Landslide";
 import LandslideHotlines from "./landslide/LandslideHotlines";
 import LandslideTips from "./landslide/LandslideTips";
+import LandslideEvac from "../miscellaneous/Evacuations";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -45,6 +46,20 @@ export default function App() {
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="phone" color={"#ff0000"} size={27} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Evacuation"
+        component={LandslideEvac}
+        options={{
+          tabBarLabel: "Evacuation",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="home-outline"
+              color={"#ff0000"}
+              size={27}
+            />
           ),
         }}
       />

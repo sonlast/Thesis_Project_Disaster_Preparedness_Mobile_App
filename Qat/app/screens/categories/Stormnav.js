@@ -10,6 +10,7 @@ import {
 import Storm from "./storm/Storm";
 import StormHotlines from "./storm/StormHotlines";
 import StormTips from "./storm/StormTips";
+import StormEvac from "../miscellaneous/Evacuations";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -19,9 +20,9 @@ export default function App() {
       barStyle={{
         backgroundColor: "#660000",
         height: 70,
-			}}
-			activeColor="#ffffff"
-			inactiveColor="#aaaaaa"
+      }}
+      activeColor="#ffffff"
+      inactiveColor="#aaaaaa"
       initialRouteName="Storm"
     >
       <Tab.Screen
@@ -33,8 +34,8 @@ export default function App() {
             <MaterialCommunityIcons
               name="information-outline"
               color={"#ff0000"}
-							size={27}
-						/>
+              size={27}
+            />
           ),
         }}
       />
@@ -44,10 +45,21 @@ export default function App() {
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons
-							name="phone"
-							color={"#ff0000"}
-							size={27} />
+            <MaterialCommunityIcons name="phone" color={"#ff0000"} size={27} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Evacuation"
+        component={StormEvac}
+        options={{
+          tabBarLabel: "Evacuation",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="home-outline"
+              color={"#ff0000"}
+              size={27}
+            />
           ),
         }}
       />
