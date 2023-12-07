@@ -32,7 +32,7 @@ export default function App() {
           tabBarLabel: "Information",
           tabBarIcon: ({}) => (
             <MaterialCommunityIcons
-              name="information-outline"
+              name="information"
               color={"#ff0000"}
               size={27}
             />
@@ -55,11 +55,7 @@ export default function App() {
         options={{
           tabBarLabel: "Evacuation",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="home-outline"
-              color={"#ff0000"}
-              size={27}
-            />
+            <MaterialCommunityIcons name="run" color={"#ff0000"} size={27} />
           ),
         }}
       />
@@ -71,7 +67,7 @@ export default function App() {
           tabBarBadge: 3,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name="lightbulb-on-outline"
+              name="lightbulb-on"
               color={"#ff0000"}
               size={27}
             />

@@ -73,15 +73,11 @@ export default App;
 // * AUTHENTICATION FLOWS
 
 // FEATURES DEAN WANTS:
-// * Sign up -> Log in (Authentication)
-// * Data Privacy
 // ! Log in -> Username/Password (!email/password)
-// * Autofill Last Email Used
 // ? Landline Hotline Handling
 // ? Location Services (Location) (PERMISSIONS) (preliminary)
-// ? Evacuation Area (Earthquake Booths)
+// * Evacuation Area
 // ? Others Category (for First Aid)
-// ? Settings (almost)
 
 // TODO: Admin Dashboard (Analytics)
 // ? - Users
@@ -92,12 +88,9 @@ export default App;
 
 // ? Misc:
 // ? Video Presentation (Process of Location Services)
-// ? App Name: Quick Response Aid (QRA)
 
 // TODO: FOR NOW
-// ? Rebranding Logo Name and Logo "Quick Response Aid"
-// ? Adding Information to Database (Profile Picture, Username Display)
-// ? Handle log in errors (navigation)
+// ! Handle log in errors (navigation)
 
 // * DONE
 // * View Password (Login & Signup)
@@ -108,13 +101,12 @@ export default App;
 // * Navigation flows in all categories
 // * Data Privacy via Terms and Conditions
 // * Get username from firestore database
-
-// AGENDA
-// ! Deprecated
-// * Accomplished
-// ? Assigned
-
-// ? ------------------ SETTINGS INCLUDES
+// * Rebranding Logo Name and Logo "Quick Response Aid"
+// * Adding Information to Database (Profile Picture, Username Display)
+// * App Name: Quick Response Aid (QRA)
+// * Sign up -> Log in (Authentication)
+// * Evacuation Area
+// * ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
 // * Change Password
 // * Location
@@ -124,7 +116,13 @@ export default App;
 // * Report a Problem (no functionality)
 // * log out
 // * Account Deletion
-// ? Edit Username (unprioritized feature)
+
+// AGENDA
+// ! Deprecated / Not Prioritized
+// * Accomplished
+// ? Assigned
+
+// ! Edit Username (unprioritized feature)
 
 // TRYOUT EMAIL: master1@gmail.com
 // TRYOUT PASSWORD: danicao

@@ -10,6 +10,7 @@ import {
 import Typhoon from "./typhoon/Typhoon";
 import TyphoonHotlines from "./typhoon/TyphoonHotlines";
 import TyphoonTips from "./typhoon/TyphoonTips";
+import TyphoonEvac from "../miscellaneous/Evacuations";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -31,7 +32,7 @@ export default function App() {
           tabBarLabel: "Information",
           tabBarIcon: ({}) => (
             <MaterialCommunityIcons
-              name="information-outline"
+              name="information"
               color={"#ff0000"}
               size={27}
             />
@@ -49,6 +50,16 @@ export default function App() {
         }}
       />
       <Tab.Screen
+        name="Evacuation"
+        component={TyphoonEvac}
+        options={{
+          tabBarLabel: "Evacuation",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="run" color={"#ff0000"} size={27} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Tips"
         component={TyphoonTips}
         options={{
@@ -56,7 +67,7 @@ export default function App() {
           tabBarBadge: 3,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name="lightbulb-on-outline"
+              name="lightbulb-on"
               color={"#ff0000"}
               size={27}
             />
