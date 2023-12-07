@@ -73,10 +73,8 @@ export default App;
 // * AUTHENTICATION FLOWS
 
 // FEATURES DEAN WANTS:
-// ! Log in -> Username/Password (!email/password)
 // ? Landline Hotline Handling
 // ? Location Services (Location) (PERMISSIONS) (preliminary)
-// * Evacuation Area
 // ? Others Category (for First Aid)
 
 // TODO: Admin Dashboard (Analytics)
@@ -89,8 +87,10 @@ export default App;
 // ? Misc:
 // ? Video Presentation (Process of Location Services)
 
-// TODO: FOR NOW
+// ! ------------------- Deprecated / Not Prioritized
 // ! Handle log in errors (navigation)
+// ! Edit Username (unprioritized feature)
+// ! Log in -> Username/Password (!email/password)
 
 // * DONE
 // * View Password (Login & Signup)
@@ -122,7 +122,11 @@ export default App;
 // * Accomplished
 // ? Assigned
 
-// ! Edit Username (unprioritized feature)
-
 // TRYOUT EMAIL: master1@gmail.com
 // TRYOUT PASSWORD: danicao
+
+// ? GOOGLE MAPS SDK / API
+// ? WEB ADMIN DASHBOARD (FRONT END + BACK END)
+// ? HANDLE LANDLINE HOTLINES
+// ? CONTENTS (CATEGORIES, OTHERS)
+// ? STORE PROFILE PICTURE
