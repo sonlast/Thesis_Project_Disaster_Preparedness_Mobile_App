@@ -155,7 +155,7 @@ const MyApp = () => {
         <View style={styles.content}>
           <Image
             style={styles.imagez}
-            source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
+            source={require("../assets/app-icons-xplatform/qra.png")}
           />
           <View style={styles.inputContainer}>
             <View style={styles.inputWrapper}>

@@ -253,7 +253,7 @@ const MyApp = () => {
         <View style={styles.content}>
           <Image
             style={styles.imagez}
-            source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
+            source={require("../assets/app-icons-xplatform/qrawstroke.png")}
           />
           <View style={styles.nameHorizontalContainer}>
             <View style={[styles.nameinputContainer, { marginRight: 5 }]}>

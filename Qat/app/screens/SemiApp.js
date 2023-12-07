@@ -26,6 +26,8 @@ import Firesnav from "./categories/Firesnav";
 import Settingz from "./Settings";
 import TermsConditions from "./settings/TandCSettings";
 import PrivacyPolicy from "./settings/PPSettings";
+import SendFeedback from "./settings/SFSettings";
+import ReportaProblem from "./settings/RaPSettings";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -159,6 +161,26 @@ function SettingStack() {
       <Stack.Screen
         name="Privacy Policy"
         component={PrivacyPolicy}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Send Feedback"
+        component={SendFeedback}
+        options={{
+          headerTitleStyle: {
+            fontFamily: "Anybody_700Bold",
+            fontSize: 17.5,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Report a Problem"
+        component={ReportaProblem}
         options={{
           headerTitleStyle: {
             fontFamily: "Anybody_700Bold",

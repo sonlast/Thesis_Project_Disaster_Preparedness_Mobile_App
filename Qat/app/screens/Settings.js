@@ -354,7 +354,7 @@ export default function Settings() {
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <View style={[styles.row, { marginTop: 20 }]}>
             <MaterialCommunityIcons
-              name="account-edit-outline"
+              name="account-edit"
               size={24}
               color="#ffffff"
               style={styles.icon}
@@ -366,7 +366,7 @@ export default function Settings() {
         </TouchableOpacity>
         <View style={styles.row}>
           <MaterialCommunityIcons
-            name={"map-marker-outline"}
+            name={"map-marker"}
             size={24}
             color="#ffffff"
             style={styles.icon}
@@ -382,7 +382,7 @@ export default function Settings() {
         >
           <View style={styles.row}>
             <MaterialCommunityIcons
-              name="file-document-outline"
+              name="file-document"
               size={24}
               color="#ffffff"
               style={styles.icon}
@@ -400,7 +400,7 @@ export default function Settings() {
         >
           <View style={styles.row}>
             <MaterialCommunityIcons
-              name="lock-outline"
+              name="lock"
               size={24}
               color="#ffffff"
               style={styles.icon}
@@ -409,10 +409,15 @@ export default function Settings() {
           </View>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            console.log("Send Feedback pressed.");
+            navigation.navigate("Send Feedback");
+          }}
+        >
           <View style={styles.row}>
             <MaterialCommunityIcons
-              name="comment-outline"
+              name="comment"
               size={24}
               color="#ffffff"
               style={styles.icon}
@@ -420,10 +425,15 @@ export default function Settings() {
             <Text style={[styles.text, { marginTop: 20 }]}>Send Feedback</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            console.log("Report a Problem pressed.");
+            navigation.navigate("Report a Problem");
+          }}
+        >
           <View style={styles.row}>
             <MaterialCommunityIcons
-              name="alert-outline"
+              name="alert"
               size={24}
               color="#ffffff"
               style={styles.icon}
@@ -434,6 +444,22 @@ export default function Settings() {
           </View>
         </TouchableOpacity>
         <View style={styles.divider} />
+        <TouchableOpacity
+          onPress={() => {
+            console.log("Delete Account pressed.");
+            handleDeleteAccount();
+          }}
+        >
+          <View style={styles.row}>
+            <MaterialCommunityIcons
+              name="delete"
+              size={24}
+              color="#ffffff"
+              style={styles.icon}
+            />
+            <Text style={[styles.text, { marginTop: 20 }]}>Delete Account</Text>
+          </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             console.log("Log Out pressed.");
@@ -448,22 +474,6 @@ export default function Settings() {
               style={styles.icon}
             />
             <Text style={[styles.text, { marginTop: 20 }]}>Log Out</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            console.log("Delete Account pressed.");
-            handleDeleteAccount();
-          }}
-        >
-          <View style={styles.row}>
-            <MaterialCommunityIcons
-              name="delete-outline"
-              size={24}
-              color="#ffffff"
-              style={styles.icon}
-            />
-            <Text style={[styles.text, { marginTop: 20 }]}>Delete Account</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

@@ -114,17 +114,17 @@ export default App;
 // * Accomplished
 // ? Assigned
 
-// TRYOUT EMAIL: master1@gmail.com
-// TRYOUT PASSWORD: danicao
-
 // ? ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
 // * Change Password
 // * Location
 // * Terms and Conditions
 // * Privacy Policy
+// * Send Feedback (no functionality)
+// * Report a Problem (no functionality)
 // * log out
 // * Account Deletion
 // ? Edit Username (unprioritized feature)
-// ? Send Feedback
-// ? Report a Problem
+
+// TRYOUT EMAIL: master1@gmail.com
+// TRYOUT PASSWORD: danicao
