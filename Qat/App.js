@@ -91,6 +91,7 @@ export default App;
 // ! Handle log in errors (navigation)
 // ! Edit Username (unprioritized feature)
 // ! Log in -> Username/Password (!email/password)
+// ! Offline Capability (unprioritized feature)
 
 // * DONE
 // * View Password (Login & Signup)
@@ -125,9 +126,8 @@ export default App;
 // TRYOUT EMAIL: moshi@gmail.com
 // TRYOUT PASSWORD: moshie1
 
-// ? GOOGLE MAPS SDK / API
+// ? GOOGLE MAPS SDK / API (via credit card for access)
 // ? WEB ADMIN DASHBOARD (FRONT END + BACK END)
 // ? HANDLE LANDLINE HOTLINES
 // ? CONTENTS (CATEGORIES, OTHERS)
-// ? STORE PROFILE PICTURE
-// ? OFFLINE CAPABILITY
+// ? STORE PROFILE PICTURE (via FIREBASE STORAGE)

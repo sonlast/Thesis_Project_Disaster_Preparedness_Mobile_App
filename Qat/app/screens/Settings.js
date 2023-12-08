@@ -25,6 +25,7 @@ import * as Location from "expo-location";
 import { useImage } from "./miscellaneous/ImageContext";
 import { getFirestore, deleteDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, deleteUser, signOut, updatePassword } from "firebase/auth";
+// import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 export default function Settings() {
   const db = getFirestore();
