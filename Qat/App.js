@@ -122,8 +122,8 @@ export default App;
 // * Accomplished
 // ? Assigned
 
-// TRYOUT EMAIL: master1@gmail.com
-// TRYOUT PASSWORD: danicao
+// TRYOUT EMAIL: moshi@gmail.com
+// TRYOUT PASSWORD: moshie1
 
 // ? GOOGLE MAPS SDK / API
 // ? WEB ADMIN DASHBOARD (FRONT END + BACK END)
