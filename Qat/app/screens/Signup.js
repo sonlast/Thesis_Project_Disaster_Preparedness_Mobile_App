@@ -436,6 +436,7 @@ const MyApp = () => {
                     console.log("Typing contact number...");
                     setContactNumber(text);
                   }}
+                  maxLength={11}
                 />
               </View>
             </View>
