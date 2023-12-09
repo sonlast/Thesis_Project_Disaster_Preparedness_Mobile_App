@@ -445,5 +445,3 @@ export default function AppWrapper() {
     </ImageProvider>
   );
 }
-
-// EDIT ICONS IN DISASTER CATEGORIES

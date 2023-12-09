@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   useFonts,
@@ -9,12 +10,36 @@ import {
 } from "@expo-google-fonts/anybody";
 import Flood from "./flood/Flood";
 import FloodHotlines from "./flood/FloodHotlines";
+import OtherHotlines from "../miscellaneous/OtherHotlinesFlood";
 import FloodTips from "./flood/FloodTips";
 import FloodEvac from "../miscellaneous/Evacuations";
 
+const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-export default function App() {
+function FloodHotlineStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="FloodHotlines"
+      screenOptions={{
+        cardStyle: { backgroundColor: "#660000" },
+      }}
+    >
+      <Stack.Screen
+        name="FloodHotlines"
+        component={FloodHotlines}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="OtherHotlines"
+        component={OtherHotlines}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function App() {
   return (
     <Tab.Navigator
       barStyle={{
@@ -41,7 +66,7 @@ export default function App() {
       />
       <Tab.Screen
         name="Hotlines"
-        component={FloodHotlines}
+        component={FloodHotlineStack}
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
@@ -86,3 +111,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default App;

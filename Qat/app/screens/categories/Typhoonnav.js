@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   useFonts,
@@ -10,11 +11,35 @@ import {
 import Typhoon from "./typhoon/Typhoon";
 import TyphoonHotlines from "./typhoon/TyphoonHotlines";
 import TyphoonTips from "./typhoon/TyphoonTips";
+import OtherHotlines from "../miscellaneous/OtherHotlinesTyphoon";
 import TyphoonEvac from "../miscellaneous/Evacuations";
 
+const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-export default function App() {
+function TyphoonHotlineStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="TyphoonHotlines"
+      screenOptions={{
+        cardStyle: { backgroundColor: "#660000" },
+      }}
+    >
+      <Stack.Screen
+        name="TyphoonHotlines"
+        component={TyphoonHotlines}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="OtherHotlines"
+        component={OtherHotlines}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function App() {
   return (
     <Tab.Navigator
       barStyle={{
@@ -41,7 +66,7 @@ export default function App() {
       />
       <Tab.Screen
         name="Hotlines"
-        component={TyphoonHotlines}
+        component={TyphoonHotlineStack}
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
@@ -86,3 +111,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default App;

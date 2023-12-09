@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {
   useFonts,
@@ -9,12 +10,36 @@ import {
 } from "@expo-google-fonts/anybody";
 import Storm from "./storm/Storm";
 import StormHotlines from "./storm/StormHotlines";
+import OtherHotlines from "../miscellaneous/OtherHotlinesStorm";
 import StormTips from "./storm/StormTips";
 import StormEvac from "../miscellaneous/Evacuations";
 
+const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-export default function App() {
+function StormHotlineStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="StormHotlines"
+      screenOptions={{
+        cardStyle: { backgroundColor: "#660000" },
+      }}
+    >
+      <Stack.Screen
+        name="StormHotlines"
+        component={StormHotlines}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="OtherHotlines"
+        component={OtherHotlines}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function App() {
   return (
     <Tab.Navigator
       barStyle={{
@@ -41,7 +66,7 @@ export default function App() {
       />
       <Tab.Screen
         name="Hotlines"
-        component={StormHotlines}
+        component={StormHotlineStack}
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
@@ -86,3 +111,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default App;

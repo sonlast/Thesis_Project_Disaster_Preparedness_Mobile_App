@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  Alert,
   BackHandler,
-  Modal,
   Pressable,
   Linking,
   Text,
@@ -35,26 +33,6 @@ const MyApp = () => {
     return () => backHandler.remove();
   }, []);
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-  const [data, setData] = React.useState([
-    {
-      id: 1,
-      barangay: "Bagumbayan",
-    },
-    {
-      id: 2,
-      barangay: "Bambang",
-    },
-    {
-      id: 3,
-      barangay: "Calzada",
-    },
-    {
-      id: 4,
-      barangay: "Central Bicutan",
-    },
-  ]);
-
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
     Anybody_700Bold,
@@ -70,13 +48,13 @@ const MyApp = () => {
         <Text
           style={{
             fontFamily: "Anybody_700Bold",
-            fontSize: 24,
+            fontSize: 20,
             color: "#FF0000",
           }}
         >
           EMERGENCY HOTLINES
         </Text>
-        <ScrollView nestedScrollEnabled>
+        <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
           <View style={styles.content}>
             <Text
               style={{
@@ -88,15 +66,7 @@ const MyApp = () => {
             >
               TAGUIG RESCUE
             </Text>
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 45,
-                color: "#660000",
-              }}
-            >
-              +63 919 070 3112
-            </Text>
+            <Text style={styles.numbers}>+63 919 070 3112</Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09190703112");
@@ -104,18 +74,10 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "Anybody_700Bold",
-                    fontSize: 25,
-                  }}
-                >
-                  Call
-                </Text>
+                <Text style={styles.calltext}>Call</Text>
                 <FontAwesome5
                   name="phone"
-                  size={24}
+                  size={20}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
@@ -132,15 +94,7 @@ const MyApp = () => {
             >
               SAFE CITY TAGUIG
             </Text>
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 45,
-                color: "#660000",
-              }}
-            >
-              +63 917 833 1327
-            </Text>
+            <Text style={styles.numbers}>+63 917 833 1327</Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09178331327");
@@ -148,18 +102,10 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "Anybody_700Bold",
-                    fontSize: 25,
-                  }}
-                >
-                  Call
-                </Text>
+                <Text style={styles.calltext}>Call</Text>
                 <FontAwesome5
                   name="phone"
-                  size={24}
+                  size={20}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
@@ -176,15 +122,7 @@ const MyApp = () => {
             >
               DOCTOR ON CALL
             </Text>
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 45,
-                color: "#660000",
-              }}
-            >
-              +63 919 079 9112
-            </Text>
+            <Text style={styles.numbers}>+63 919 079 9112</Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09190799112");
@@ -192,50 +130,51 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "Anybody_700Bold",
-                    fontSize: 25,
-                  }}
-                >
-                  Call
-                </Text>
+                <Text style={styles.calltext}>Call</Text>
                 <FontAwesome5
                   name="phone"
-                  size={24}
+                  size={20}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
               </View>
             </Pressable>
 
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 20,
+                color: "#FF0000",
+                marginTop: 20,
               }}
             >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Text style={styles.modalText}>Hello World!</Text>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}
-                  >
-                    <Text style={styles.textStylehide}>Hide Modal</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </Modal>
+              COMMAND CENTER
+            </Text>
+            <Text style={styles.numbers}>(02) 8739 3200</Text>
+            <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
-              style={styles.buttonOpen}
-              onPress={() => setModalVisible(true)}
+              onPress={() => {
+                Linking.openURL("tel: +63 2 8739 3200");
+              }}
+              style={styles.pressablecallbtn}
             >
-              <Text style={styles.textStyle}>Choose a Barangay</Text>
+              <View style={styles.callContainer}>
+                <Text style={styles.calltext}>Call</Text>
+                <FontAwesome5
+                  name="phone"
+                  size={20}
+                  color="#fff"
+                  style={{ paddingLeft: 20 }}
+                />
+              </View>
+            </Pressable>
+            <Pressable
+              style={styles.hotlinebtn}
+              onPress={() => navigation.navigate("OtherHotlines")}
+            >
+              <Text style={styles.textStyle}>
+                Click to Show Complete List of Hotlines
+              </Text>
             </Pressable>
           </View>
         </ScrollView>
@@ -275,34 +214,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     elevation: 10,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+  numbers: {
+    fontFamily: "Anybody_700Bold",
+    fontSize: 35,
+    color: "#660000",
   },
-  buttonOpen: {
+  landlinetxt: {
+    fontFamily: "Anybody_700Bold",
+    fontSize: 20,
+    textAlign: "center",
+    marginBottom: 10,
+    color: "#000000",
+  },
+  calltext: {
+    color: "#ffffff",
+    fontFamily: "Anybody_700Bold",
+    fontSize: 20,
+  },
+  hotlinebtn: {
     backgroundColor: "#FF0000",
-    alignItems: "center",
-    borderColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 3,
-    width: 300,
-    height: 50,
-    justifyContent: "center",
-    marginTop: 20,
-    elevation: 10,
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
     alignItems: "center",
     borderColor: "#fff",
     borderRadius: 20,
@@ -315,7 +245,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontFamily: "Anybody_700Bold",
-    fontSize: 25,
+    fontSize: 15,
     textAlign: "center",
     color: "#ffffff",
   },
@@ -324,10 +254,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
     color: "#000000",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
 });
 

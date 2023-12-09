@@ -215,16 +215,25 @@ export default function Settings() {
     if (!result.canceled && result.assets) {
       const imageUri = result.assets[0].uri;
 
+      const fileExtension = imageUri.split(".").pop();
+
+      const mimeTypes = {
+        jpeg: "image/jpeg",
+        jpg: "image/jpeg",
+        png: "image/png",
+      };
+
+      const contentType =
+        mimeTypes[fileExtension.toLowerCase()] || "application/octet-stream";
+
       const storage = getStorage();
       const storageRef = ref(
         storage,
         `profilePictures/${auth.currentUser.uid}`
       );
-      const metadata = { contentType: "image/jpeg" };
-      const snapshot = await uploadBytes(
-        storageRef,
-        await fetch(imageUri, metadata)
-      );
+      const snapshot = await uploadBytes(storageRef, await fetch(imageUri), {
+        contentType: contentType,
+      });
 
       const downloadURL = await getDownloadURL(snapshot.ref);
 
@@ -234,7 +243,7 @@ export default function Settings() {
       const userDocRef = doc(db, "users", auth.currentUser.uid);
       await setDoc(
         userDocRef,
-        { profilePicture: downloadURL },
+        { profilePicture: contentType },
         { merge: true }
       );
 

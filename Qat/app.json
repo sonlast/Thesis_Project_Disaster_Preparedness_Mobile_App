@@ -7,7 +7,7 @@
     "icon": "./app/assets/app-icons-xplatform/icon2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/app-icons-xplatform/splash.png",
+      "image": "./app/assets/app-icons-xplatform/splash2.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

@@ -48,13 +48,13 @@ const MyApp = () => {
         <Text
           style={{
             fontFamily: "Anybody_700Bold",
-            fontSize: 20,
+            fontSize: 24,
             color: "#FF0000",
           }}
         >
           EMERGENCY HOTLINES
         </Text>
-        <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
+        <ScrollView nestedScrollEnabled>
           <View style={styles.content}>
             <Text
               style={{
@@ -66,7 +66,15 @@ const MyApp = () => {
             >
               TAGUIG RESCUE
             </Text>
-            <Text style={styles.numbers}>+63 919 070 3112</Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 919 070 3112
+            </Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09190703112");
@@ -74,10 +82,18 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text style={styles.calltext}>Call</Text>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
                 <FontAwesome5
                   name="phone"
-                  size={20}
+                  size={24}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
@@ -94,7 +110,15 @@ const MyApp = () => {
             >
               SAFE CITY TAGUIG
             </Text>
-            <Text style={styles.numbers}>+63 917 833 1327</Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 917 833 1327
+            </Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09178331327");
@@ -102,10 +126,18 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text style={styles.calltext}>Call</Text>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
                 <FontAwesome5
                   name="phone"
-                  size={20}
+                  size={24}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
@@ -122,7 +154,15 @@ const MyApp = () => {
             >
               DOCTOR ON CALL
             </Text>
-            <Text style={styles.numbers}>+63 919 079 9112</Text>
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 45,
+                color: "#660000",
+              }}
+            >
+              +63 919 079 9112
+            </Text>
             <Pressable
               onPress={() => {
                 Linking.openURL("tel: 09190799112");
@@ -130,51 +170,30 @@ const MyApp = () => {
               style={styles.pressablecallbtn}
             >
               <View style={styles.callContainer}>
-                <Text style={styles.calltext}>Call</Text>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontFamily: "Anybody_700Bold",
+                    fontSize: 25,
+                  }}
+                >
+                  Call
+                </Text>
                 <FontAwesome5
                   name="phone"
-                  size={20}
+                  size={24}
                   color="#fff"
                   style={{ paddingLeft: 20 }}
                 />
               </View>
             </Pressable>
-
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 20,
-                color: "#FF0000",
-                marginTop: 20,
-              }}
-            >
-              LAKE AND RIVER PATROL
-            </Text>
-            <Text style={styles.numbers}>(02) 628 1377</Text>
-            <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
+              style={styles.buttonOpen}
               onPress={() => {
-                Linking.openURL("tel: +63 2 628 1377");
+                navigation.navigate("FiresHotlines");
               }}
-              style={styles.pressablecallbtn}
             >
-              <View style={styles.callContainer}>
-                <Text style={styles.calltext}>Call</Text>
-                <FontAwesome5
-                  name="phone"
-                  size={20}
-                  color="#fff"
-                  style={{ paddingLeft: 20 }}
-                />
-              </View>
-            </Pressable>
-            <Pressable
-              style={styles.hotlinebtn}
-              onPress={() => navigation.navigate("OtherHotlines")}
-            >
-              <Text style={styles.textStyle}>
-                Click to Show Complete List of Hotlines
-              </Text>
+              <Text style={styles.textStyle}>Back</Text>
             </Pressable>
           </View>
         </ScrollView>
@@ -214,25 +233,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     elevation: 10,
   },
-  numbers: {
-    fontFamily: "Anybody_700Bold",
-    fontSize: 35,
-    color: "#660000",
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
   },
-  landlinetxt: {
-    fontFamily: "Anybody_700Bold",
-    fontSize: 20,
-    textAlign: "center",
-    marginBottom: 10,
-    color: "#000000",
-  },
-  calltext: {
-    color: "#ffffff",
-    fontFamily: "Anybody_700Bold",
-    fontSize: 20,
-  },
-  hotlinebtn: {
+  buttonOpen: {
     backgroundColor: "#FF0000",
+    alignItems: "center",
+    borderColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 3,
+    width: 300,
+    height: 50,
+    justifyContent: "center",
+    marginTop: 20,
+    elevation: 10,
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
     alignItems: "center",
     borderColor: "#fff",
     borderRadius: 20,
@@ -245,7 +273,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontFamily: "Anybody_700Bold",
-    fontSize: 15,
+    fontSize: 25,
     textAlign: "center",
     color: "#ffffff",
   },
@@ -254,6 +282,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
     color: "#000000",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 
