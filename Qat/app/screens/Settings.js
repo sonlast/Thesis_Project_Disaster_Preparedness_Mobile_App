@@ -23,17 +23,29 @@ import { MaterialCommunityIcons } from "react-native-vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
 import { useImage } from "./miscellaneous/ImageContext";
-import { getFirestore, deleteDoc, doc, getDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  deleteDoc,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
 import { getAuth, deleteUser, signOut, updatePassword } from "firebase/auth";
-// import { getStorage, ref, uploadBytes } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getStorage,
+  getMetadata,
+} from "firebase/storage";
 
 export default function Settings() {
   const db = getFirestore();
   const navigation = useNavigation();
+  const imageContext = useImage();
   const [location, setLocation] = useState(null);
   const [locationName, setLocationName] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const imageContext = useImage();
   const image = imageContext.image;
   const setImage = imageContext.setImage;
   const [userName, setUserName] = useState("");
@@ -93,6 +105,7 @@ export default function Settings() {
           setUserName(userData.username || "");
           setUserFirstname(userData.firstName || "");
           setUserLastname(userData.lastName || "");
+          setImage(userData.profilePicture || "");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -152,7 +165,9 @@ export default function Settings() {
       [
         {
           text: "Cancel",
-          onPress: () => null,
+          onPress: () => {
+            console.log("Cancel Pressed");
+          },
           style: "cancel",
         },
         {
@@ -161,6 +176,7 @@ export default function Settings() {
             try {
               await signOut(auth);
               navigation.navigate("Login");
+              console.log("User signed out successfully.");
             } catch (error) {
               console.error("Error logging out:", error);
             }
@@ -197,7 +213,32 @@ export default function Settings() {
     }).catch((error) => console.log(error));
 
     if (!result.canceled && result.assets) {
-      setImage(result.assets[0].uri);
+      const imageUri = result.assets[0].uri;
+
+      const storage = getStorage();
+      const storageRef = ref(
+        storage,
+        `profilePictures/${auth.currentUser.uid}`
+      );
+      const metadata = { contentType: "image/jpeg" };
+      const snapshot = await uploadBytes(
+        storageRef,
+        await fetch(imageUri, metadata)
+      );
+
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      const imageMetadata = await getMetadata(snapshot.ref);
+      console.log("Image Metadata: ", imageMetadata);
+
+      const userDocRef = doc(db, "users", auth.currentUser.uid);
+      await setDoc(
+        userDocRef,
+        { profilePicture: downloadURL },
+        { merge: true }
+      );
+
+      setImage(imageUri);
     }
   };
 
