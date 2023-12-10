@@ -73,8 +73,8 @@ export default App;
 // * AUTHENTICATION FLOWS
 
 // FEATURES DEAN WANTS:
-// ? Landline Hotline Handling
-// ? Location Services (Location) (PERMISSIONS) (preliminary)
+// * Landline Hotline Handling
+// * Location Services (Location) (PERMISSIONS) (preliminary)
 // ? Others Category (for First Aid)
 
 // TODO: Admin Dashboard (Analytics)
@@ -128,6 +128,6 @@ export default App;
 
 // ? GOOGLE MAPS SDK / API (via credit card for access)
 // ? WEB ADMIN DASHBOARD (FRONT END + BACK END)
-// ? HANDLE LANDLINE HOTLINES
+// * HANDLE LANDLINE HOTLINES
 // ? CONTENTS (CATEGORIES, OTHERS)
 // * ? STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)
