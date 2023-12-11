@@ -5,6 +5,7 @@ import {
   BackHandler,
   ImageBackground,
   Pressable,
+  ScrollView,
   StyleSheet,
   TextInput,
   Text,
@@ -72,15 +73,20 @@ const MyApp = () => {
       icon: "water",
     },
     {
-      id: 7,
+      id: 5,
       name: "Landslide",
       icon: "mountain",
     },
     {
-      id: 9,
+      id: 6,
       name: "Fires",
       icon: "dumpster-fire",
     },
+    // {
+    //   id: 7,
+    //   name: "Others",
+    //   icon: "question-circle",
+    // },
   ];
 
   const filterData = (item) => {
@@ -152,29 +158,38 @@ const MyApp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <ImageBackground
-          source={require("../assets/prereqs-images/city-of-taguig.jpg")}
+        <View
           style={{
-            flex: 1,
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            height: "250%",
-            opacity: 0.76,
+            height: 100,
           }}
         >
-          <View style={styles.inputContainer}>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                placeholder="Search..."
-                placeholderTextColor={"#ffffff"}
-                style={styles.input}
-                onChangeText={(text) => setUserInput(text)}
-              />
-              <FontAwesome5 name="search" size={18} color="#ffffff" />
+          <ImageBackground
+            source={require("../assets/prereqs-images/city-of-taguig.jpg")}
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+              opacity: 0.76,
+            }}
+          >
+            <View style={styles.inputContainer}>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  placeholder="Search..."
+                  placeholderTextColor={"#ffffff"}
+                  style={styles.input}
+                  onChangeText={(text) => setUserInput(text)}
+                />
+                <FontAwesome5 name="search" size={18} color="#ffffff" />
+              </View>
             </View>
-          </View>
-        </ImageBackground>
+          </ImageBackground>
+        </View>
         <FlatList
           data={categories}
           showsVerticalScrollIndicator={false}
@@ -182,7 +197,7 @@ const MyApp = () => {
           contentContainerStyle={{
             justifyContent: "center",
             alignItems: "center",
-            marginTop: 25,
+            marginTop: 5,
           }}
         />
       </View>
@@ -208,8 +223,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     width: 250,
     height: 60,
-    marginTop: 30,
-    marginBottom: 20,
+    marginTop: 20,
+    marginBottom: 15,
     paddingRight: 10,
     paddingLeft: 10,
   },

@@ -107,6 +107,7 @@ export default App;
 // * App Name: Quick Response Aid (QRA)
 // * Sign up -> Log in (Authentication)
 // * Evacuation Area
+// * HANDLE LANDLINE HOTLINES
 // * ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
 // * Change Password
@@ -126,8 +127,11 @@ export default App;
 // TRYOUT EMAIL: moshi@gmail.com
 // TRYOUT PASSWORD: moshie1
 
-// ? GOOGLE MAPS SDK / API (via credit card for access)
-// ? WEB ADMIN DASHBOARD (FRONT END + BACK END)
-// * HANDLE LANDLINE HOTLINES
-// ? CONTENTS (CATEGORIES, OTHERS)
+// TODOS:
+// ? "OTHERS" CATEGORY
+// ? "WEB ADMIN DASHBOARD"
+// ? MAPS API ALTERNATIVE
+
+// ? GOOGLE MAPS SDK / API (via credit card for access) (reasonable)
+// * ? CONTENTS (CATEGORIES, OTHERS) (semi done)
 // * ? STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)

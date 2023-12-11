@@ -59,7 +59,7 @@ function App() {
             <MaterialCommunityIcons
               name="information"
               color={"#ff0000"}
-              size={27}
+              size={25}
             />
           ),
         }}
@@ -70,7 +70,7 @@ function App() {
         options={{
           tabBarLabel: "Hotlines",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="phone" color={"#ff0000"} size={27} />
+            <MaterialCommunityIcons name="phone" color={"#ff0000"} size={25} />
           ),
         }}
       />
@@ -80,7 +80,7 @@ function App() {
         options={{
           tabBarLabel: "Evacuation",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="run" color={"#ff0000"} size={27} />
+            <MaterialCommunityIcons name="run" color={"#ff0000"} size={25} />
           ),
         }}
       />
@@ -89,12 +89,12 @@ function App() {
         component={LandslideTips}
         options={{
           tabBarLabel: "Tips",
-          tabBarBadge: 3,
+          tabBarBadge: 13,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="lightbulb-on"
               color={"#ff0000"}
-              size={27}
+              size={25}
             />
           ),
         }}
