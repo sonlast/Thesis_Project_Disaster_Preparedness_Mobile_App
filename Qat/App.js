@@ -7,7 +7,9 @@ import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
 import SemiApp from "./app/screens/SemiApp";
 import TermsConditions from "./app/screens/TermsConditions";
+import Aptabase from "@aptabase/react-native";
 
+Aptabase.init("A-EU-6067364857");
 const Stack = createStackNavigator();
 
 function App() {
@@ -108,6 +110,8 @@ export default App;
 // * Sign up -> Log in (Authentication)
 // * Evacuation Area
 // * HANDLE LANDLINE HOTLINES
+// * ? CONTENTS (CATEGORIES, OTHERS) (semi done)
+// * ? STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)
 // * ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
 // * Change Password
@@ -128,10 +132,8 @@ export default App;
 // TRYOUT PASSWORD: moshie1
 
 // TODOS:
-// ? "OTHERS" CATEGORY
-// ? "WEB ADMIN DASHBOARD"
+// ? Forgot Password Functionality
+// ? ANALYTICS
 // ? MAPS API ALTERNATIVE
 
 // ? GOOGLE MAPS SDK / API (via credit card for access) (reasonable)
-// * ? CONTENTS (CATEGORIES, OTHERS) (semi done)
-// * ? STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)

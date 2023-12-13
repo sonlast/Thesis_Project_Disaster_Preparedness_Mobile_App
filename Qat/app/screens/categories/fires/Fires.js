@@ -56,7 +56,7 @@ const MyApp = () => {
               lineHeight: 20,
             }}
           >
-            A{" "}
+            In a general sense, "
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -66,12 +66,10 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslide{" "}
-            </Text>{" "}
-            is a geological phenomenon characterized by the movement of rock,
-            soil, and debris down a slope. It can vary in scale from small rock
-            falls to large, catastrophic events involving massive amounts of
-            material.{" "}
+              fires
+            </Text>
+            " refer to the combustion process that involves the release of heat
+            and light.{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -81,11 +79,10 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              Landslides
+              Fires
             </Text>{" "}
-            can be triggered by various factors, including heavy rainfall,
-            earthquakes, volcanic activity, human activities, and changes in
-            slope stability.
+            can be intentional or accidental and can occur in natural,
+            industrial, or domestic settings.
           </Text>
           <Text
             style={{
@@ -97,7 +94,7 @@ const MyApp = () => {
               lineHeight: 20,
             }}
           >
-            The Philippines is prone to{" "}
+            The Philippines experiences{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -107,24 +104,10 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
-            </Text>{" "}
-            due to its geographical features such as steep slopes, rugged
-            terrain, and frequent seismic and weather-related events. Areas with
-            high susceptibility to landslides are typically those with loose or
-            poorly compacted soil, volcanic deposits, or fractured rock.
-          </Text>
-          <Text
-            style={{
-              fontFamily: "Anybody_400Regular",
-              fontSize: 15,
-              textAlign: "justify",
-              padding: 5,
-              paddingTop: 20,
-              lineHeight: 20,
-            }}
-          >
-            Some specific regions in the Philippines that are more prone to{" "}
+              wildfires
+            </Text>
+            , especially during the dry season, which typically occurs from
+            November to April. These{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -134,62 +117,10 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
+              fires
             </Text>{" "}
-            include mountainous areas, steep slopes, and regions with a history
-            of geological instability. For example, the Cordillera
-            Administrative Region, parts of Mindanao, and areas near volcanic
-            sites like the Bicol region.
-          </Text>
-          <Text
-            style={{
-              fontFamily: "Anybody_400Regular",
-              fontSize: 15,
-              textAlign: "justify",
-              padding: 5,
-              lineHeight: 20,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 15,
-                textAlign: "justify",
-                padding: 5,
-                lineHeight: 20,
-              }}
-            >
-              Landslides
-            </Text>{" "}
-            in the Philippines often occur during the rainy season, which
-            typically runs from June to November. The combination of heavy
-            rainfall, saturated soil, and steep terrain increases the likelihood
-            of slope failures and{" "}
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 15,
-                textAlign: "justify",
-                padding: 5,
-                lineHeight: 20,
-              }}
-            >
-              landslides
-            </Text>{" "}
-            during this period. However,{" "}
-            <Text
-              style={{
-                fontFamily: "Anybody_700Bold",
-                fontSize: 15,
-                textAlign: "justify",
-                padding: 5,
-                lineHeight: 20,
-              }}
-            >
-              landslides
-            </Text>{" "}
-            can also occur during typhoons, earthquakes, or other events that
-            disturb the stability of the ground.
+            can be a result of various factors, including human activities and
+            natural causes.
           </Text>
           <Text
             style={{
@@ -210,14 +141,18 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              Landslides
+              Wildfires
             </Text>{" "}
-            can be triggered by both natural and human-induced factors. Some
-            common causes include:
+            in the Philippines often originate in forested and grassland areas.
+            Some common causes include:
             {`\n`}
             {`\n`}
-            {`\u2022`} Heavy Rainfall: Prolonged or intense rainfall can
-            saturate the soil, reducing its stability and triggering{" "}
+            {`\u2022`} Human Activities: Unattended campfires, burning of
+            agricultural residues, and intentional burning for land clearing.
+            {`\n`}
+            {`\n`}
+            {`\u2022`} Dry Conditions: The dry season, characterized by low
+            humidity and lack of rainfall, provides favorable conditions for{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -227,12 +162,23 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
-            </Text>
-            .{`\n`}
-            {`\n`}
-            {`\u2022`} Earthquakes: Seismic activity can destabilize slopes and
-            trigger{" "}
+              fires
+            </Text>{" "}
+            to spread rapidly.
+          </Text>
+
+          <Text
+            style={{
+              fontFamily: "Anybody_400Regular",
+              fontSize: 15,
+              textAlign: "justify",
+              padding: 5,
+              paddingTop: 20,
+              lineHeight: 20,
+            }}
+          >
+            The dry season, which typically spans from November to April, is
+            when{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -242,12 +188,10 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
-            </Text>
-            .{`\n`}
-            {`\n`}
-            {`\u2022`} Volcanic Activity: Volcanic eruptions can lead to the
-            deposition of loose materials on slopes, increasing the risk of{" "}
+              wildfires
+            </Text>{" "}
+            are more likely to occur in the Philippines. During this period,
+            vegetation becomes dry, increasing the risk of{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -257,13 +201,11 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
+              fires.
             </Text>
-            .{`\n`}
-            {`\n`}
-            {`\u2022`} Human Activities: Deforestation, mining, construction,
-            and other human activities can alter the natural stability of
-            slopes, making them more susceptible to{" "}
+            {"\n"}
+            {"\n"}
+            Several factors contribute to the occurrence of{" "}
             <Text
               style={{
                 fontFamily: "Anybody_700Bold",
@@ -273,9 +215,53 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              landslides
+              wildfires
             </Text>
-            . in urban areas.
+            :{`\n`}
+            {`\n`}
+            1. Human Activities: Unattended campfires, burning of agricultural
+            fields, and intentional land clearing contribute to{" "}
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 15,
+                textAlign: "justify",
+                padding: 5,
+                lineHeight: 20,
+              }}
+            >
+              wildfires.
+            </Text>
+            {`\n`}
+            {`\n`}
+            2. Dry Conditions: Lack of rainfall and low humidity during the dry
+            season create an environment conducive to the rapid spread of{" "}
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 15,
+                textAlign: "justify",
+                padding: 5,
+                lineHeight: 20,
+              }}
+            >
+              fires.
+            </Text>
+            {`\n`}
+            {`\n`}
+            3. Wind: Wind can carry embers and flames, causing{" "}
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 15,
+                textAlign: "justify",
+                padding: 5,
+                lineHeight: 20,
+              }}
+            >
+              fires.
+            </Text>{" "}
+            to spread over large areas.
           </Text>
 
           <Text
@@ -297,29 +283,44 @@ const MyApp = () => {
                 lineHeight: 20,
               }}
             >
-              Landslides
+              Wildfires
             </Text>{" "}
-            originate when the forces acting on a slope exceed the strength of
-            the materials holding it together. This can happen through a variety
-            of mechanisms, including:
+            can originate from various sources:
             {`\n`}
             {`\n`}
-            1. Slope Saturation: When heavy rainfall saturates the soil, it
-            increases its weight and reduces its shear strength, making it more
-            prone to sliding.
+            {`\u2010`} Human Ignition: Careless discarding of cigarettes,
+            unattended campfires, and burning of debris.
             {`\n`}
             {`\n`}
-            2. Erosion: Continuous erosion by rivers or surface runoff can
-            undercut the base of a slope, leading to instability.
+            {`\u2010`} Lightning: Natural causes, such as lightning strikes, can
+            ignite{" "}
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 15,
+                textAlign: "justify",
+                padding: 5,
+                lineHeight: 20,
+              }}
+            >
+              fires
+            </Text>{" "}
+            in dry vegetation.
             {`\n`}
             {`\n`}
-            3. Earthquakes: The shaking from seismic events can induce slope
-            failure by altering the balance of forces within the slope material.
-            {`\n`}
-            {`\n`}
-            4. Human Disturbance: Excavation, deforestation, and other human
-            activities can remove vegetation or alter the natural slope,
-            contributing to instability.
+            {`\u2010`} Arson: Intentional setting of{" "}
+            <Text
+              style={{
+                fontFamily: "Anybody_700Bold",
+                fontSize: 15,
+                textAlign: "justify",
+                padding: 5,
+                lineHeight: 20,
+              }}
+            >
+              fires
+            </Text>{" "}
+            for malicious purposes or land clearing.
           </Text>
         </View>
       </ScrollView>

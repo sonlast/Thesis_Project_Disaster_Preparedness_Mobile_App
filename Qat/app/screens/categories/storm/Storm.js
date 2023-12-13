@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { BackHandler, Image, View, StyleSheet, Text } from "react-native";
+import {
+  BackHandler,
+  Button,
+  Image,
+  View,
+  StyleSheet,
+  Text,
+} from "react-native";
 import {
   useFonts,
   Anybody_400Regular,
@@ -8,9 +15,11 @@ import {
 } from "@expo-google-fonts/anybody";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+// import { trackEvent } from "@aptabase/react-native";
 
 const MyApp = () => {
   const navigation = useNavigation();
+  // const [count, setCount] = React.useState(0);
 
   useEffect(() => {
     const backAction = () => {
@@ -25,6 +34,16 @@ const MyApp = () => {
 
     return () => backHandler.remove();
   }, []);
+
+  // const increment = () => {
+  //   setCount(count + 1);
+  //   trackEvent("increment", { count });
+  // };
+
+  // const decrement = () => {
+  //   setCount(count - 1);
+  //   trackEvent("decrement", { count });
+  // };
 
   let [fontsLoaded, fontError] = useFonts({
     Anybody_400Regular,
@@ -46,6 +65,9 @@ const MyApp = () => {
           />
         </View>
         <View style={{ padding: 20 }}>
+          <Button onPress={increment} title="Increment" />
+          <Button onPress={decrement} title="Decrement" />
+          <Text>Count is {count}</Text>
           <Text
             style={{
               fontFamily: "Anybody_400Regular",
