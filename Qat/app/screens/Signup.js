@@ -348,7 +348,7 @@ const MyApp = () => {
                     fontSize: 12,
                   }}
                 >
-                  Password must be at least 8 characters.
+                  Password must be at least 12 characters.
                 </Text>
               }
               onOpen={() => setTooltipVisible(true)}
@@ -362,6 +362,7 @@ const MyApp = () => {
                   placeholderTextColor="#999"
                   textAlign="left"
                   secureTextEntry={!isPasswordVisible}
+                  maxLength={12}
                   contextMenuHidden={true}
                   // ! if the value is change to email, this textinput inputs data similar with the email textinput
                   value={password}

@@ -9,12 +9,14 @@ import {
   Platform,
   Pressable,
   TextInput,
+  TouchableOpacity,
   ActivityIndicator,
   KeyboardAvoidingView,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {
   useFonts,
+  Anybody_400Regular,
   Anybody_700Bold_Italic,
   Anybody_700Bold,
 } from "@expo-google-fonts/anybody";
@@ -139,6 +141,7 @@ const MyApp = () => {
   };
 
   let [fontsLoaded, fontError] = useFonts({
+    Anybody_400Regular,
     Anybody_700Bold_Italic,
     Anybody_700Bold,
   });
@@ -212,6 +215,29 @@ const MyApp = () => {
                 />
               </Pressable>
             </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 10,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                console.log("Navigated to forgot password.");
+                navigation.navigate("ForgotPassword");
+              }}
+            >
+              <Text
+                style={{
+                  color: "#ffffff",
+                  fontFamily: "Anybody_400Regular",
+                }}
+              >
+                Forgot password?
+              </Text>
+            </TouchableOpacity>
           </View>
           {loading ? (
             <View style={styles.activityindi}>

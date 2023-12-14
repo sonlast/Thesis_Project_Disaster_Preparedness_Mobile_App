@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Loading from "./app/screens/miscellaneous/Loading";
 import Login from "./app/screens/Login";
 import Signup from "./app/screens/Signup";
+import ForgotPassword from "./app/screens/miscellaneous/ForgotPassword";
 import SemiApp from "./app/screens/SemiApp";
 import TermsConditions from "./app/screens/TermsConditions";
 import Aptabase from "@aptabase/react-native";
@@ -19,6 +20,8 @@ function App() {
         initialRouteName="Loading"
         screenOptions={{
           cardStyle: { backgroundColor: "#660000" },
+          headerStyle: { backgroundColor: "#660000" },
+          headerTintColor: "#fff",
         }}
       >
         <Stack.Screen
@@ -35,6 +38,17 @@ function App() {
           name="Signup"
           component={Signup}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
+          options={{
+            headerTitle: "Forgot Password",
+            headerTitleStyle: {
+              fontFamily: "Anybody_700Bold",
+              fontSize: 17.5,
+            },
+          }}
         />
         <Stack.Screen
           name="SemiApp"
@@ -65,6 +79,11 @@ const styles = StyleSheet.create({
 
 export default App;
 
+// AGENDA
+// ! Deprecated / Not Prioritized
+// * Accomplished
+// ? Assigned
+
 // FEATURES I WANT:
 // * CONTENTS (CATEGORIES, SETTINGS) (!categories)
 // ? UI/UX DESIGN / FLOWCHART
@@ -77,7 +96,7 @@ export default App;
 // FEATURES DEAN WANTS:
 // * Landline Hotline Handling
 // * Location Services (Location) (PERMISSIONS) (preliminary)
-// ? Others Category (for First Aid)
+// ! Others Category (for First Aid)
 
 // TODO: Admin Dashboard (Analytics)
 // ? - Users
@@ -86,14 +105,14 @@ export default App;
 // ? - User Location
 // ? - Algorithm (User Behavior Analysis)
 
-// ? Misc:
-// ? Video Presentation (Process of Location Services)
+// ! Misc:
+// ! Video Presentation (Process of Location Services)
 
 // ! ------------------- Deprecated / Not Prioritized
 // ! Handle log in errors (navigation)
 // ! Edit Username (unprioritized feature)
 // ! Log in -> Username/Password (!email/password)
-// ! Offline Capability (unprioritized feature)
+// * Offline Capability (unprioritized feature)
 
 // * DONE
 // * View Password (Login & Signup)
@@ -123,13 +142,8 @@ export default App;
 // * log out
 // * Account Deletion
 
-// AGENDA
-// ! Deprecated / Not Prioritized
-// * Accomplished
-// ? Assigned
-
-// TRYOUT EMAIL: moshi@gmail.com
-// TRYOUT PASSWORD: moshie1
+// TRYOUT EMAIL: sonilalto@gmail.com
+// TRYOUT PASSWORD: sonilalto
 
 // TODOS:
 // ? Forgot Password Functionality

@@ -65,9 +65,9 @@ const MyApp = () => {
           />
         </View>
         <View style={{ padding: 20 }}>
-          <Button onPress={increment} title="Increment" />
+          {/* <Button onPress={increment} title="Increment" />
           <Button onPress={decrement} title="Decrement" />
-          <Text>Count is {count}</Text>
+          <Text>Count is {count}</Text> */}
           <Text
             style={{
               fontFamily: "Anybody_400Regular",
