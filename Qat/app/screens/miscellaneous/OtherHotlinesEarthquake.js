@@ -17,9 +17,11 @@ import {
 import { FontAwesome5 } from "react-native-vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+import { trackEvent } from "@aptabase/react-native";
 
 const MyApp = () => {
   const navigation = useNavigation();
+  const [uses, setUses] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
@@ -77,6 +79,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 919 070 3112</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig Rescue", { uses });
                 Linking.openURL("tel: 09190703112");
               }}
               style={styles.pressablecallbtn}
@@ -105,6 +109,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 917 833 1327</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Safe City Taguig", { uses });
                 Linking.openURL("tel: 09178331327");
               }}
               style={styles.pressablecallbtn}
@@ -133,6 +139,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 919 079 9112</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Doctor On Call", { uses });
                 Linking.openURL("tel: 09190799112");
               }}
               style={styles.pressablecallbtn}
@@ -162,6 +170,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Command Center", { uses });
                 Linking.openURL("tel: +63 2 8739 3200");
               }}
               style={styles.pressablecallbtn}
@@ -191,6 +201,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig Emergency Hotline", { uses });
                 Linking.openURL("tel: +63 2 165 7777");
               }}
               style={styles.pressablecallbtn}
@@ -220,6 +232,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Lake and River Patrol", { uses });
                 Linking.openURL("tel: +63 2 628 1377");
               }}
               style={styles.pressablecallbtn}
@@ -248,6 +262,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 906 211 0919</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig BFP", { uses });
                 Linking.openURL("tel: +63 906 211 0919");
               }}
               style={styles.pressablecallbtn}
@@ -268,6 +284,8 @@ const MyApp = () => {
             </Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig BFP", { uses });
                 Linking.openURL("tel: +63 2 8837 0740");
               }}
               style={styles.pressablecallbtn}
@@ -288,6 +306,8 @@ const MyApp = () => {
             </Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig BFP", { uses });
                 Linking.openURL("tel: +63 2 8837 4496");
               }}
               style={styles.pressablecallbtn}
@@ -317,6 +337,10 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Fire Department (City Hall)", {
+                  uses,
+                });
                 Linking.openURL("tel: +63 2 642 9982");
               }}
               style={styles.pressablecallbtn}
@@ -346,6 +370,10 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Fire Department Taguig Central", {
+                  uses,
+                });
                 Linking.openURL("tel: +63 2 8837 0740");
               }}
               style={styles.pressablecallbtn}
@@ -375,6 +403,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Fire Department (FTI)", { uses });
                 Linking.openURL("tel: +63 2 837 4496");
               }}
               style={styles.pressablecallbtn}
@@ -404,6 +434,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig Environmental", { uses });
                 Linking.openURL("tel: +63 2 642 7557");
               }}
               style={styles.pressablecallbtn}
@@ -477,6 +509,10 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: DPWH Central Bicutan", {
+                            uses,
+                          });
                           Linking.openURL("tel: +63 951 662 2947");
                         }}
                       >
@@ -506,6 +542,10 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Osano Central Bicutan", {
+                            uses,
+                          });
                           Linking.openURL("tel: +63 961 704 4302");
                         }}
                       >
@@ -535,6 +575,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Central Signal", { uses });
                           Linking.openURL("tel: +63 951 114 7077");
                         }}
                       >
@@ -564,6 +606,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Fort Bonifacio", { uses });
                           Linking.openURL("tel: +63 961 734 0814");
                         }}
                       >
@@ -593,6 +637,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Katuparan", { uses });
                           Linking.openURL("tel: +63 961 734 0809");
                         }}
                       >
@@ -622,6 +668,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Maharlika", { uses });
                           Linking.openURL("tel: +63 961 704 4304");
                         }}
                       >
@@ -651,6 +699,10 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: North Daang Hari", {
+                            uses,
+                          });
                           Linking.openURL("tel: +63 961 704 4305");
                         }}
                       >
@@ -680,6 +732,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: North Signal", { uses });
                           Linking.openURL("tel: +63 961 734 0882");
                         }}
                       >
@@ -709,6 +763,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Palar", { uses });
                           Linking.openURL("tel: +63 961 734 0879");
                         }}
                       >
@@ -738,6 +794,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Pinagsama", { uses });
                           Linking.openURL("tel: +63 961 725 3302");
                         }}
                       >
@@ -767,6 +825,10 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: South Daang Hari", {
+                            uses,
+                          });
                           Linking.openURL("tel: +63 961 734 0850");
                         }}
                       >
@@ -796,6 +858,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: South Signal", { uses });
                           Linking.openURL("tel: +63 929 533 5904");
                         }}
                       >
@@ -825,6 +889,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Tanyag", { uses });
                           Linking.openURL("tel: +63 961 704 4306");
                         }}
                       >
@@ -854,6 +920,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Sitio Imelda", { uses });
                           Linking.openURL("tel: +63 961 734 0868");
                         }}
                       >
@@ -883,6 +951,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Upper Bicutan", { uses });
                           Linking.openURL("tel: +63 961 734 0858");
                         }}
                       >
@@ -912,6 +982,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Western Bicutan", { uses });
                           Linking.openURL("tel: +63 961 704 4308");
                         }}
                       >
@@ -941,6 +1013,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Bagumbayan", { uses });
                           Linking.openURL("tel: +63 961 734 0885");
                         }}
                       >
@@ -970,6 +1044,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Bambang", { uses });
                           Linking.openURL("tel: +63 961 704 4301");
                         }}
                       >
@@ -999,6 +1075,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Calzada Tipas", { uses });
                           Linking.openURL("tel: +63 961 734 0899");
                         }}
                       >
@@ -1028,6 +1106,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Hagonoy", { uses });
                           Linking.openURL("tel: +63 928 412 9838");
                         }}
                       >
@@ -1057,6 +1137,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Ibayo Tipas", { uses });
                           Linking.openURL("tel: +63 961 734 0848");
                         }}
                       >
@@ -1086,6 +1168,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Ligid Tipas", { uses });
                           Linking.openURL("tel: +63 961 704 4303");
                         }}
                       >
@@ -1115,6 +1199,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Lower Bicutan", { uses });
                           Linking.openURL("tel: +63 961 734 0852");
                         }}
                       >
@@ -1144,6 +1230,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Napindan", { uses });
                           Linking.openURL("tel: +63 961 734 0869");
                         }}
                       >
@@ -1173,6 +1261,10 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: New Lower Bicutan", {
+                            uses,
+                          });
                           Linking.openURL("tel: +63 961 621 9191");
                         }}
                       >
@@ -1202,6 +1294,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Palingon", { uses });
                           Linking.openURL("tel: +63 961 704 4395");
                         }}
                       >
@@ -1231,6 +1325,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: San Miguel", { uses });
                           Linking.openURL("tel: +63 929 848 6001");
                         }}
                       >
@@ -1260,6 +1356,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Sta. Ana", { uses });
                           Linking.openURL("tel: +63 961 734 0813");
                         }}
                       >
@@ -1289,6 +1387,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Tuktukan", { uses });
                           Linking.openURL("tel: +63 961 734 0863");
                         }}
                       >
@@ -1318,6 +1418,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Ususan", { uses });
                           Linking.openURL("tel: +63 961 734 0856");
                         }}
                       >
@@ -1347,6 +1449,8 @@ const MyApp = () => {
                           elevation: 10,
                         }}
                         onPress={() => {
+                          setUses(uses + 1);
+                          trackEvent("Hotline Used: Wawa", { uses });
                           Linking.openURL("tel: +63 961 734 0878");
                         }}
                       >

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -17,9 +17,11 @@ import {
   FontAwesome5,
   MaterialCommunityIcons,
 } from "react-native-vector-icons";
+import { trackEvent } from "@aptabase/react-native";
 
 const MyApp = () => {
   const navigation = useNavigation();
+  const [uses, setUses] = useState(0);
 
   useEffect(() => {
     const backAction = () => {
@@ -82,11 +84,6 @@ const MyApp = () => {
       name: "Fires",
       icon: "dumpster-fire",
     },
-    // {
-    //   id: 7,
-    //   name: "Others",
-    //   icon: "question-circle",
-    // },
   ];
 
   const filterData = (item) => {
@@ -97,7 +94,13 @@ const MyApp = () => {
       return (
         <Pressable
           style={styles.categoryButton}
-          onPress={() => navigation.navigate(item.name)}
+          onPress={() => {
+            setUses(uses + 1);
+            trackEvent(`User navigated to ${item.name} category`, {
+              uses,
+            });
+            navigation.navigate(item.name);
+          }}
         >
           <View
             style={{

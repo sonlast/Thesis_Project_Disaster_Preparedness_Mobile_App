@@ -99,11 +99,11 @@ export default App;
 // ! Others Category (for First Aid)
 
 // TODO: Admin Dashboard (Analytics)
-// ? - Users
-// ? - User Interaction
+// * ? - Users
+// * ? - User Interaction
 // ? - User Feedback
-// ? - User Location
-// ? - Algorithm (User Behavior Analysis)
+// * ? - User Location
+// * ? - Algorithm (User Behavior Analysis)
 
 // ! Misc:
 // ! Video Presentation (Process of Location Services)
@@ -129,8 +129,10 @@ export default App;
 // * Sign up -> Log in (Authentication)
 // * Evacuation Area
 // * HANDLE LANDLINE HOTLINES
-// * ? CONTENTS (CATEGORIES, OTHERS) (semi done)
-// * ? STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)
+// * CONTENTS (CATEGORIES, OTHERS) (semi done)
+// * STORE PROFILE PICTURE (via FIREBASE STORAGE) (semi done)
+// * Forgot Password Functionality
+// * ANALYTICS
 // * ------------------ SETTINGS INCLUDES
 // * Sync Profile Picture
 // * Change Password
@@ -146,8 +148,8 @@ export default App;
 // TRYOUT PASSWORD: sonilalto
 
 // TODOS:
-// ? Forgot Password Functionality
-// ? ANALYTICS
+// ? User Feedback / Report a Problem (FireStore)
 // ? MAPS API ALTERNATIVE
+// ? Others Category (time-based)
 
 // ? GOOGLE MAPS SDK / API (via credit card for access) (reasonable)

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BackHandler,
   Pressable,
@@ -15,9 +15,11 @@ import {
 import { FontAwesome5 } from "react-native-vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+import { trackEvent } from "@aptabase/react-native";
 
 const MyApp = () => {
   const navigation = useNavigation();
+  const [uses, setUses] = useState(0);
 
   useEffect(() => {
     const backAction = () => {
@@ -69,6 +71,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 919 070 3112</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig Rescue", { uses });
                 Linking.openURL("tel: 09190703112");
               }}
               style={styles.pressablecallbtn}
@@ -97,6 +101,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 917 833 1327</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Safe City Taguig", { uses });
                 Linking.openURL("tel: 09178331327");
               }}
               style={styles.pressablecallbtn}
@@ -125,6 +131,8 @@ const MyApp = () => {
             <Text style={styles.numbers}>+63 919 079 9112</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Doctor On Call", { uses });
                 Linking.openURL("tel: 09190799112");
               }}
               style={styles.pressablecallbtn}
@@ -154,6 +162,8 @@ const MyApp = () => {
             <Text style={styles.landlinetxt}>(Landline)</Text>
             <Pressable
               onPress={() => {
+                setUses(uses + 1);
+                trackEvent("Hotline Used: Taguig Emergency Hotline", { uses });
                 Linking.openURL("tel: +63 2 165 7777");
               }}
               style={styles.pressablecallbtn}
@@ -170,7 +180,11 @@ const MyApp = () => {
             </Pressable>
             <Pressable
               style={styles.hotlinebtn}
-              onPress={() => navigation.navigate("OtherHotlines")}
+              onPress={() => {
+                setUses(uses + 1);
+                trackEvent("User navigated to Other Hotlines", { uses });
+                navigation.navigate("OtherHotlines");
+              }}
             >
               <Text style={styles.textStyle}>
                 Click to Show Complete List of Hotlines

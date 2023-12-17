@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BackHandler,
-  Text,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-} from "react-native";
+import { BackHandler, Text, View, StyleSheet } from "react-native";
 import {
   useFonts,
   Anybody_700Bold_Italic,
@@ -14,10 +8,11 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import MapView, { Marker } from "react-native-maps";
-import { TimePickerAndroid } from "react-native";
+import { trackEvent } from "@aptabase/react-native";
 
 const MyApp = () => {
   const navigation = useNavigation();
+  const [uses, setUses] = useState(0);
   const [selectedBarangay, setSelectedBarangay] = useState(null);
 
   useEffect(() => {
@@ -139,6 +134,8 @@ const MyApp = () => {
 
   const handleMarkerPress = (area) => {
     // Handle marker press event
+    setUses(uses + 1);
+    trackEvent(`User Selected Evacuation Area in ${area.barangay}`, { uses });
     console.log(`Selected evacuation area: ${area.name}`);
   };
 
