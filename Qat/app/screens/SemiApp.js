@@ -399,7 +399,7 @@ function App() {
         listeners={{
           focus: async () => {
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               "Are you sure you want to logout?",
               [
                 {

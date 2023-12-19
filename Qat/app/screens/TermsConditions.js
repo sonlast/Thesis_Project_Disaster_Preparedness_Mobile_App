@@ -93,7 +93,7 @@ function TermsConditions() {
           <Text style={styles.terms}>
             2.3 Security: You are responsible for maintaining the
             confidentiality of your account credentials and for all activities
-            that occur under your account. Notify Quick Response Aid immediately
+            that occur under your account. Notify Quick Aid immediately
             of any unauthorized use of your account.
           </Text>
           {/* USER CONDUCT */}
@@ -106,21 +106,21 @@ function TermsConditions() {
           <Text style={styles.terms}>
             3.2 Content Submission: By submitting content (text, images, etc.)
             during the registration process or through the use of the service,
-            you grant Quick Response Aid the right to use, modify, and
+            you grant Quick Aid the right to use, modify, and
             distribute such content in accordance with the Privacy Policy.
           </Text>
           {/* TERMINATION */}
           <Text style={styles.subheads}>4. TERMINATION</Text>
           <Text style={styles.terms}>
-            Quick Response Aid reserves the right to terminate or suspend your
+            Quick Aid reserves the right to terminate or suspend your
             account at its sole discretion, without notice, for conduct that
-            Quick Response Aid believes violates these Terms and Conditions or
+            Quick Aid believes violates these Terms and Conditions or
             is harmful to other users or third parties or for any other reason.
           </Text>
           {/* PRIVACY */}
           <Text style={styles.subheads}>5. PRIVACY</Text>
           <Text style={styles.terms}>
-            5.1 Data Collection: Quick Response Aid collects and uses personal
+            5.1 Data Collection: Quick Aid collects and uses personal
             information in accordance with its Privacy Policy. By using the
             service, you consent to such collection and use.
           </Text>
@@ -132,7 +132,7 @@ function TermsConditions() {
           {/* MODIFICATIONS */}
           <Text style={styles.subheads}>6. MODIFICATIONS</Text>
           <Text style={styles.terms}>
-            Quick Response Aid reserves the right to modify or update these
+            Quick Aid reserves the right to modify or update these
             Terms and Conditions at any time. Users will be notified of such
             changes, and continued use of the service after modifications
             constitutes acceptance of the revised terms.

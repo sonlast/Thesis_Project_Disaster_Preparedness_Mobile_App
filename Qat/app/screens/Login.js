@@ -75,7 +75,7 @@ const MyApp = () => {
         // Signed in
         const user = userCredential.user;
         AsyncStorage.setItem("lastemail", email);
-        Alert.alert("Quick Response Aid", "Login successful.");
+        Alert.alert("Quick Aid", "Login successful.");
         console.log("Initiating log in.");
         console.log("Logged in successful.");
         navigation.navigate("SemiApp");
@@ -85,44 +85,44 @@ const MyApp = () => {
         const errorMessage = error.message;
         switch (errorCode) {
           case "auth/invalid-login-credentials":
-            Alert.alert("Quick Response Aid", "Account doesn't exist.");
+            Alert.alert("Quick Aid", "Account doesn't exist.");
             console.log("Unsuccessful Login.");
             break;
           case "auth/user-not-found":
-            Alert.alert("Quick Response Aid", "Account doesn't exist.");
+            Alert.alert("Quick Aid", "Account doesn't exist.");
             break;
           case "auth/invalid-email":
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               "Invalid email address. Please provide a valid email."
             );
             console.log("Unsuccessful Login.");
             break;
           case "auth/weak-password":
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               "Password is too weak. Please provide a stronger password."
             );
             console.log("Unsuccessful Login.");
             break;
           case "auth/wrong-password":
-            Alert.alert("Quick Response Aid", "Incorrect password.");
+            Alert.alert("Quick Aid", "Incorrect password.");
             console.log("Unsuccessful Login.");
             break;
           case "auth/missing-password":
-            Alert.alert("Quick Response Aid", "Please provide a password.");
+            Alert.alert("Quick Aid", "Please provide a password.");
             console.log("Unsuccessful Login.");
             break;
           case "auth/too-many-requests":
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               "Too many requests. Please try again later."
             );
             console.log("Unsuccessful Login.");
             break;
           default:
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
             );
             console.log("Unsuccessful Login.");
@@ -158,7 +158,7 @@ const MyApp = () => {
         <View style={styles.content}>
           <Image
             style={styles.imagez}
-            source={require("../assets/app-icons-xplatform/qra.png")}
+            source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
           />
           <View style={styles.inputContainer}>
             <View style={styles.inputWrapper}>

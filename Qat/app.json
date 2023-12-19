@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "Quick Response Aid",
+    "name": "Quick Aid",
     "slug": "Qat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/app-icons-xplatform/icon2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/app-icons-xplatform/splash2.png",
+      "image": "./app/assets/app-icons-xplatform/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },

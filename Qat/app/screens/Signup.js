@@ -197,7 +197,7 @@ const MyApp = () => {
           age: age,
         });
 
-        Alert.alert("Quick Response Aid", "Account created successfully!");
+        Alert.alert("Quick Aid", "Account created successfully!");
         navigation.navigate("Login", { username: username });
         // ...
       })
@@ -207,20 +207,20 @@ const MyApp = () => {
 
         switch (errorCode) {
           case "auth/invalid-email":
-            Alert.alert("Quick Response Aid", "Fill in the required fields.");
+            Alert.alert("Quick Aid", "Fill in the required fields.");
             break;
           case "auth/missing-password":
-            Alert.alert("Quick Response Aid", "Fill in your password.");
+            Alert.alert("Quick Aid", "Fill in your password.");
             break;
           case "auth/email-already-in-use":
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               "The email address is already in use by another account."
             );
             break;
           default:
             Alert.alert(
-              "Quick Response Aid",
+              "Quick Aid",
               `Account creation error: ${errorMessage} (Error Code: ${errorCode})`
             );
             break;
@@ -253,7 +253,7 @@ const MyApp = () => {
         <View style={styles.content}>
           <Image
             style={styles.imagez}
-            source={require("../assets/app-icons-xplatform/qrawstroke.png")}
+            source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
           />
           <View style={styles.nameHorizontalContainer}>
             <View style={[styles.nameinputContainer, { marginRight: 5 }]}>

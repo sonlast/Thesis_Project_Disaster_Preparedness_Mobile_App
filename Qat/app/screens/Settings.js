@@ -131,7 +131,7 @@ export default function Settings() {
 
   const handleDeleteAccount = async () => {
     Alert.alert(
-      "Quick Response Aid",
+      "Quick Aid",
       "Are you sure you want to delete your account?",
       [
         {
@@ -160,7 +160,7 @@ export default function Settings() {
 
   const handleLogout = () => {
     Alert.alert(
-      "Quick Response Aid",
+      "Quick Aid",
       "Are you sure you want to log out?",
       [
         {
@@ -190,11 +190,11 @@ export default function Settings() {
   const changePassword = async () => {
     try {
       await updatePassword(auth.currentUser, newPassword);
-      Alert.alert("Quick Response Aid", "Password changed successfully.");
+      Alert.alert("Quick Aid", "Password changed successfully.");
       closeModal();
       console.log("Password changed successfully.");
     } catch (error) {
-      Alert.alert("Quick Response Aid", "Password change failed.");
+      Alert.alert("Quick Aid", "Password change failed.");
       console.log(error);
     }
   };

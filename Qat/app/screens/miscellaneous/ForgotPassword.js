@@ -26,7 +26,7 @@ function ForgotPassword() {
       await sendPasswordResetEmail(auth, email);
       setIsEmailsent(true);
       Alert.alert(
-        "Quick Response Aid",
+        "Quick Aid",
         "A password reset email has been sent to your email address."
       );
     } catch (error) {
@@ -35,17 +35,17 @@ function ForgotPassword() {
 
       switch (errorsCode) {
         case "auth/missing-email":
-          Alert.alert("Quick Response Aid", "Input email for password reset.");
+          Alert.alert("Quick Aid", "Input email for password reset.");
           break;
         case "auth/user-not-found":
-          Alert.alert("Quick Response Aid", "User not found.");
+          Alert.alert("Quick Aid", "User not found.");
           break;
         case "auth/invalid-email":
-          Alert.alert("Quick Response Aid", "The email address is not valid.");
+          Alert.alert("Quick Aid", "The email address is not valid.");
           break;
         default:
           Alert.alert(
-            "Quick Response Aid",
+            "Quick Aid",
             `Account creation error: ${errorsMessage} (Error Code: ${errorsCode})`
           );
           break;
