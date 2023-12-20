@@ -14,10 +14,15 @@ import {
   Anybody_400Regular,
 } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
+import { trackEvent } from "@aptabase/react-native";
+import { getAuth } from "firebase/auth";
+import { getStorage, ref, uploadString } from "firebase/storage";
 
 function RaPSettings() {
   const navigation = useNavigation();
   const [problemDescription, setProblemDescription] = useState("");
+  const [uses, setUses] = useState(0);
+  const auth = getAuth();
 
   useEffect(() => {
     const backAction = () => {
@@ -32,6 +37,26 @@ function RaPSettings() {
 
     return () => backHandler.remove();
   }, []);
+
+  const uploadtoFirebaseStorage = async () => {
+    try {
+      const storage = getStorage();
+      const storageRef = ref(
+        storage,
+        `reports/${auth.currentUser.uid}/${Date.now()}.txt`
+      );
+      const textdata = String(problemDescription);
+      console.log("Uploading report...", textdata);
+
+      const metadata = {
+        contentType: "text/plain",
+      };
+      await uploadString(storageRef, textdata, "raw", metadata);
+      console.log("Report uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading report:", error);
+    }
+  };
 
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
@@ -58,7 +83,14 @@ function RaPSettings() {
           placeholder="Describe the problem..."
           placeholderTextColor="#ccc"
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          onPress={() => {
+            setUses(uses + 1);
+            trackEvent("User reported a Problem", { uses });
+            uploadtoFirebaseStorage();
+          }}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Report</Text>
         </TouchableOpacity>
       </View>

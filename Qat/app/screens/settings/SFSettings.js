@@ -14,10 +14,12 @@ import {
   Anybody_400Regular,
 } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
+import { trackEvent } from "@aptabase/react-native";
 
 function SFSettings() {
   const navigation = useNavigation();
   const [text, setText] = useState("");
+  const [uses, setUses] = useState(0);
 
   useEffect(() => {
     const backAction = () => {
@@ -58,7 +60,13 @@ function SFSettings() {
           placeholder="Describe your issue or idea..."
           placeholderTextColor="#ccc"
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          onPress={() => {
+            setUses(uses + 1);
+            trackEvent("User submitted a Feedback", { uses });
+          }}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Submit Feedback</Text>
         </TouchableOpacity>
       </View>
