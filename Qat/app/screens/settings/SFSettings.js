@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Alert,
   BackHandler,
   Text,
   TextInput,
@@ -15,11 +16,13 @@ import {
 } from "@expo-google-fonts/anybody";
 import { useNavigation } from "@react-navigation/native";
 import { trackEvent } from "@aptabase/react-native";
-
+import { getAuth } from "firebase/auth";
+import { getStorage, ref, uploadString } from "firebase/storage";
 function SFSettings() {
   const navigation = useNavigation();
-  const [text, setText] = useState("");
+  const [feedbacktext, setFeedbackText] = useState("");
   const [uses, setUses] = useState(0);
+  const auth = getAuth();
 
   useEffect(() => {
     const backAction = () => {
@@ -34,6 +37,30 @@ function SFSettings() {
 
     return () => backHandler.remove();
   }, []);
+
+  const uploadtoFirebaseStorage = async () => {
+    try {
+      const storage = getStorage();
+      const StorageRef = ref(
+        storage,
+        `feedbacks/${auth.currentUser.uid}/${Date.now()}.txt`
+      );
+      const textdata = String(feedbacktext);
+      console.log("Sending feedback...", textdata);
+
+      const metadata = {
+        contentType: "text/plain",
+      };
+      await uploadString(StorageRef, textdata, "raw", metadata);
+      console.log("Feedback sent successfully!");
+      Alert.alert(
+        "Quick Aid",
+        "Thank you for your feedback. We will get back to you as soon as we can.",
+      )
+    } catch (error) {
+      console.error("Error uploading report:", error);
+    }
+  };
 
   let [fontsLoaded, fontError] = useFonts({
     Anybody_700Bold_Italic,
@@ -54,8 +81,8 @@ function SFSettings() {
         </Text>
         <TextInput
           multiline={true}
-          value={text}
-          onChangeText={(feedbacktext) => setText(feedbacktext)}
+          value={feedbacktext}
+          onChangeText={(feedbacktext) => setFeedbackText(feedbacktext)}
           style={styles.input}
           placeholder="Describe your issue or idea..."
           placeholderTextColor="#ccc"
@@ -64,6 +91,7 @@ function SFSettings() {
           onPress={() => {
             setUses(uses + 1);
             trackEvent("User submitted a Feedback", { uses });
+            uploadtoFirebaseStorage();
           }}
           style={styles.button}
         >

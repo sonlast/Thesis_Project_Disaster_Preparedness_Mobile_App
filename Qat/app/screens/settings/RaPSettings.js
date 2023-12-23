@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Alert,
   BackHandler,
   Text,
   TextInput,
@@ -46,13 +47,17 @@ function RaPSettings() {
         `reports/${auth.currentUser.uid}/${Date.now()}.txt`
       );
       const textdata = String(problemDescription);
-      console.log("Uploading report...", textdata);
+      console.log("Sending report...", textdata);
 
       const metadata = {
         contentType: "text/plain",
       };
       await uploadString(storageRef, textdata, "raw", metadata);
-      console.log("Report uploaded successfully!");
+      console.log("Report sent successfully!");
+      Alert.alert(
+        "Quick Aid",
+        "Thank you for reporting. We will work on it as fast as we can."
+      );
     } catch (error) {
       console.error("Error uploading report:", error);
     }
