@@ -20,7 +20,7 @@ function App() {
         initialRouteName="Loading"
         screenOptions={{
           cardStyle: { backgroundColor: "#660000" },
-          headerStyle: { backgroundColor: "#660000" },
+          headerStyle: { backgroundColor: "#660000" }, 
           headerTintColor: "#fff",
         }}
       >
@@ -51,7 +51,7 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="SemiApp"
+          name="SemiApp"~
           component={SemiApp}
           options={{ headerShown: false }}
         />
@@ -153,4 +153,3 @@ export default App;
 // ? Others Category (time-based)
 
 // ? GOOGLE MAPS SDK / API (via credit card for access) (reasonable)
-
