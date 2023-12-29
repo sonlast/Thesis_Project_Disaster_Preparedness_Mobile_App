@@ -22,7 +22,7 @@ function TermsConditions() {
   useEffect(() => {
     const backAction = () => {
       Alert.alert(
-        "Quick Aid Taguig",
+        "Taguig Disaster Access",
         "Are you sure you want to exit without accepting the terms?",
         [
           {

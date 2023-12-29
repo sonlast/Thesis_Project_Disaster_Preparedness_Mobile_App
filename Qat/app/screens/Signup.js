@@ -155,7 +155,7 @@ const MyApp = () => {
   useEffect(() => {
     const backAction = () => {
       Alert.alert(
-        "Quick Aid Taguig",
+        "Taguig Disaster Access",
         "Are you sure you want to cancel signing up?",
         [
           {
@@ -253,7 +253,7 @@ const MyApp = () => {
         <View style={styles.content}>
           <Image
             style={styles.imagez}
-            source={require("../assets/app-icons-xplatform/adaptive-icon.png")}
+            source={require("../assets/app-icons-xplatform/icon3.png")}
           />
           <View style={styles.nameHorizontalContainer}>
             <View style={[styles.nameinputContainer, { marginRight: 5 }]}>
@@ -489,7 +489,7 @@ const MyApp = () => {
           <View style={{ marginTop: 10 }}>
             <Text style={styles.xtratxt}>
               Already have an account?{" "}
-              <Text style={{ color: "rgb(255, 0, 0)" }} onPress={pressLogin}>
+              <Text style={{ color: "#FF0000" }} onPress={pressLogin}>
                 Log in here.
               </Text>
             </Text>
@@ -512,8 +512,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagez: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     resizeMode: "contain",
   },
   buttons: {

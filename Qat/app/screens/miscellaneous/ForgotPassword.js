@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
+  BackHandler,
   StyleSheet,
   Text,
   TextInput,
@@ -13,11 +14,13 @@ import {
   Anybody_700Bold,
   Anybody_700Bold_Italic,
 } from "@expo-google-fonts/anybody";
+import { useNavigation } from "@react-navigation/native";
 import { app } from "../../../firebaseConfig";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 function ForgotPassword() {
   const auth = getAuth(app);
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [isEmailsent, setIsEmailsent] = useState("Send Email");
 
@@ -52,6 +55,31 @@ function ForgotPassword() {
       }
     }
   };
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Taguig Disaster Access", "Navigating back to Login.", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        {
+          text: "YES",
+          onPress: () => navigation.navigate("Login"),
+        },
+      ]);
+
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   let [fontsLoaded, fontError] = useFonts({
     Anybody_400Regular,

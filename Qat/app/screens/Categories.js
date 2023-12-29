@@ -25,7 +25,7 @@ const MyApp = () => {
 
   useEffect(() => {
     const backAction = () => {
-      Alert.alert("Quick Aid Taguig", "Are you sure you want to exit?", [
+      Alert.alert("Taguig Disaster Access", "Are you sure you want to exit?", [
         {
           text: "Cancel",
           onPress: () => null,

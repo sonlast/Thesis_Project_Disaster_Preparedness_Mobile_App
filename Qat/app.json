@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "Quick Aid",
+    "name": "Taguig Disaster Access",
     "slug": "Qat",
-    "version": "1.0.0",
+    "version": "1.1.2",
     "orientation": "portrait",
     "icon": "./app/assets/app-icons-xplatform/icon2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/app-icons-xplatform/splash.png",
+      "image": "./app/assets/app-icons-xplatform/splash3.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
